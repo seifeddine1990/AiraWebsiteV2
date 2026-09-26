@@ -139,7 +139,7 @@ canvas.globe { position: absolute; z-index: -1; pointer-events: none; }
 /* ---- Home hero (inspired layout) ---- */
 .hero-fusion { min-height: min(100vh, 940px); padding-bottom: 150px; }
 .hero-fusion-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 28px; align-items: center; }
-.hf-visual { margin-right: -40px; }
+.hf-visual { min-width: 0; }
 .hf-sub { font: 300 clamp(1rem, 1.45vw, 1.3rem)/1.35 var(--f-display); letter-spacing: .06em; color: #e6f0ff; }
 .hf-pos { margin-top: 18px; display: flex; align-items: center; gap: 22px; flex-wrap: wrap; font: 400 clamp(1rem, 1.4vw, 1.2rem)/1 var(--f-display); letter-spacing: .12em; color: #fff; }
 .hf-pos i { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
@@ -147,9 +147,35 @@ canvas.globe { position: absolute; z-index: -1; pointer-events: none; }
 @media (max-width: 820px) {
   .hero-fusion { padding-bottom: 80px; }
   .hero-fusion-grid { grid-template-columns: 1fr; }
-  .hf-visual { order: -1; margin: -20px auto -30px; width: min(100%, 420px); }
+  .hf-visual { margin: 20px auto 0; width: min(100%, 600px); }
 }
-@media (prefers-reduced-motion: reduce) { .globe-stage canvas { animation: none; } }
+
+/* Connected platform illustration, using the site's glass and brand artwork. */
+.platform-map { position: relative; isolation: isolate; display: grid; grid-template-columns: 32% 28% 32%; grid-template-rows: repeat(3, 1fr); column-gap: 4%; row-gap: 24px; width: 100%; max-width: 600px; min-height: 400px; margin-inline: auto; }
+.platform-map::before { content: ""; position: absolute; inset: 0 -10%; z-index: -1; background: radial-gradient(ellipse, rgba(0, 108, 255, .22), transparent 68%); pointer-events: none; }
+.platform-wires { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; color: var(--cyan); filter: drop-shadow(0 0 5px rgba(0, 160, 255, .6)); }
+.platform-node { display: flex; align-items: center; gap: 9px; padding: 13px 10px; border: 1px solid var(--glass-border); border-radius: 18px; background: var(--glass-bg); box-shadow: var(--glass-shadow), 0 0 22px rgba(0, 108, 255, .08); }
+.platform-node .glow-icon { width: 32px; height: 36px; border-radius: 11px; }
+.platform-node .glow-icon svg { width: 21px; height: 21px; }
+.platform-node b { display: block; font: 600 11px/1.45 var(--f-text); color: #eef7ff; }
+.platform-node p { margin: 6px 0 0; font: 400 10.5px/1.55 var(--f-text); color: var(--ink-2); }
+.pn-secure { grid-area: 1 / 1; }.pn-data { grid-area: 2 / 1; }.pn-observe { grid-area: 3 / 1; }
+.pn-govern { grid-area: 1 / 3; }.pn-use { grid-area: 2 / 3; }.pn-agents { grid-area: 3 / 3; }
+.platform-core { grid-area: 1 / 2 / 4 / 3; position: relative; align-self: center; margin-bottom: 16px; }
+.platform-emblem { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; min-height: 196px; padding: 18px 8px; border-radius: 25px; border: 1px solid rgba(128, 222, 255, .8); background: linear-gradient(145deg, #143b65, #081a35 65%, #124986); box-shadow: inset 0 0 0 6px rgba(99, 190, 255, .06), inset 0 0 25px rgba(0, 207, 255, .2), 0 0 28px rgba(0, 160, 255, .3), 0 12px 0 -5px #125094; }
+.platform-mark { width: 76px; height: 76px; object-fit: contain; filter: drop-shadow(0 0 14px rgba(0, 160, 255, .45)); }
+.platform-wordmark { width: min(110px, 92%); height: auto; }
+.platform-emblem > span { font: 400 9px/1.5 var(--f-text); color: #99e7ff; text-align: center; }
+.platform-plinth { position: absolute; left: 3%; width: 94%; height: 70px; border: 1px solid rgba(101, 211, 255, .55); border-radius: 17px; transform: rotate(-30deg) skewX(30deg) scaleY(.7); background: linear-gradient(135deg, rgba(11, 67, 126, .9), rgba(0, 143, 255, .5)); box-shadow: 0 14px 0 rgba(11, 58, 109, .85), 0 15px 0 rgba(117, 207, 255, .4), 0 28px 30px rgba(0, 108, 255, .2); }
+.plinth-top { bottom: -22px; }.plinth-bottom { bottom: -47px; opacity: .65; }
+@media (min-width: 821px) and (max-width: 1180px), (max-width: 480px) {
+  .platform-node { flex-direction: column; justify-content: center; align-items: flex-start; gap: 8px; padding: 12px 9px; }
+  .platform-map { row-gap: 18px; min-height: 450px; }
+  .platform-node b { font-size: 10px; }
+  .platform-node p { font-size: 10px; }
+  .platform-emblem { min-height: 170px; border-radius: 18px; padding-inline: 5px; }
+  .platform-mark { width: 60px; height: 60px; }
+}
 
 /* Platform panel overlapping the hero */
 .platform-panel-wrap { position: relative; margin-top: -110px; z-index: 2; }

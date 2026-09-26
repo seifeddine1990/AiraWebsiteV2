@@ -11,6 +11,8 @@ python build.py --serve    # builds, then serves http://localhost:8090
 
 Links are relative, so `public/index.html` also opens directly from disk.
 
+The Nexus overview, six product sections, architecture and specifications are maintained together in `src/pages/nexus.html`. Product links use `nexus.html#home`, `#studio`, `#gateway`, `#runtime`, `#signal` and `#data`. The former `platform.html` page redirects to Nexus and maps legacy `#hub` links to `#home`.
+
 ## Deploy
 
 ```bash
@@ -52,4 +54,4 @@ Placeholders inside pages: `{{root}}`, `{{icon:NAME}}`, `{{hex:PRODUCT}}`, `{{pl
 - Say **"AI Solution"**, never "EIM". **"AI App"** is a reserved name and must not appear.
 - Keep the assurance table honest. There is no SOC 2, ISO 27001 or pen test yet. Never claim one early.
 - Do not publish customer names, adoption figures or ROI numbers until they are measured and approved.
-- The contact form opens a pre-filled email to `hello@airafusion.com` and stores nothing. Change `CONTACT_EMAIL` in `build.py` to point it somewhere else.
+- The contact form opens a pre-filled email to `info@airafusion.com` and stores nothing. Change `CONTACT_EMAIL` in `build.py` to point it somewhere else.

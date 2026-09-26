@@ -297,7 +297,7 @@
       var d = new FormData(form), to = form.getAttribute("data-mailto");
       var subject = "[" + (d.get("topic") || "Briefing") + "] " + (d.get("company") || "");
       var body = "Name: " + d.get("name") + "\nRole: " + (d.get("role") || "") + "\nCompany: " + d.get("company") +
-        "\nEmail: " + d.get("email") + "\nDeployment: " + (d.get("deploy") || "") + "\n\n" + (d.get("message") || "");
+        "\nEmail: " + d.get("email") + "\n\n" + (d.get("message") || "");
       window.location.href = "mailto:" + to + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
       var ok = form.querySelector(".form-ok"); if (ok) ok.classList.add("show");
     });

@@ -34,14 +34,14 @@ ROOT = Path(__file__).resolve().parent
 SRC = ROOT / "src"
 OUT = ROOT / "public"
 SITE_URL = "https://airafusion.com"
-CONTACT_EMAIL = "hello@airafusion.com"
+CONTACT_EMAIL = "info@airafusion.com"
 
 # Brand artwork is the approved AIRA Fusion files in src/static/img/brand (never redrawn here).
 
 NAV = [
     ("home", "Home", "index.html"),
     ("nexus", "AIRA Nexus", "nexus.html"),
-    ("products", "Products", "platform.html"),
+    ("products", "Products", "nexus.html#products"),
     ("solutions", "Solutions", "solutions.html"),
     ("security", "Security", "security.html"),
     ("about", "About", "about.html"),
@@ -133,10 +133,10 @@ def _hexpts(cx: float, cy: float, r: float) -> str:
 
 
 PLANE_NODES = [
-    ("Hub", "Consume", "<b>AIRA Hub</b> &mdash; Ask and Work for every employee: grounded answers with citations, documents and the AI Solution catalog."),
+    ("Home", "Consume", "<b>AIRA Home</b> &mdash; Ask and Work for every employee: grounded answers with citations, documents and the AI Solution catalog."),
     ("Studio", "Create", "<b>AIRA Studio</b> &mdash; build, test, evaluate and publish assistants, agents, flows and AI Solutions."),
-    ("Gateway", "Model door", "<b>AIRA Gateway</b> &mdash; the only way to a model: AI Endpoints, routing, guardrails, keys, budgets and spend."),
-    ("Runtime", "Channel door", "<b>AIRA Runtime</b> &mdash; deploys and executes published capabilities; every trigger in and delivery out."),
+    ("Gateway", "Unified access", "<b>AIRA Gateway</b> &mdash; one governed catalog for LLMs, agents and AI Solutions, with application subscriptions, policy controls and audit."),
+    ("Runtime", "Execute", "<b>AIRA Runtime</b> &mdash; deploys and executes capabilities with environment control on Kubernetes and OpenShift, using governed access through Gateway."),
     ("Signal", "Observe", "<b>AIRA Signal</b> &mdash; runs, latency, spend, flagged events and health, across the whole estate."),
     ("Data", "Connect", "<b>AIRA Data</b> &mdash; governed sources, ingestion, extraction and document review. Read-only by default."),
 ]
@@ -168,43 +168,38 @@ def plane() -> str:
 
 
 def doors() -> str:
-    return """<svg viewBox="0 0 1000 520" role="img" aria-label="Two doors: channels only through AIRA Runtime, models only through AIRA Gateway, all other egress denied">
-<rect class="perimeter" x="250" y="60" width="500" height="400" rx="20"/>
-<text class="sub" x="274" y="440">Your perimeter &middot; Kubernetes &middot; no telemetry</text>
-<line class="deny" x1="500" y1="150" x2="500" y2="16"/>
-<path class="deny-x" d="M490 50 L510 70 M510 50 L490 70"/>
-<text class="deny-t" x="516" y="26">ANY OTHER EGRESS &middot; DENIED BY BASELINE POLICY</text>
-<rect class="box" x="392" y="150" width="216" height="220" rx="14"/>
-<text class="lbl" x="412" y="184">Nexus core</text>
-<text class="tiny" x="412" y="214">Hub &middot; Studio &middot; Data</text>
-<text class="tiny" x="412" y="238">Signal &middot; Console</text>
-<text class="tiny" x="412" y="262">One identity &middot; one authz</text>
-<line x1="412" y1="284" x2="588" y2="284" stroke="rgba(143,196,255,.18)"/>
-<text class="tiny" x="412" y="310">PostgreSQL &middot; RLS forced</text>
-<text class="tiny" x="412" y="334">Hash-chained audit &middot; WORM</text>
-<path class="wire" d="M392 260 H352"/><path class="wire" d="M608 260 H648"/>
-<rect class="box door" x="200" y="200" width="152" height="120" rx="14"/>
-<text class="lbl" x="220" y="238">AIRA Runtime</text><text class="sub" x="220" y="260">Channel door</text>
-<text class="tiny" x="220" y="292">triggers in &middot; deliveries out</text>
-<rect class="box door" x="648" y="200" width="152" height="120" rx="14"/>
-<text class="lbl" x="668" y="238">AIRA Gateway</text><text class="sub" x="668" y="260">Model door</text>
-<text class="tiny" x="668" y="292">policy &middot; DLP &middot; budgets</text>
-<rect class="ext" x="14" y="150" width="150" height="220" rx="14"/>
-<text class="sub" x="32" y="180">Channels</text>
-<text class="tiny" x="32" y="212">Slack &middot; Teams</text><text class="tiny" x="32" y="236">WhatsApp &middot; Email</text>
-<text class="tiny" x="32" y="260">S3 &middot; Webhooks</text><text class="tiny" x="32" y="284">API &middot; Cron</text>
-<text class="tiny" x="32" y="308">Upstream Solutions</text>
-<path class="wire flow" d="M164 260 H200"/>
-<rect class="ext" x="836" y="112" width="150" height="138" rx="14"/>
-<text class="sub" x="854" y="142">Cloud models</text>
-<text class="tiny" x="854" y="172">OpenAI &middot; Anthropic</text><text class="tiny" x="854" y="196">Gemini &middot; Mistral</text>
-<text class="tiny" x="854" y="220">Cohere &middot; your keys</text>
-<rect class="ext" x="836" y="276" width="150" height="130" rx="14"/>
-<text class="sub" x="854" y="306">Local models</text>
-<text class="tiny" x="854" y="336">Ollama &middot; vLLM</text><text class="tiny" x="854" y="360">SGLang &middot; your GPUs</text>
-<text class="tiny" x="854" y="384">declared, never guessed</text>
-<path class="wire flow" d="M800 240 C820 240 816 181 836 181"/>
-<path class="wire flow" d="M800 280 C820 280 816 341 836 341"/>
+    return """<svg viewBox="0 0 1000 570" role="img" aria-label="AIRA Nexus Platform contains AIRA Home, a central AIRA Gateway, approved LLM access and AIRA Runtime. AIRA Home and external application users connect through Gateway to approved LLMs and Runtime.">
+<defs><marker id="gateway-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#00CFFF"/></marker></defs>
+<rect class="perimeter" x="14" y="16" width="972" height="408" rx="20"/>
+<text class="lbl" x="40" y="54">AIRA Nexus Platform</text>
+<text class="tiny" x="40" y="80">One platform &middot; shared identity, governance and audit</text>
+<rect class="box" x="40" y="184" width="230" height="120" rx="14"/>
+<text class="lbl" x="62" y="220">AIRA Home</text>
+<text class="tiny" x="62" y="250">Your teams &middot; Ask &amp; Work</text>
+<text class="tiny" x="62" y="276">Knowledge &amp; AI Solutions</text>
+<path marker-end="url(#gateway-arrow)" class="wire flow" d="M270 244 H360"/>
+<rect class="box door" x="360" y="134" width="290" height="224" rx="4"/>
+<text class="lbl" x="384" y="172">AIRA Gateway</text>
+<text class="sub" x="384" y="202">One governed entry point</text>
+<text class="tiny" x="384" y="238">Catalog &middot; subscriptions &middot; access</text>
+<text class="tiny" x="384" y="268">Routing &middot; fallbacks &middot; guardrails</text>
+<text class="tiny" x="384" y="298">Data policy &middot; security &middot; limits</text>
+<text class="tiny" x="384" y="328">Every request controlled &amp; audited</text>
+<path marker-end="url(#gateway-arrow)" class="wire flow" d="M650 202 H682 V172 H716"/>
+<path marker-end="url(#gateway-arrow)" class="wire flow" d="M650 288 H682 V320 H716"/>
+<rect class="box" x="716" y="112" width="244" height="120" rx="14"/>
+<text class="lbl" x="738" y="148">Approved LLMs</text>
+<text class="tiny" x="738" y="178">On-premises &middot; cloud</text>
+<text class="tiny" x="738" y="204">Your models &middot; your keys</text>
+<rect class="box" x="716" y="260" width="244" height="120" rx="14"/>
+<text class="lbl" x="738" y="296">AIRA Runtime</text>
+<text class="tiny" x="738" y="326">Agents &amp; AI Solutions</text>
+<text class="tiny" x="738" y="352">Execution &amp; environment control</text>
+<text class="tiny" x="40" y="402">Studio &middot; Data &middot; Signal &middot; Console support the platform</text>
+<rect class="ext" x="40" y="452" width="230" height="100" rx="14"/>
+<text class="lbl" x="62" y="486">External app users</text>
+<text class="tiny" x="62" y="516">Subscribed applications &amp; APIs</text>
+<path marker-end="url(#gateway-arrow)" class="wire flow" d="M270 502 H505 V358"/>
 </svg>"""
 
 
@@ -218,7 +213,7 @@ CTA = """
       <p class="lead">A scoped pilot runs AIRA Nexus inside your perimeter, on your models and your data, with success criteria written down before we start. Your security team reviews the real system, not a slide.</p>
       <div class="ctas">
         <a class="btn btn-primary" href="{{root}}contact.html">Request a briefing <span class="arr">&rarr;</span></a>
-        <a class="btn btn-ghost" href="{{root}}pilot.html">How a pilot works</a>
+
       </div>
     </div>
   </div>
@@ -243,7 +238,6 @@ def header(nav: str) -> str:
       {''.join(items)}
       <li class="nav-cta"><a class="btn btn-outline btn-sm" href="{{{{root}}}}contact.html">Contact us</a></li>
     </ul>
-    <div class="nav-tag" aria-hidden="true">Research<br>Apply<br>Transform</div>
   </nav>
 </header>
 """
@@ -265,11 +259,11 @@ FOOTER = f"""
       <div class="foot-col"><h5>AIRA Fusion</h5>
         <a href="{{{{root}}}}about.html">About us</a><a href="{{{{root}}}}about.html#principles">Principles</a><a href="{{{{root}}}}insights/index.html">Insights</a><a href="{{{{root}}}}contact.html">Contact</a></div>
       <div class="foot-col"><h5>AIRA Nexus</h5>
-        <a href="{{{{root}}}}nexus.html">Overview</a><a href="{{{{root}}}}platform.html#products">Six products</a><a href="{{{{root}}}}platform.html#doors">Architecture</a><a href="{{{{root}}}}platform.html#deploy">Specifications</a></div>
+        <a href="{{{{root}}}}nexus.html">Overview</a><a href="{{{{root}}}}nexus.html#products">Six products</a><a href="{{{{root}}}}nexus.html#doors">Architecture</a><a href="{{{{root}}}}nexus.html#deploy">Specifications</a></div>
       <div class="foot-col"><h5>Trust</h5>
         <a href="{{{{root}}}}security.html">Security &amp; governance</a><a href="{{{{root}}}}security.html#audit">Tamper-evident audit</a><a href="{{{{root}}}}security.html#assurance">Assurance status</a><a href="{{{{root}}}}security.html#review">Security review pack</a></div>
       <div class="foot-col"><h5>Work with us</h5>
-        <a href="{{{{root}}}}solutions.html">Solutions</a><a href="{{{{root}}}}solutions.html#catalogue">Use-case catalogue</a><a href="{{{{root}}}}pilot.html">Pilot programme</a><a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a></div>
+        <a href="{{{{root}}}}solutions.html">Solutions</a><a href="{{{{root}}}}solutions.html#catalogue">Use-case catalogue</a><a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a></div>
     </div>
     <div class="foot-bottom">
       <span>&copy; <span data-year>2026</span> AIRA Fusion. AIRA Nexus is the flagship platform of AIRA Fusion.</span>

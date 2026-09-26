@@ -1,6 +1,6 @@
 ---
 title: Security & governance
-description: How AIRA Nexus protects data, controls AI use and produces evidence: self-hosted, two governed doors, server-side authorization, row-level isolation, policy before every call and a tamper-evident audit log. Including our honest assurance status.
+description: How AIRA Nexus protects data, controls AI use and produces evidence: self-hosted, one governed door through AIRA Gateway, server-side authorization, row-level isolation, policy before every call and a tamper-evident audit log. Including our honest assurance status.
 nav: security
 ---
 <section class="page-hero bg-grid">
@@ -18,7 +18,7 @@ nav: security
   <div class="wrap">
     <div class="grid g4">
       <div class="card rev"><div class="icon">{{icon:server}}</div><h4>Self-hosted</h4><p class="mt-s">On-premises, private cloud or air-gapped. No telemetry, phone-home or vendor access.</p></div>
-      <div class="card rev d1"><div class="icon">{{icon:door}}</div><h4>Two doors</h4><p class="mt-s">Models only through the Gateway, channels only through Runtime. Other egress is denied.</p></div>
+      <div class="card rev d1"><div class="icon">{{icon:door}}</div><h4>One door</h4><p class="mt-s">All access to models, agents and AI Solutions passes through AIRA Gateway, with consistent controls and audit for Nexus and external applications.</p></div>
       <div class="card rev d2"><div class="icon">{{icon:id}}</div><h4>One identity</h4><p class="mt-s">SSO over OIDC or SAML with TOTP MFA. Users and service accounts are one kind of identity.</p></div>
       <div class="card rev d3"><div class="icon">{{icon:key}}</div><h4>Server-side authz</h4><p class="mt-s">Layered decisions through one function. The interface only reflects them.</p></div>
       <div class="card rev"><div class="icon">{{icon:layers}}</div><h4>Tenant isolation</h4><p class="mt-s">Row-level security enforced in PostgreSQL through a non-bypass service role.</p></div>
@@ -32,7 +32,7 @@ nav: security
 <section class="section band-deep">
   <div class="wrap narrow">
     <span class="eyebrow rev">The security model in one paragraph</span>
-    <p class="rev d1 mt-m" style="font:600 clamp(1.25rem,2vw,1.55rem)/1.55 var(--f-display);color:#fff;letter-spacing:-.01em">AIRA Nexus is deployed inside your perimeter on Kubernetes. Every model call goes through one door, the AIRA Gateway, and every external trigger or delivery through another, the AIRA Runtime. The baseline network policy denies all other egress unless an operator explicitly declares it. Every person and service authenticates as a Nexus identity, and every request is authorized server-side by one decision function. Policies, guardrails and budgets are enforced before a model is called. Consequential events are written to an audit log that the database itself protects from alteration.</p>
+    <p class="rev d1 mt-m" style="font:600 clamp(1.25rem,2vw,1.55rem)/1.55 var(--f-display);color:#fff;letter-spacing:-.01em">AIRA Nexus is deployed inside your perimeter on Kubernetes. All access to approved models, agents and AI Solutions goes through one door: AIRA Gateway. Nexus and external applications share this controlled, audited entry point, while AIRA Runtime manages execution and environments. The baseline network policy denies all other egress unless an operator explicitly declares it. Every person and service authenticates as a Nexus identity, and every request is authorized server-side by one decision function. Policies, guardrails and budgets are enforced before a model is called. Consequential events are written to an audit log that the database itself protects from alteration.</p>
   </div>
 </section>
 

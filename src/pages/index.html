@@ -3,7 +3,6 @@ title: AIRA Fusion — Secure, regulated and reliable enterprise AI
 description: AIRA Fusion (Artificial Intelligence Research & Application) helps banks, governments and regulated enterprises adopt AI securely, responsibly and at scale, through research, practical application and its flagship platform, AIRA Nexus.
 nav: home
 ---
-<script src="{{root}}js/globe-data.js" defer></script>
 <section class="hero hero-fusion">
   <canvas class="waves" data-variant="hero" aria-hidden="true"></canvas>
   <div class="wrap hero-fusion-grid">
@@ -18,10 +17,34 @@ nav: home
         <a class="btn btn-outline btn-pill" href="{{root}}contact.html">Request a briefing</a>
       </div>
     </div>
-    <div class="hf-visual rev d2" aria-hidden="true">
-      <div class="globe-stage">
-        <canvas class="globe"></canvas>
-        <span class="g-tag t1">On-premises</span><span class="g-tag t2">Sovereign cloud</span><span class="g-tag t3">Air-gapped</span>
+    <div class="hf-visual rev d2">
+      <div class="platform-map" role="group" aria-label="AIRA Fusion enterprise AI platform capabilities">
+        <svg class="platform-wires" viewBox="0 0 600 400" preserveAspectRatio="none" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M192 65 H204 Q216 65 216 77 V135 Q216 147 228 147 H240"/>
+            <path d="M192 200 H240"/>
+            <path d="M192 335 H204 Q216 335 216 323 V265 Q216 253 228 253 H240"/>
+            <path d="M408 65 H396 Q384 65 384 77 V135 Q384 147 372 147 H360"/>
+            <path d="M408 200 H360"/>
+            <path d="M408 335 H396 Q384 335 384 323 V265 Q384 253 372 253 H360"/>
+          </g>
+          <g fill="currentColor"><circle cx="192" cy="65" r="3"/><circle cx="192" cy="200" r="3"/><circle cx="192" cy="335" r="3"/><circle cx="408" cy="65" r="3"/><circle cx="408" cy="200" r="3"/><circle cx="408" cy="335" r="3"/></g>
+        </svg>
+        <div class="platform-node pn-secure"><span class="glow-icon">{{icon:shield}}</span><div><b>Secure AI</b><p>Protect data,<br>people and IP</p></div></div>
+        <div class="platform-node pn-data"><span class="glow-icon">{{icon:db}}</span><div><b>Data &amp; Knowledge</b><p>Connect enterprise<br>data securely</p></div></div>
+        <div class="platform-node pn-observe"><span class="glow-icon">{{icon:pulse}}</span><div><b>Observability</b><p>Monitor, measure<br>and improve</p></div></div>
+        <div class="platform-core">
+          <span class="platform-plinth plinth-bottom" aria-hidden="true"></span>
+          <span class="platform-plinth plinth-top" aria-hidden="true"></span>
+          <div class="platform-emblem">
+            <img class="platform-mark" src="{{root}}img/brand/aira-icon-192.png" alt="" width="192" height="192">
+            <img class="platform-wordmark" src="{{root}}img/brand/aira-wordmark-white.png" alt="AIRA Fusion" width="106" height="35">
+            <span>Enterprise AI Platform</span>
+          </div>
+        </div>
+        <div class="platform-node pn-govern"><span class="glow-icon">{{icon:shieldcheck}}</span><div><b>Governed AI</b><p>Policy, compliance<br>and responsible AI</p></div></div>
+        <div class="platform-node pn-use"><span class="glow-icon">{{icon:layers}}</span><div><b>Enterprise Use Cases</b><p>Solve real<br>business problems</p></div></div>
+        <div class="platform-node pn-agents"><span class="glow-icon">{{icon:flow}}</span><div><b>Agents &amp; Workflows</b><p>Automate and scale<br>with confidence</p></div></div>
       </div>
     </div>
   </div>
@@ -59,12 +82,12 @@ nav: home
       <p class="micro accent rule-after">From research to real-world impact</p>
     </div>
     <div class="suite">
-      <a class="glass suite-card rev" href="{{root}}platform.html#hub"><span class="glow-icon">{{icon:users}}</span><h3>AIRA Hub</h3><p>Governed answers, documents and AI Solutions for every employee.</p><span class="circle-arrow">&rarr;</span></a>
-      <a class="glass suite-card rev d1" href="{{root}}platform.html#studio"><span class="glow-icon">{{icon:layers}}</span><h3>AIRA Studio</h3><p>Build, test, evaluate and publish AI capabilities.</p><span class="circle-arrow">&rarr;</span></a>
-      <a class="glass suite-card rev d2" href="{{root}}platform.html#gateway"><span class="glow-icon">{{icon:route}}</span><h3>AIRA Gateway</h3><p>The only door to a model: policy, routing, keys and spend.</p><span class="circle-arrow">&rarr;</span></a>
-      <a class="glass suite-card rev" href="{{root}}platform.html#runtime"><span class="glow-icon">{{icon:flow}}</span><h3>AIRA Runtime</h3><p>Deploy and run capabilities across environments.</p><span class="circle-arrow">&rarr;</span></a>
-      <a class="glass suite-card rev d1" href="{{root}}platform.html#signal"><span class="glow-icon">{{icon:pulse}}</span><h3>AIRA Signal</h3><p>Observe runs, cost and health across the estate.</p><span class="circle-arrow">&rarr;</span></a>
-      <a class="glass suite-card rev d2" href="{{root}}platform.html#data"><span class="glow-icon">{{icon:db}}</span><h3>AIRA Data</h3><p>Governed connectivity, ingestion and document review.</p><span class="circle-arrow">&rarr;</span></a>
+      <a class="glass suite-card rev" href="{{root}}nexus.html#home"><span class="glow-icon">{{icon:users}}</span><h3>AIRA Home</h3><p>Governed answers, documents and AI Solutions for every employee.</p><span class="circle-arrow">&rarr;</span></a>
+      <a class="glass suite-card rev d1" href="{{root}}nexus.html#studio"><span class="glow-icon">{{icon:layers}}</span><h3>AIRA Studio</h3><p>Build, test, evaluate and publish AI capabilities.</p><span class="circle-arrow">&rarr;</span></a>
+      <a class="glass suite-card rev d2" href="{{root}}nexus.html#gateway"><span class="glow-icon">{{icon:route}}</span><h3>AIRA Gateway</h3><p>One governed entry point for models, agents and AI Solutions.</p><span class="circle-arrow">&rarr;</span></a>
+      <a class="glass suite-card rev" href="{{root}}nexus.html#runtime"><span class="glow-icon">{{icon:flow}}</span><h3>AIRA Runtime</h3><p>Deploy and run capabilities across environments.</p><span class="circle-arrow">&rarr;</span></a>
+      <a class="glass suite-card rev d1" href="{{root}}nexus.html#signal"><span class="glow-icon">{{icon:pulse}}</span><h3>AIRA Signal</h3><p>Observe runs, cost and health across the estate.</p><span class="circle-arrow">&rarr;</span></a>
+      <a class="glass suite-card rev d2" href="{{root}}nexus.html#data"><span class="glow-icon">{{icon:db}}</span><h3>AIRA Data</h3><p>Governed connectivity, ingestion and document review.</p><span class="circle-arrow">&rarr;</span></a>
     </div>
   </div>
 </section>
@@ -132,19 +155,7 @@ nav: home
       <div class="step"><h3>Scale</h3><p>Expand the platform across teams and use cases on an annual licence, not a per-seat tax.</p></div>
       <div class="step"><h3>Operate</h3><p>Your team runs it, with an installer, health tooling and runbooks you own. Our support backs them up.</p></div>
     </div>
-    <div class="mt-m rev"><a class="link-arrow" href="{{root}}pilot.html">How a pilot works <span>&rarr;</span></a></div>
-  </div>
-</section>
 
-<section class="section tight">
-  <div class="wrap">
-    <div class="glass statement-panel split">
-      <p class="statement rev">We would rather prove it on one real workload <em>than oversell a roadmap.</em></p>
-      <div class="rev d1">
-        <p class="lead">Regulated buyers score candour above perfection. We state what is in place and what is not, and claim no certification before we hold it.</p>
-        <div class="ctas mt-m"><a class="btn btn-outline btn-pill" href="{{root}}security.html#assurance">Read our assurance status <span class="arr">&rarr;</span></a></div>
-      </div>
-    </div>
   </div>
 </section>
 
