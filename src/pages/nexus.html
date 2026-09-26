@@ -1,0 +1,161 @@
+---
+title: AIRA Nexus — Enterprise AI, on the record
+description: AIRA Nexus is the governed control plane for enterprise AI. Policy before every model call, a trace during it and tamper-evident evidence after it, on your infrastructure, with any model.
+nav: nexus
+---
+<section class="hero">
+  <canvas class="waves" data-variant="hero" aria-hidden="true"></canvas>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill rev"><b>AIRA Nexus</b> The control plane for enterprise AI</span>
+      <h1 class="rev d1">Enterprise AI,<br><span class="grad">on the record.</span></h1>
+      <p class="lead rev d2">AIRA Nexus puts one governed plane under every AI interaction in your organisation. Policy is enforced before each model call, every step is traced while it runs, and a tamper-evident record is written after it. It runs inside your perimeter, with the models you choose.</p>
+      <div class="ctas rev d3">
+        <a class="btn btn-primary" href="{{root}}contact.html">Request a briefing <span class="arr">&rarr;</span></a>
+        <a class="btn btn-ghost" href="{{root}}platform.html">Products &amp; specifications</a>
+      </div>
+      <div class="hero-tagline rev d4"><b>Secure</b><i>&bull;</i><b>Regulated</b><i>&bull;</i><b>Reliable</b></div>
+    </div>
+    <div class="hero-visual rev d2">
+      <div class="plane">{{plane}}</div>
+      <p class="note center" data-plane-caption style="min-height:3.2em;max-width:44ch;margin:8px auto 0"></p>
+    </div>
+  </div>
+</section>
+
+<section class="section tight">
+  <div class="wrap">
+    <div class="facts rev">
+      <div class="fact"><div class="t">Products</div><div class="n">6<sup>+1</sup></div><div class="l">Hub, Studio, Gateway, Runtime, Signal and Data, all administered from AIRA Console.</div></div>
+      <div class="fact"><div class="t">Sign-on</div><div class="n">1</div><div class="l">One identity across every product: SSO over OIDC or SAML with native MFA.</div></div>
+      <div class="fact"><div class="t">Governed doors</div><div class="n">2</div><div class="l">Models only through the Gateway. Channels only through Runtime. All other egress is denied.</div></div>
+      <div class="fact"><div class="t">Telemetry</div><div class="n">0</div><div class="l">No phone-home, no activation server, no vendor access unless you grant it.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head rev">
+      <span class="eyebrow">The problem</span>
+      <h2>AI is already at work in your organisation. <span class="muted">Nobody can prove what it did.</span></h2>
+    </div>
+    <div class="grid g4">
+        <div class="card rev"><span class="kicker">01 &middot; Shadow AI</span><h3>Data leaves by the clipboard</h3><p>People paste customer data into public chatbots because there is no sanctioned alternative that is as good.</p></div>
+        <div class="card rev d1"><span class="kicker">02 &middot; No record</span><h3>Nobody can answer the auditor</h3><p>Who asked what, which model answered, what it cost and what it was allowed to see. The answer is scattered or missing.</p></div>
+        <div class="card rev d2"><span class="kicker">03 &middot; Sprawl</span><h3>Every team, its own vendor</h3><p>Separate contracts, separate keys, spend nobody can total and a new lock-in every quarter.</p></div>
+        <div class="card rev d3"><span class="kicker">04 &middot; Stalled pilots</span><h3>Promising, then parked</h3><p>Good use cases never reach production, because risk and audit cannot sign off on something they cannot inspect.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section band-deep">
+  <div class="wrap">
+    <div class="section-head center rev">
+      <span class="eyebrow">How a request travels</span>
+      <h2>Policy before the call. A trace during it. <span class="grad">Evidence after.</span></h2>
+      <p class="lead">Every prompt, from any product, walks the same governed path. Nothing reaches a model that the organisation has not allowed, and nothing happens that is not written down.</p>
+    </div>
+    <div class="lifecycle rev">
+      <div class="lc-phases"><div class="lc-phase">Before the call <b>Policy</b></div><div class="lc-phase">During <b>Trace</b></div><div class="lc-phase">After <b>Evidence</b></div></div>
+      <div class="lc-track">
+        <span class="beam"></span>
+        <div class="lc-step" data-log="<span class='k'>identity</span> analyst@bank &middot; SSO + MFA &middot; <span class='ok'>verified</span>"><div class="lc-dot">{{icon:id}}</div><h4>Identity</h4><p>One sign-on; users and services are the same kind of identity</p></div>
+        <div class="lc-step" data-log="<span class='k'>authorize</span> org &rarr; product &rarr; role &rarr; resource &rarr; action &middot; <span class='ok'>allow</span>"><div class="lc-dot">{{icon:key}}</div><h4>Entitlement</h4><p>Organisation, product, role and action, decided server-side</p></div>
+        <div class="lc-step" data-log="<span class='k'>endpoint</span> kyc-review &middot; model allow-list &middot; budget 38% used &middot; <span class='ok'>within limits</span>"><div class="lc-dot">{{icon:policy}}</div><h4>AI Endpoint</h4><p>Allowed models, routing, limits and budget for this use</p></div>
+        <div class="lc-step" data-log="<span class='k'>guardrails</span> prompt-injection <span class='ok'>clean</span> &middot; PII <span class='v'>2 fields redacted</span> &middot; DLP <span class='ok'>pass</span>"><div class="lc-dot">{{icon:filter}}</div><h4>Guardrails &amp; DLP</h4><p>Injection, PII and topic checks before the model sees a word</p></div>
+        <div class="lc-step" data-log="<span class='k'>model</span> routed to local model on your GPUs &middot; 1.8s &middot; 1,204 tokens"><div class="lc-dot">{{icon:cpu}}</div><h4>Model</h4><p>Cloud or local, behind one door, with fallbacks</p></div>
+        <div class="lc-step" data-log="<span class='k'>trace</span> 6 nodes recorded &middot; inputs, model, latency, tokens, cost, output"><div class="lc-dot">{{icon:pulse}}</div><h4>Trace</h4><p>A record for every node: inputs, model, latency, cost, output</p></div>
+        <div class="lc-step" data-log="<span class='k'>audit</span> entry sealed &middot; hash-chained to its predecessor &middot; <span class='ok'>chain verified</span>"><div class="lc-dot">{{icon:chain}}</div><h4>Audit</h4><p>Hash-chained, and the database refuses edits and deletes</p></div>
+      </div>
+      <div class="lc-log" aria-live="off"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="products">
+  <div class="wrap">
+    <div class="section-head rev">
+      <span class="eyebrow">The AIRA Nexus platform</span>
+      <h2>Six products. One sign-on. <span class="grad">One audit trail.</span></h2>
+      <p class="lead">Each product can be adopted on its own and every one shares the same identity, authorization and evidence. Adopt Gateway first to take control of model access, then add the rest as your programme grows.</p>
+    </div>
+    <div class="grid g3">
+      <a class="card product card-link rev" href="{{root}}platform.html#hub"><div class="p-head">{{hex:hub}}<span class="p-role">Consume</span></div><h3><small>AIRA</small>Hub</h3><p>Ask and Work for every employee: governed chat grounded in your knowledge, with citations, documents and the AI Solution catalog.</p><span class="link-arrow">Explore Hub <span>&rarr;</span></span></a>
+      <a class="card product card-link rev d1" href="{{root}}platform.html#studio"><div class="p-head">{{hex:studio}}<span class="p-role">Create</span></div><h3><small>AIRA</small>Studio</h3><p>Build, configure, test, evaluate and publish assistants, agents, flows and AI Solutions. What you test is exactly what runs.</p><span class="link-arrow">Explore Studio <span>&rarr;</span></span></a>
+      <a class="card product card-link rev d2" href="{{root}}platform.html#gateway"><div class="p-head">{{hex:gateway}}<span class="p-role">Model door</span></div><h3><small>AIRA</small>Gateway</h3><p>The only way to a model. AI Endpoints combine models, routing, fallbacks, guardrails, data policy, keys and budgets.</p><span class="link-arrow">Explore Gateway <span>&rarr;</span></span></a>
+      <a class="card product card-link rev" href="{{root}}platform.html#runtime"><div class="p-head">{{hex:runtime}}<span class="p-role">Channel door</span></div><h3><small>AIRA</small>Runtime</h3><p>Deploys, governs and executes published capabilities across environments. Every trigger in and every delivery out.</p><span class="link-arrow">Explore Runtime <span>&rarr;</span></span></a>
+      <a class="card product card-link rev d1" href="{{root}}platform.html#signal"><div class="p-head">{{hex:signal}}<span class="p-role">Observe</span></div><h3><small>AIRA</small>Signal</h3><p>Observability and investigation: runs, failure rate, latency, spend, flagged events and health across the estate.</p><span class="link-arrow">Explore Signal <span>&rarr;</span></span></a>
+      <a class="card product card-link rev d2" href="{{root}}platform.html#data"><div class="p-head">{{hex:data}}<span class="p-role">Connect</span></div><h3><small>AIRA</small>Data</h3><p>Governed connectivity, idempotent ingestion, extraction and document review. Read-only by default, every query audited.</p><span class="link-arrow">Explore Data <span>&rarr;</span></span></a>
+    </div>
+    <div class="console-bar rev">{{hex:console}}<p><b>AIRA Console</b> administers the whole estate (identity, organisations, product entitlements, security, licensing and platform health) and ships with every deployment.</p></div>
+  </div>
+</section>
+
+<section class="section band-deep" id="doors">
+  <div class="wrap">
+    <div class="section-head center rev">
+      <span class="eyebrow">Architecture</span>
+      <h2>Two doors. <span class="grad">Everything else is a wall.</span></h2>
+      <p class="lead">Every model call leaves through one door, the AIRA Gateway. Every trigger and delivery passes through another, the AIRA Runtime. The cluster's baseline network policy denies all other egress, private address ranges included, unless an operator explicitly declares it.</p>
+    </div>
+    <div class="doors rev">{{doors}}</div>
+    <div class="grid g3 mt-l">
+      <div class="rev"><h4>Swap vendors, not code</h4><p class="muted mt-s" style="font-size:15px">Applications call a governed AI Endpoint, so the model behind it can change without a release.</p></div>
+      <div class="rev d1"><h4>Keys stay in one place</h4><p class="muted mt-s" style="font-size:15px">Provider keys are held by the Gateway, never by applications, and every call is policy-checked first.</p></div>
+      <div class="rev d2"><h4>Declared, never guessed</h4><p class="muted mt-s" style="font-size:15px">A local model server is explicit configuration. Declaring it opens exactly that exception, and nothing else.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="audit">
+  <div class="wrap">
+    <div class="split">
+      <div class="rev">
+        <span class="eyebrow">Tamper-evident by construction</span>
+        <h2 class="mt-m">Evidence your auditors can verify, <span class="grad">not just read.</span></h2>
+        <p class="lead mt-m">Runs, approvals, policy decisions and administrative actions are written to a hash-chained log. A database-level trigger blocks updates and deletes, so the record cannot be quietly rewritten. The chain can be verified on demand and streamed to your SIEM or GRC tools.</p>
+        <p class="note mt-m">Try it: edit an entry and watch verification fail at exactly that point. The hashes on the right are real SHA-256, computed in your browser.</p>
+      </div>
+      <div class="chain-wrap rev d1">
+        <div class="chain-head"><span class="chain-status" data-chain-status>Chain verified &middot; 5 of 5 entries</span><button class="btn btn-ghost btn-sm" data-chain-tamper type="button">Try to edit an entry <span class="arr">&rarr;</span></button></div>
+        <div class="chain vertical" data-chain></div>
+        <p class="chain-note">Illustrative entries. In AIRA Nexus the chain lives in PostgreSQL and is protected by a WORM trigger.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head rev">
+      <span class="eyebrow">Deploy where your data must live</span>
+      <h2>Your perimeter. Your models. Your keys.</h2>
+      <p class="lead">The same platform in every posture. Data stores are self-hosted in the cluster, licences verify offline, and cloud models are optional and customer-keyed.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card rev"><div class="icon">{{icon:server}}</div><h3>On-premises</h3><p>Run the whole estate in your own data centre on Kubernetes or OpenShift, behind your firewall and your identity provider.</p></div>
+      <div class="card rev d1"><div class="icon">{{icon:cloud}}</div><h3>Private cloud</h3><p>Deploy into your own cloud tenancy or sovereign region. Cloud models connect only through the Gateway, with your keys.</p></div>
+      <div class="card rev d2"><div class="icon">{{icon:airgap}}</div><h3>Fully air-gapped</h3><p>Local models on your GPUs, offline licence verification and no outbound connectivity at all.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head rev">
+      <span class="eyebrow">Ready on day one</span>
+      <h2>AI Solutions for regulated work, <span class="grad">governed from the first run.</span></h2>
+      <p class="lead">An AI Solution is the governed unit of business AI: a typed form in, a structured result out, with approvals, cost caps and a full run record. The platform ships with banking-grade examples you can adapt in a pilot.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card rev"><span class="badge ready">In catalog</span><h3 class="mt-m">Customer Onboarding Review</h3><p>ID, proof of address and supporting documents checked against your KYC/AML rulebook, with a risk rating and a recommendation.</p></div>
+      <div class="card rev d1"><span class="badge ready">In catalog</span><h3 class="mt-m">Credit Intelligence</h3><p>A bank statement in; an underwriting-ready assessment out: income stability, cash flow, debt exposure and a recommendation.</p></div>
+      <div class="card rev d2"><span class="badge ready">In catalog</span><h3 class="mt-m">Policy &amp; regulation assistant</h3><p>Cited answers from your policy library, with a grounding gate that declines rather than guesses.</p></div>
+    </div>
+    <div class="mt-m rev"><a class="link-arrow" href="{{root}}solutions.html">See all fourteen use cases <span>&rarr;</span></a></div>
+  </div>
+</section>
+
+
+{{cta}}

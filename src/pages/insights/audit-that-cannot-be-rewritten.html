@@ -1,0 +1,55 @@
+---
+title: An AI audit trail your examiner can verify, not just read
+description: A log that an administrator can edit is a narrative, not evidence. What tamper-evidence requires for AI in regulated organisations, and how AIRA Nexus implements it.
+nav: insights
+---
+<section class="article-hero bg-grid">
+  <span class="glow g-blue" style="width:640px;height:640px;right:-240px;top:-240px"></span>
+  <div class="wrap narrow">
+    <a class="back" href="index.html">&larr; Insights</a>
+    <h1>An AI audit trail your examiner can <span class="grad">verify, not just read.</span></h1>
+    <p class="lead">A log that an administrator can edit is a narrative, not evidence.</p>
+    <div class="meta"><span>Governance</span><span>AIRA Fusion</span><span>7 min read</span></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:24px">
+  <div class="wrap narrow">
+    <article class="prose">
+      <p>When a regulator or internal auditor asks what an AI system did, most organisations can produce <em>something</em>: application logs, a spreadsheet export, screenshots. The harder question comes next. <strong>How do you know nobody changed it?</strong></p>
+      <p>For most logging stacks the honest answer is that you do not. Anyone with enough database or log-platform access can alter or delete an entry, and nothing in the record would show it. That is fine for debugging. It is not fine for evidence.</p>
+
+      <h2>What tamper-evidence actually requires</h2>
+      <p>Tamper-evidence does not mean nobody can ever touch the data. It means any change is detectable. That takes three properties working together:</p>
+      <ol>
+        <li><strong>Chaining.</strong> Each entry includes a cryptographic hash of its predecessor. Change any entry, and every hash after it stops matching. Deleting one breaks the chain at that point.</li>
+        <li><strong>Enforcement below the application.</strong> The database itself refuses updates and deletes on the audit table (write once, read many), so a bug or a compromised service cannot quietly rewrite history.</li>
+        <li><strong>Verification on demand.</strong> Anyone entitled to can recompute the chain and get a yes or no, rather than trusting the vendor's word.</li>
+      </ol>
+      <blockquote>The goal is not to make an auditor trust you. It is to make trust unnecessary.</blockquote>
+
+      <h2>The awkward part: legitimate maintenance</h2>
+      <p>Real systems have retention policies. Records must eventually be archived or removed, and a naive WORM design makes that impossible or forces someone to switch the protection off. Switching protection off is exactly the event an auditor worries about.</p>
+      <p>In AIRA Nexus, maintenance such as retention runs only through an explicit, audited path. That path records itself, performs the operation and re-anchors the chain so that verification remains meaningful afterwards. The exception is part of the evidence rather than a hole in it.</p>
+
+      <h2>What goes on the record</h2>
+      <p>An audit trail is only as useful as its coverage. For AI, the entries that matter are:</p>
+      <ul>
+        <li>every AI run, with the model used, attributed to a person or a service identity;</li>
+        <li>every policy decision, including the refusals;</li>
+        <li>every approval or rejection at a human-oversight gate, with who decided;</li>
+        <li>every administrative change to roles, entitlements, policies and guardrails.</li>
+      </ul>
+      <p>Alongside the chain, per-node run records keep the inputs, model, latency, tokens, cost and output of each step, and past runs re-render exactly as they first appeared. The chain proves integrity; the run records provide the detail.</p>
+      <div class="callout"><b>Try it</b>The <a href="../security.html#audit">security page</a> has a live chain with real SHA-256 hashes. Edit an entry and watch verification fail at exactly that point.</div>
+
+      <h2>Getting it out</h2>
+      <p>Evidence that lives only inside the platform is only half useful. The AIRA audit log streams out as CSV or JSON to your SIEM, GRC platform or archive, so your existing controls and retention policies apply, and your auditors can work in tools they already trust.</p>
+      <p>AIRA does not certify your compliance. What it does is make the evidence behind your SOC 2, ISO/IEC 27001, EU AI Act, DORA or GDPR work something you can prove rather than merely assert.</p>
+    </article>
+    <hr class="hr mt-l">
+    <div class="mt-m"><a class="link-arrow" href="egress-is-an-ai-control.html">Next: egress is an AI control <span>&rarr;</span></a></div>
+  </div>
+</section>
+
+{{cta}}

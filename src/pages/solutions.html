@@ -1,0 +1,90 @@
+---
+title: Solutions for regulated work
+description: Fourteen governed AI use cases for banks, government and regulated enterprises, each shown with the problem, how it runs on AIRA Nexus, the controls that apply and whether it ships ready to run.
+nav: solutions
+---
+<section class="page-hero bg-grid">
+  {{hexfield}}
+  <span class="glow g-blue" style="width:700px;height:700px;right:-220px;top:-260px"></span>
+  <div class="wrap">
+    <span class="eyebrow rev">Solutions</span>
+    <h1 class="rev d1">Governed AI, <span class="grad">applied to real work.</span></h1>
+    <p class="lead rev d2">Built for banks, insurers, government and regulated enterprises, where a wrong answer is a finding and an unexplained one is worse. Every use case inherits the same identity, model policy, oversight and evidence.</p>
+    <div class="ctas rev d3"><a class="btn btn-primary" href="#catalogue">Browse the catalogue <span class="arr">&rarr;</span></a><a class="btn btn-ghost" href="{{root}}pilot.html">Choose a pilot use case</a></div>
+  </div>
+</section>
+
+<section class="section tight rule-top">
+  <div class="wrap">
+    <div class="grid g4">
+      <div class="rev"><div class="icon">{{icon:id}}</div><h4>Identity</h4><p class="muted mt-s" style="font-size:15px">One SSO, with product entitlement and role checks done server-side.</p></div>
+      <div class="rev d1"><div class="icon">{{icon:policy}}</div><h4>Model policy</h4><p class="muted mt-s" style="font-size:15px">An AI Endpoint with allow-lists, guardrails, DLP and budgets.</p></div>
+      <div class="rev d2"><div class="icon">{{icon:approve}}</div><h4>Oversight</h4><p class="muted mt-s" style="font-size:15px">Optional approval gates, with every decision on the record.</p></div>
+      <div class="rev d3"><div class="icon">{{icon:chain}}</div><h4>Evidence</h4><p class="muted mt-s" style="font-size:15px">Per-node run records and a hash-chained audit log.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section band-deep" id="sectors">
+  <div class="wrap">
+    <div class="section-head rev">
+      <span class="eyebrow">By sector</span>
+      <h2>Decisive where the stakes, <span class="grad">and the rules, are highest.</span></h2>
+    </div>
+    <div class="grid g3">
+      <div class="card rev" id="banking"><div class="icon">{{icon:bank}}</div><h3>Banking &amp; financial services</h3><p>AI on customer, credit and transaction data, under examiner scrutiny. Onboarding, credit, fraud and data-quality work runs inside your perimeter, with policy before every call and an evidence trail after.</p><ul><li>KYC/AML document review</li><li>Retail and corporate credit</li><li>Financial-crime screening</li></ul></div>
+      <div class="card rev d1" id="government"><div class="icon">{{icon:gov}}</div><h3>Government &amp; public sector</h3><p>Residency and sovereignty are non-negotiable. The same platform runs in a sovereign region, your data centre or fully air-gapped, with local models and forensic audit for public accountability.</p><ul><li>Citizen correspondence triage</li><li>Policy assistants</li><li>Regulatory change monitoring</li></ul></div>
+      <div class="card rev d2" id="enterprise"><div class="icon">{{icon:shield}}</div><h3>Insurance &amp; regulated enterprise</h3><p>High-volume, sensitive documents and decisions that must be explainable and reproducible. Model access control and full lineage from input to decision, all inside your environment.</p><ul><li>Document intelligence</li><li>HR and procurement</li><li>Governed everyday assistants</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="catalogue">
+  <div class="wrap">
+    <div class="section-head rev">
+      <span class="eyebrow">Use-case catalogue</span>
+      <h2>Fourteen use cases, <span class="grad">labelled honestly.</span></h2>
+      <p class="lead">Each one shows how it runs on AIRA Nexus, which controls apply, and whether it ships ready to run or is built during a pilot.</p>
+      <div class="strip mt-m" style="gap:18px;align-items:center"><span class="badge ready">In catalog &middot; runs on day one</span><span class="badge demo">Demo estate &middot; simplified logic to adapt</span><span class="badge pattern">Pattern &middot; built in a pilot</span></div>
+    </div>
+    <div class="tabs rev" data-tabs="#uc-grid" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-filter="all">All</button>
+      <button class="tab" role="tab" aria-selected="false" data-filter="banking">Banking</button>
+      <button class="tab" role="tab" aria-selected="false" data-filter="gov">Government</button>
+      <button class="tab" role="tab" aria-selected="false" data-filter="cross">Cross-industry</button>
+    </div>
+    <div class="grid g3" id="uc-grid">
+      <article class="card uc" data-sector="banking all"><span class="badge ready">In catalog</span><span class="kicker">01 &middot; Banking &middot; KYC/AML</span><h3>Customer Onboarding Review</h3>
+        <dl><div><dt>Problem</dt><dd>Analysts read each applicant's ID, proof of address and supporting documents against a KYC/AML rulebook: slow, repetitive, high-stakes.</dd></div><div><dt>In AIRA</dt><dd>A Document AI Solution ingests and OCRs the files, retrieves the relevant rules from your knowledge base and returns per-document checks, missing or expired items, a risk rating and a recommendation.</dd></div><div><dt>Controls</dt><dd>A typed form, rules grounded in your own knowledge base, optional analyst approval, the full run on the record.</dd></div></dl></article>
+      <article class="card uc" data-sector="banking all"><span class="badge ready">In catalog</span><span class="kicker">02 &middot; Banking &middot; Retail lending</span><h3>Credit Intelligence</h3>
+        <dl><div><dt>Problem</dt><dd>Underwriters rebuild income and spending pictures from bank statements by hand.</dd></div><div><dt>In AIRA</dt><dd>Upload a statement and receive an underwriting-ready assessment: income stability, monthly cash flow, debt exposure and a recommendation, optionally grounded in your lending policy.</dd></div><div><dt>Controls</dt><dd>Local models keep statements inside the perimeter. PII guardrails before any cloud call. Cost per run is capped.</dd></div></dl></article>
+      <article class="card uc" data-sector="banking all"><span class="badge ready">In catalog</span><span class="kicker">03 &middot; Banking &middot; Corporate credit</span><h3>Intelligent Credit Review</h3>
+        <dl><div><dt>Problem</dt><dd>Corporate reviews combine financials, facility requests and policy limits across many documents.</dd></div><div><dt>In AIRA</dt><dd>Financial statements go in; the relevant credit policy is retrieved; the assessment surfaces exceptions and the approval level required, citing the clause. A credit memo comes out.</dd></div><div><dt>Controls</dt><dd>Policy citations, an approval gate before sharing, versioned publishing so approved logic is the logic that runs.</dd></div></dl></article>
+      <article class="card uc" data-sector="banking all"><span class="badge ready">In catalog</span><span class="kicker">04 &middot; Banking &middot; Corporate onboarding</span><h3>Bulk Client Document Review</h3>
+        <dl><div><dt>Problem</dt><dd>An onboarding pack arrives as dozens of mixed documents that someone must identify and check.</dd></div><div><dt>In AIRA</dt><dd>One job over the whole pack identifies each document, checks it against the onboarding standard and returns a consolidated result.</dd></div><div><dt>Controls</dt><dd>Office conversion and OCR at ingest, per-document results, full traceability for each file.</dd></div></dl></article>
+      <article class="card uc" data-sector="banking all"><span class="badge ready">In catalog</span><span class="kicker">05 &middot; Banking &middot; Data quality</span><h3>Address Intelligence</h3>
+        <dl><div><dt>Problem</dt><dd>Free-text addresses in legacy files block payments formatting, screening and migrations.</dd></div><div><dt>In AIRA</dt><dd>A Batch AI Solution: upload a CSV and get standardised, structured address fields row by row, with rollups and a clean CSV to download.</dd></div><div><dt>Controls</dt><dd>Row-level results for review, run history that re-renders exactly, cost visible per run.</dd></div></dl></article>
+      <article class="card uc" data-sector="banking gov cross all"><span class="badge ready">In catalog</span><span class="kicker">06 &middot; All regulated sectors</span><h3>Policy &amp; regulation assistant</h3>
+        <dl><div><dt>Problem</dt><dd>Staff cannot find the current policy, so they ask colleagues or guess.</dd></div><div><dt>In AIRA</dt><dd>Curated knowledge collections (policy library, KYC/AML rules, lending policy, compliance evidence) answerable in Hub Ask, citing the source passage.</dd></div><div><dt>Controls</dt><dd>Collection-level access, a grounding gate that abstains rather than guesses, every question on the record.</dd></div></dl></article>
+      <article class="card uc" data-sector="cross all"><span class="badge ready">In catalog</span><span class="kicker">07 &middot; Cross-industry &middot; HR</span><h3>Talent Match</h3>
+        <dl><div><dt>Problem</dt><dd>Recruiters screen CVs inconsistently against a job description.</dd></div><div><dt>In AIRA</dt><dd>Upload candidate CVs and the job description, optionally with a candidate knowledge base, and receive a scored shortlist with reasons.</dd></div><div><dt>Controls</dt><dd>Reviewable reasons, the human decision retained, PII guardrails, entitlement-limited access.</dd></div></dl></article>
+      <article class="card uc" data-sector="banking all"><span class="badge demo">Demo estate</span><span class="kicker">08 &middot; Banking &middot; Financial crime</span><h3>Fraud transaction screening</h3>
+        <dl><div><dt>Problem</dt><dd>Alert queues grow faster than investigators can clear them.</dd></div><div><dt>In AIRA</dt><dd>A transaction summary in; a risk score, matched signals and a verdict (clean, review or block) out. The demo uses a simple heuristic that you replace with your own rules during a pilot.</dd></div><div><dt>Controls</dt><dd>A deterministic setting, a typed output, and approval on review and block verdicts before any action.</dd></div></dl></article>
+      <article class="card uc" data-sector="cross all"><span class="badge demo">Demo estate</span><span class="kicker">09 &middot; Cross-industry &middot; Service</span><h3>Customer support triage</h3>
+        <dl><div><dt>Problem</dt><dd>Requests arrive in chat channels with no routing or first draft.</dd></div><div><dt>In AIRA</dt><dd>An @support mention in Slack triggers a triage agent that classifies the issue, retrieves runbook content and drafts an in-thread reply, held for sign-off.</dd></div><div><dt>Controls</dt><dd>Trigger and reply pass only through Runtime's channel door. Approval on the record. Delivery retried.</dd></div></dl></article>
+      <article class="card uc" data-sector="cross all"><span class="badge demo">Demo estate</span><span class="kicker">10 &middot; Cross-industry &middot; HR</span><h3>Batch résumé triage</h3>
+        <dl><div><dt>Problem</dt><dd>Hundreds of applications for one role are screened by hand.</dd></div><div><dt>In AIRA</dt><dd>A batch job takes a ZIP of résumés and a role profile, then summarises and ranks every candidate in one run for recruiter review.</dd></div><div><dt>Controls</dt><dd>Human decision retained, PII guardrails, a per-run cost cap.</dd></div></dl></article>
+      <article class="card uc" data-sector="cross all"><span class="badge demo">Studio templates</span><span class="kicker">11 &middot; Cross-industry</span><h3>Business correspondence &amp; summaries</h3>
+        <dl><div><dt>Problem</dt><dd>Staff draft the same memos, status reports and customer emails every week.</dd></div><div><dt>In AIRA</dt><dd>Studio's templates (meeting summary, customer email, business memo, status report) become governed assistants in Hub.</dd></div><div><dt>Controls</dt><dd>Models chosen by policy. DLP before and after the completion. Usage and spend attributed per user.</dd></div></dl></article>
+      <article class="card uc" data-sector="cross all"><span class="badge pattern">Pattern</span><span class="kicker">12 &middot; Cross-industry &middot; Procurement</span><h3>Contract renewal watch</h3>
+        <dl><div><dt>Problem</dt><dd>Auto-renewal and notice clauses are missed across hundreds of supplier contracts.</dd></div><div><dt>In AIRA</dt><dd>A scheduled Monitor AI Solution reads the contract repository and flags clauses approaching their notice dates; owners get a Work item and an alert.</dd></div><div><dt>Controls</dt><dd>Scheduled trigger through Runtime, read-only sources, alerts only through the channel door.</dd></div></dl></article>
+      <article class="card uc" data-sector="gov all"><span class="badge pattern">Pattern</span><span class="kicker">13 &middot; Government</span><h3>Citizen correspondence triage</h3>
+        <dl><div><dt>Problem</dt><dd>Agencies receive large volumes of letters and emails that need routing and a compliant reply.</dd></div><div><dt>In AIRA</dt><dd>An email trigger starts a workflow that classifies each item, finds the responsible unit and drafts a reply grounded in published policy, held for an officer's approval.</dd></div><div><dt>Controls</dt><dd>Air-gapped with local models, approval before sending, a complete trail for freedom-of-information requests.</dd></div></dl></article>
+      <article class="card uc" data-sector="banking gov cross all"><span class="badge pattern">Pattern</span><span class="kicker">14 &middot; All regulated sectors</span><h3>Regulatory change monitoring</h3>
+        <dl><div><dt>Problem</dt><dd>Compliance teams track new circulars by hand and map them to internal policy late.</dd></div><div><dt>In AIRA</dt><dd>A Monitor AI Solution ingests new publications, compares them with your policy library and opens a Work item listing the affected policies.</dd></div><div><dt>Controls</dt><dd>Cited comparisons, the policy owner's decision on the record, evidence exportable to audit.</dd></div></dl></article>
+    </div>
+    <p class="note mt-m">Catalog and demo-estate items run in the AIRA demo estate with sample data; adapting them to your rules, documents and systems is part of a pilot. Patterns are illustrative designs built from standard AIRA capabilities. Outcomes are measured against each pilot's own baseline.</p>
+  </div>
+</section>
+
+{{cta}}

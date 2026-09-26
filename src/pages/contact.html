@@ -1,0 +1,49 @@
+---
+title: Request a briefing
+description: Talk to AIRA Fusion about governing enterprise AI on your own infrastructure. Request a briefing, a security review pack or a pilot scoping workshop.
+nav: contact
+---
+<section class="page-hero bg-grid" style="padding-bottom:40px">
+  <span class="glow g-blue" style="width:700px;height:700px;right:-220px;top:-260px"></span>
+  <div class="wrap">
+    <span class="eyebrow rev">Contact</span>
+    <h1 class="rev d1">Request a <span class="grad">briefing.</span></h1>
+    <p class="lead rev d2">Tell us a little about your organisation and what you are trying to do. We will point a focused, technical session at your real problem: the models, deployment and controls that matter to you.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:40px">
+  <div class="wrap">
+    <div class="split" style="align-items:start">
+      <div class="card rev" style="padding:clamp(26px,3.4vw,44px)">
+        <form class="form" data-mailto="{{email}}">
+          <div class="row">
+            <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" required autocomplete="name"></div>
+            <div class="field"><label for="f-role">Role</label><input id="f-role" name="role" autocomplete="organization-title" placeholder="e.g. CISO, Head of AI"></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
+            <div class="field"><label for="f-company">Organisation</label><input id="f-company" name="company" required autocomplete="organization"></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="f-topic">Topic</label><select id="f-topic" name="topic"><option>Platform briefing</option><option>Security review pack</option><option>Pilot scoping</option><option>Pricing</option><option>Partnership</option><option>Other</option></select></div>
+            <div class="field"><label for="f-deploy">Deployment</label><select id="f-deploy" name="deploy"><option>On-premises</option><option>Private cloud</option><option>Air-gapped</option><option>Not decided yet</option></select></div>
+          </div>
+          <div class="field"><label for="f-msg">What are you trying to do?</label><textarea id="f-msg" name="message" placeholder="The use case, the constraints, the people who need to sign off."></textarea></div>
+          <button class="btn btn-primary" type="submit" style="justify-self:start">Send request <span class="arr">&rarr;</span></button>
+          <p class="form-note">Submitting opens a pre-filled email to {{email}} in your mail client. Nothing is stored by this website.</p>
+          <div class="form-ok" role="status">Your email draft is ready. Send it from your mail client and we will come back to you.</div>
+        </form>
+      </div>
+      <div class="rev d1">
+        <span class="eyebrow">What happens next</span>
+        <div class="steps mt-m" style="grid-template-columns:1fr">
+          <div class="step" style="padding-top:26px"><h3>A technical briefing</h3><p>Around forty-five minutes with our engineers, not a sales deck: architecture, controls and the use cases relevant to you.</p></div>
+          <div class="step" style="padding-top:26px"><h3>Your security review</h3><p>The review pack, pre-filled questionnaire answers and a session on authorization, audit and egress.</p></div>
+          <div class="step" style="padding-top:26px"><h3>A scoped pilot</h3><p>One workload on your infrastructure, with success criteria agreed before we start.</p></div>
+        </div>
+        <div class="card mt-m"><span class="kicker">Direct</span><p>Prefer email? Write to <a class="link-arrow" href="mailto:{{email}}">{{email}}</a></p></div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,52 @@
+---
+title: Egress is an AI control: why we built two doors
+description: Most AI governance lives in the application layer. The strongest control lives in the network. How AIRA Nexus routes every model call and every channel through exactly two governed doors.
+nav: insights
+---
+<section class="article-hero bg-grid">
+  <span class="glow g-blue" style="width:640px;height:640px;right:-240px;top:-240px"></span>
+  <div class="wrap narrow">
+    <a class="back" href="index.html">&larr; Insights</a>
+    <h1>Egress is an AI control: <span class="grad">why we built two doors.</span></h1>
+    <p class="lead">Most AI governance lives in the application. The strongest control lives in the network.</p>
+    <div class="meta"><span>Architecture</span><span>AIRA Fusion</span><span>6 min read</span></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:24px">
+  <div class="wrap narrow">
+    <article class="prose">
+      <p>Ask how an AI platform prevents data from reaching an unapproved model, and the answer is usually a feature: a policy screen, an allow-list, a guardrail. All useful, and all enforced by the same software they are meant to constrain. If a component forgets to call the policy check, or a new integration bypasses it, the control simply is not there.</p>
+      <p>When we designed AIRA Nexus we wanted a control that holds even when application code is wrong. That control is the network.</p>
+
+      <h2>Two doors, and a wall everywhere else</h2>
+      <p>AIRA Nexus has exactly two ways out:</p>
+      <ul>
+        <li><strong>The model door, AIRA Gateway.</strong> Every model, embedding and re-ranking call goes through it. It holds the provider keys, applies policy, guardrails, DLP and budgets, and records spend.</li>
+        <li><strong>The channel door, AIRA Runtime.</strong> Every inbound trigger (Slack, email, webhooks, S3 and schedules) and every outbound delivery passes through it, with retry.</li>
+      </ul>
+      <p>Everything else is denied by the cluster's baseline network policy, <strong>including private address ranges</strong>. That last detail matters: many breaches of "internal only" systems travel sideways across the private network, not out to the internet.</p>
+      <blockquote>If the only road to a model runs through the Gateway, a missed policy check in some other component cannot become a data leak.</blockquote>
+
+      <h2>Declared, never guessed</h2>
+      <p>Local models are the obvious complication. Your GPU server running Ollama, vLLM or SGLang lives on a private address, which the baseline denies. Plenty of platforms solve this by scanning for model servers or opening the private network wholesale.</p>
+      <p>We do neither. A local model server is explicit configuration, and declaring it opens exactly that one exception. The operator can see every hole in the wall, because each one was put there on purpose and written down.</p>
+
+      <h2>What this buys you</h2>
+      <ul>
+        <li><strong>A small, reviewable attack surface.</strong> Your security team reviews two doors, not every component that might one day call an API.</li>
+        <li><strong>Keys in one place.</strong> Provider credentials live in the Gateway, never in applications or notebooks.</li>
+        <li><strong>Vendor independence.</strong> Applications call a governed AI Endpoint, so changing the model behind it is configuration, not a release.</li>
+        <li><strong>An answer to "where can our data go?"</strong> It is the list of declared exceptions: short, explicit and auditable.</li>
+      </ul>
+      <div class="callout"><b>For your review</b>In a pilot, your team can inspect the network policies directly and try to reach anything they like from inside the cluster. The policy is the documentation.</div>
+
+      <h2>Defence in depth, not instead of it</h2>
+      <p>The two doors do not replace application controls; they back them up. Server-side authorization, row-level isolation in PostgreSQL, guardrails before the call and a tamper-evident audit after it still apply. The network simply ensures that when one of those layers is wrong, the failure is contained rather than silent.</p>
+    </article>
+    <hr class="hr mt-l">
+    <div class="mt-m"><a class="link-arrow" href="shadow-ai-is-a-supply-problem.html">Next: shadow AI is a supply problem <span>&rarr;</span></a></div>
+  </div>
+</section>
+
+{{cta}}
