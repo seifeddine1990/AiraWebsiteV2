@@ -83,10 +83,10 @@ ICONS = {
 
 # Product hexagon badges: a small pointy-top hex with a product glyph.
 HEX_GLYPH = {
-    "hub": '<path d="M39 22H24a4 4 0 0 0-4 4v10a4 4 0 0 0 4 4h3v5l6-5h7a4 4 0 0 0 4-4v-7"/><path d="m40 18 1.8 4.2L46 24l-4.2 1.8L40 30l-1.8-4.2L34 24l4.2-1.8zM26 30h5M26 35h12"/>',
+    "hub": '<path d="m19 31 13-12 13 12M23 28v16h18V28M29 44V34h6v10"/>',
     "studio": '<rect x="19" y="20" width="10" height="9" rx="2"/><rect x="35" y="35" width="10" height="9" rx="2"/><path d="M29 24.5h8a3 3 0 0 1 3 3V35M19 40h10M24 35v10"/>',
-    "gateway": '<path d="m32 19 11 4v8c0 6-4.5 10-11 14-6.5-4-11-8-11-14v-8z"/><path d="M26 32h12m-4-4 4 4-4 4"/>',
-    "runtime": '<rect x="22" y="22" width="20" height="20" rx="4"/><path d="m29 27 8 5-8 5zM27 18v4M37 18v4M27 42v4M37 42v4M18 27h4M18 37h4M42 27h4M42 37h4"/>',
+    "gateway": '<circle cx="22" cy="24" r="4"/><circle cx="42" cy="40" r="4"/><path d="M26 24h2a4 4 0 0 1 4 4v8a4 4 0 0 0 4 4h2m-3-3 3 3-3 3"/>',
+    "runtime": '<circle cx="32" cy="32" r="9.5"/><circle cx="32" cy="32" r="3"/><path d="M32 29V18M34.35 30.13l8.6-6.86M34.92 32.67l10.73 2.45M33.3 34.7l4.77 9.91M30.7 34.7l-4.77 9.91M29.08 32.67l-10.73 2.45M29.65 30.13l-8.6-6.86"/>',
     "signal": '<rect x="19" y="21" width="26" height="19" rx="3"/><path d="M28 45h8M32 40v5M23 32h4l3-6 4 10 3-5h4"/>',
     "data": '<ellipse cx="29" cy="23" rx="8" ry="3"/><path d="M21 23v14c0 1.7 3.6 3 8 3M37 23v8M21 30c0 1.7 3.6 3 8 3s8-1.3 8-3M29 40h8M37 36v8h4"/><circle cx="44" cy="44" r="3"/><circle cx="40" cy="34" r="3"/>',
     "console": '<rect x="22" y="23" width="20" height="18" rx="2.5"/><path d="M22 28.5h20M26 34h7"/>',
