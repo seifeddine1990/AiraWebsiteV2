@@ -9,100 +9,17 @@ nav: security
   <div class="wrap">
     <span class="eyebrow rev">Security &amp; governance</span>
     <h1 class="rev d1">Security and governance <span class="grad">by architecture.</span></h1>
-    <p class="lead rev d2">Written for CISOs, security architects, and risk and compliance teams. This is how AIRA Nexus protects data, controls AI use and produces evidence, and where our own assurance stands today, including what is not yet in place.</p>
+    <p class="lead rev d2">Your infrastructure. Controlled access. Verifiable evidence. The essentials of how AIRA Nexus protects enterprise AI.</p>
     <div class="ctas rev d3"><a class="btn btn-primary" href="#review">Start a security review <span class="arr">&rarr;</span></a><a class="btn btn-ghost" href="#assurance">Assurance status</a></div>
   </div>
 </section>
 
 <section class="section tight rule-top">
-  <div class="wrap">
-    <div class="grid g4">
-      <div class="card rev"><div class="icon">{{icon:server}}</div><h4>Self-hosted</h4><p class="mt-s">On-premises, private cloud or air-gapped. No telemetry, phone-home or vendor access.</p></div>
-      <div class="card rev d1"><div class="icon">{{icon:door}}</div><h4>One door</h4><p class="mt-s">All access to models, agents and AI Solutions passes through AIRA Gateway, with consistent controls and audit for Nexus and external applications.</p></div>
-      <div class="card rev d2"><div class="icon">{{icon:id}}</div><h4>One identity</h4><p class="mt-s">SSO over OIDC or SAML with TOTP MFA. Users and service accounts are one kind of identity.</p></div>
-      <div class="card rev d3"><div class="icon">{{icon:key}}</div><h4>Server-side authz</h4><p class="mt-s">Layered decisions through one function. The interface only reflects them.</p></div>
-      <div class="card rev"><div class="icon">{{icon:layers}}</div><h4>Tenant isolation</h4><p class="mt-s">Row-level security enforced in PostgreSQL through a non-bypass service role.</p></div>
-      <div class="card rev d1"><div class="icon">{{icon:filter}}</div><h4>Before the call</h4><p class="mt-s">Allow-lists, guardrails, DLP, budgets and approvals are applied before any model runs.</p></div>
-      <div class="card rev d2"><div class="icon">{{icon:chain}}</div><h4>Tamper-evident</h4><p class="mt-s">A hash-chained audit log with a database WORM trigger. Verify it and export it.</p></div>
-      <div class="card rev d3"><div class="icon">{{icon:lock}}</div><h4>Offline licence</h4><p class="mt-s">Ed25519-signed licences verified locally. No activation server.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="section band-deep">
-  <div class="wrap narrow">
-    <span class="eyebrow rev">The security model in one paragraph</span>
-    <p class="rev d1 mt-m" style="font:600 clamp(1.25rem,2vw,1.55rem)/1.55 var(--f-display);color:#fff;letter-spacing:-.01em">AIRA Nexus is deployed inside your perimeter on Kubernetes. All access to approved models, agents and AI Solutions goes through one door: AIRA Gateway. Nexus and external applications share this controlled, audited entry point, while AIRA Runtime manages execution and environments. The baseline network policy denies all other egress unless an operator explicitly declares it. Every person and service authenticates as a Nexus identity, and every request is authorized server-side by one decision function. Policies, guardrails and budgets are enforced before a model is called. Consequential events are written to an audit log that the database itself protects from alteration.</p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <div class="section-head rev">
-      <span class="eyebrow">Controls</span>
-      <h2>Defence in depth, <span class="grad">layer by layer.</span></h2>
-    </div>
-    <div class="grid g2">
-      <div class="card rev"><span class="kicker">Deployment &amp; residency</span><h3>Your data never leaves your infrastructure</h3><ul>
-        <li>PostgreSQL, Redis, Qdrant, MinIO and Temporal are self-hosted in the cluster</li>
-        <li>AIRA Fusion does not operate, monitor or access deployments unless you grant support access</li>
-        <li>Cloud models are off unless enabled, customer-keyed, and reached only through Gateway guardrails and DLP</li>
-        <li>Air-gapped operation with local models and offline licence verification</li></ul></div>
-      <div class="card rev d1"><span class="kicker">Identity &amp; access</span><h3>One identity, one decision function</h3><ul>
-        <li>Keycloak SSO over OIDC and SAML, integrated with your identity provider; native TOTP MFA</li>
-        <li>JWTs with a revocation denylist, refresh-token rotation and an RS256 option</li>
-        <li>The production profile refuses to start with development escape hatches enabled</li>
-        <li>Keys are credentials bound to an identity: shown once, rotatable, never retrievable</li></ul></div>
-      <div class="card rev"><span class="kicker">Isolation &amp; network</span><h3>Separation enforced below the application</h3><ul>
-        <li>Row-level security enrolled and forced on tenant tables, tenant context set per transaction</li>
-        <li>Retrieval only searches collections the requesting identity may read</li>
-        <li>Enterprise database connections are admin-managed, read-only by default, every query audited</li>
-        <li>Non-root containers; the Kubernetes security baseline is checked in CI</li></ul></div>
-      <div class="card rev d1"><span class="kicker">Encryption &amp; secrets</span><h3>Envelope encryption with rotation</h3><ul>
-        <li>Stored secrets and sensitive fields encrypted with a local KMS, HashiCorp Vault or AWS KMS</li>
-        <li>Keys rotate; previous keys stay decrypt-only</li>
-        <li>Deployments generate their own secrets at first install; nothing is baked into images</li>
-        <li>An encrypted connections vault for reusable credentials; secret scanning in CI</li></ul></div>
-    </div>
-  </div>
-</section>
-
-<section class="section band-deep">
-  <div class="wrap">
-    <div class="section-head rev">
-      <span class="eyebrow">AI-specific controls</span>
-      <h2>Governance that lives <span class="grad">at the call,</span> not in a policy PDF.</h2>
-    </div>
-    <div class="grid g3">
-      <div class="card rev"><div class="icon">{{icon:policy}}</div><h3>AI Endpoints</h3><p>Models, fallbacks, routing, guardrails, data policy, a security level, limits and access grants in one governed contract. Transition mode records every raw-model call.</p></div>
-      <div class="card rev d1"><div class="icon">{{icon:layers}}</div><h3>Policy hierarchy</h3><p>Organisation &rarr; department &rarr; workspace &rarr; app &rarr; user &rarr; model. A narrower scope may tighten a rule but never loosen it.</p></div>
-      <div class="card rev d2"><div class="icon">{{icon:filter}}</div><h3>Guardrails &amp; DLP</h3><p>Packs for prompt injection, PII and blocked topics. DLP runs before and after the completion, and PII can be redacted at trigger ingress.</p></div>
-      <div class="card rev"><div class="icon">{{icon:search}}</div><h3>Grounding</h3><p>Knowledge answers cite the source passage. A grounding gate abstains when the support is too weak to answer.</p></div>
-      <div class="card rev d1"><div class="icon">{{icon:coins}}</div><h3>Runaway control</h3><p>Per-key budgets and rate limits, a per-run cost cap on actual spend, and agent trees under hard cost, time, call and depth budgets.</p></div>
-      <div class="card rev d2"><div class="icon">{{icon:approve}}</div><h3>Human oversight</h3><p>Approval gates on any AI Solution or workflow step, showing exact inputs and the proposed action. Decisions are recorded.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="audit">
-  <div class="wrap">
-    <div class="split">
-      <div class="rev">
-        <span class="eyebrow">Audit &amp; evidence</span>
-        <h2 class="mt-m">A record that cannot be <span class="grad">quietly rewritten.</span></h2>
-        <p class="lead mt-m">Each entry is hash-chained to its predecessor, and a database-level WORM trigger blocks updates and deletes. Maintenance such as retention runs only through an explicit, audited path that re-anchors the chain.</p>
-        <ul class="mt-m" style="color:var(--ink-2);padding-left:1.2em;display:grid;gap:8px">
-          <li>AI runs, approvals, policy decisions and administrative actions, each timestamped and attributed</li>
-          <li>Verification on demand; CSV or JSON streaming export to your SIEM, GRC or archive</li>
-          <li>Per-node run records that re-render exactly as they first appeared</li>
-        </ul>
-      </div>
-      <div class="chain-wrap rev d1">
-        <div class="chain-head"><span class="chain-status" data-chain-status>Chain verified &middot; 5 of 5 entries</span><button class="btn btn-ghost btn-sm" data-chain-tamper type="button">Try to edit an entry <span class="arr">&rarr;</span></button></div>
-        <div class="chain vertical" data-chain></div>
-        <p class="chain-note">Illustrative entries with real SHA-256 hashes, computed in your browser.</p>
-      </div>
-    </div>
+  <div class="wrap grid g2">
+    <div class="card rev"><div class="icon">{{icon:server}}</div><h3>Your infrastructure</h3><p>Run on-premises, in a private cloud or air-gapped. Data stores are self-hosted; cloud models are optional and use your keys.</p></div>
+    <div class="card rev"><div class="icon">{{icon:id}}</div><h3>Identity &amp; isolation</h3><p>Single sign-on, MFA and server-side access decisions, with tenant isolation enforced in the database.</p></div>
+    <div class="card rev"><div class="icon">{{icon:filter}}</div><h3>Policy before every call</h3><p>Gateway applies approved models, guardrails, data policies and budgets. Approval gates keep people involved in consequential actions.</p></div>
+    <div class="card rev" id="audit"><div class="icon">{{icon:chain}}</div><h3>Evidence you can verify</h3><p>Runs, approvals and policy decisions are recorded in a hash-chained audit log. Database controls prevent ordinary edits and deletes; verify and export the record for review.</p></div>
   </div>
 </section>
 
@@ -110,10 +27,12 @@ nav: security
   <div class="wrap">
     <div class="section-head rev">
       <span class="eyebrow">Assurance status</span>
-      <h2>Regulated buyers score candour <span class="grad">above perfection.</span></h2>
-      <p class="lead">This is our current position. We update it as each item lands, and we never claim one early.</p>
+      <h2>A clear view of <span class="grad">our assurance.</span></h2>
+      <p class="lead">Independent penetration testing and SOC 2 are planned; ISO/IEC 27001 is on the roadmap. AIRA Fusion does not currently hold these certifications.</p>
     </div>
-    <div class="table-wrap rev">
+    <details class="assurance-details rev">
+      <summary>View controls and assurance status</summary>
+    <div class="table-wrap">
       <table>
         <thead><tr><th>Item</th><th>Status</th><th>Notes</th></tr></thead>
         <tbody>
@@ -130,48 +49,17 @@ nav: security
         </tbody>
       </table>
     </div>
+    </details>
     <p class="note mt-m rev">AIRA helps you produce evidence for SOC 2, ISO/IEC 27001, the EU AI Act, DORA and GDPR. It does not certify your compliance, and AIRA Fusion does not currently hold these certifications.</p>
   </div>
 </section>
 
-<section class="section">
-  <div class="wrap">
-    <div class="section-head rev">
-      <span class="eyebrow">Shared responsibility</span>
-      <h2>Clear lines between <span class="grad">what we do and what you own.</span></h2>
-    </div>
-    <div class="table-wrap rev">
-      <table>
-        <thead><tr><th>Area</th><th>AIRA Fusion</th><th>You</th></tr></thead>
-        <tbody>
-          <tr><td>Platform software, security fixes, releases</td><td>Builds, fixes and ships</td><td>Schedules upgrades</td></tr>
-          <tr><td>Infrastructure, OS, Kubernetes, edge, TLS</td><td>Supplies baselines and overlays</td><td>Operates</td></tr>
-          <tr><td>Identity provider, user lifecycle, MFA policy</td><td>Integrates over OIDC/SAML</td><td>Owns</td></tr>
-          <tr><td>Roles, entitlements, AI policies, guardrail tuning</td><td>Advises</td><td>Decides</td></tr>
-          <tr><td>Model selection, provider contracts and keys</td><td>&mdash;</td><td>Owns; keys held in your Gateway</td></tr>
-          <tr><td>Backup execution, retention, restore drills</td><td>Supplies tooling</td><td>Operates</td></tr>
-          <tr><td>Use-case risk classification, regulatory filings</td><td>Provides the evidence</td><td>Owns</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
 <section class="section" id="review">
-  <div class="wrap">
-    <div class="split">
-      <div class="rev">
-        <span class="eyebrow">Your security review pack</span>
-        <h2 class="mt-m">Inspect the real system, not a questionnaire.</h2>
-        <p class="lead mt-m">Send us your questionnaire and we will schedule a technical session with our engineers covering authorization, audit-chain verification and egress control.</p>
-        <div class="ctas mt-m"><a class="btn btn-primary" href="{{root}}contact.html">Request the review pack <span class="arr">&rarr;</span></a></div>
-      </div>
-      <div class="grid g2">
-        <div class="card rev"><div class="icon">{{icon:doc}}</div><h4>Security &amp; Governance Overview</h4><p class="mt-s">With the architecture diagram and the product datasheet.</p></div>
-        <div class="card rev d1"><div class="icon">{{icon:check}}</div><h4>Pre-filled questionnaires</h4><p class="mt-s">SIG, CAIQ or your own format, on request.</p></div>
-        <div class="card rev d2"><div class="icon">{{icon:server}}</div><h4>A pilot on your infrastructure</h4><p class="mt-s">Your team inspects network policies and roles and tests the controls directly.</p></div>
-        <div class="card rev d3"><div class="icon">{{icon:users}}</div><h4>Engineer-led session</h4><p class="mt-s">Authorization, chain verification and egress control, live.</p></div>
-      </div>
-    </div>
+  <div class="wrap narrow">
+    <span class="eyebrow rev">Security review</span>
+    <h2 class="mt-m rev">Talk through the controls <span class="grad">with our engineers.</span></h2>
+    <p class="lead mt-m rev">Request the security overview, share your questionnaire or inspect the controls in a pilot on your infrastructure.</p>
+    <p class="muted mt-m rev">AIRA supplies platform software and security fixes. Your team operates the infrastructure and owns access policies, model selection and backups.</p>
+    <div class="ctas mt-m rev"><a class="btn btn-primary" href="{{root}}contact.html">Request a security review <span class="arr">&rarr;</span></a></div>
   </div>
 </section>

@@ -49,7 +49,9 @@ body {
   backdrop-filter: saturate(160%) blur(18px); -webkit-backdrop-filter: saturate(160%) blur(18px);
   box-shadow: 0 1px 0 rgba(96, 176, 255, .14), 0 10px 30px -20px rgba(0, 120, 255, .5);
 }
-.nav-links a.nl { font-weight: 500; color: #c9d8ec; }
+.nav-links a.nl { font-size: 16px; font-weight: 600; color: #dfebfa; padding: 10px 15px; }
+.nav-cta .btn { font-size: 15px; }
+@media (max-width: 1020px) { .nav-links a.nl { font-size: 18px; padding: 15px 4px; } }
 .nav-links a.nl:hover { background: transparent; color: #fff; }
 .nav-links a.nl[aria-current="page"] { color: var(--cyan); }
 .nav-links a.nl[aria-current="page"]::after { background: var(--cyan); box-shadow: 0 0 10px var(--cyan); margin-top: 6px; }
@@ -265,3 +267,18 @@ canvas.globe { position: absolute; z-index: -1; pointer-events: none; }
 .s-foot b { color: var(--cyan); font-weight: 500; }
 @keyframes rowin { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
 @media (max-width: 480px) { .hf-pos { gap: 12px; font-size: .92rem; letter-spacing: .08em; } }
+
+/* Product overview: all content remains visible. */
+.product-links { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px; }
+.product-links a { display:inline-flex; align-items:center; gap:14px; padding:12px 16px; border:1px solid var(--line-2); border-radius:999px; color:var(--ink); font-size:14px; font-weight:600; transition:border-color .2s,background .2s; }
+.product-links a span { color:var(--cyan); }
+.product-links a:hover { border-color:var(--cyan); background:rgba(0,108,255,.12); }
+.product-links a:focus-visible, .assurance-details summary:focus-visible { outline:2px solid var(--cyan); outline-offset:4px; }
+.product-cards .product { scroll-margin-top:110px; border-top:2px solid rgba(0,207,255,.5); transition:border-color .25s,box-shadow .25s; }
+.product-cards .product:hover, .product-cards .product:target { border-color:var(--cyan); box-shadow:0 8px 32px rgba(0,108,255,.12); }
+.product-cards .product:target { background:linear-gradient(135deg,rgba(0,108,255,.12),rgba(10,31,61,.8)); }
+.product-cards .p-hex { filter:drop-shadow(0 0 12px rgba(0,207,255,.18)); }
+@media (prefers-reduced-motion:reduce) { .product-links a, .product-cards .product { transition:none; } }
+.assurance-details { border:1px solid var(--line-2); border-radius:14px; padding:20px; }
+.assurance-details summary { cursor:pointer; color:white; font-weight:600; padding:4px; }
+.assurance-details[open] summary { margin-bottom:24px; }

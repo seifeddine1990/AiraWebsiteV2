@@ -11,7 +11,7 @@ python build.py --serve    # builds, then serves http://localhost:8090
 
 Links are relative, so `public/index.html` also opens directly from disk.
 
-The Nexus overview, six product sections, architecture and specifications are maintained together in `src/pages/nexus.html`. Product links use `nexus.html#home`, `#studio`, `#gateway`, `#runtime`, `#signal` and `#data`. The former `platform.html` page redirects to Nexus and maps legacy `#hub` links to `#home`.
+The single AIRA Nexus navigation item combines the platform overview, six product cards, architecture and deployment specifications. These are maintained together in `src/pages/nexus.html`. Product links use `nexus.html#home`, `#studio`, `#gateway`, `#runtime`, `#signal` and `#data`. The former `platform.html` page redirects to Nexus and maps legacy `#hub` links to `#home`.
 
 ## Deploy
 
@@ -22,6 +22,21 @@ docker run -p 8090:8080 aira-website
 ```
 
 The image uses rootless nginx on port 8080 and serves security headers, including a CSP, plus gzip and a custom 404 page. Put TLS in front of it with your ingress or CDN.
+
+## Search discovery
+
+```bash
+python build.py
+python tools/check_search.py
+```
+
+The build generates lowercase `robots.txt` and `sitemap.xml` at the site root. The sitemap contains only indexable, canonical pages; the legacy Platform page points its canonical to Nexus and is excluded. The error page carries `noindex`. Crawlers can read the page content directly from HTML without JavaScript.
+
+The current `User-agent: *` rule allows all crawlers, including search and AI search bots. It also permits training crawlers; training permissions are separate from search visibility. No crawler policy has been restricted.
+
+After deployment, verify that `https://airafusion.com/robots.txt`, `/sitemap.xml` and every listed page return HTTP 200, missing URLs return HTTP 404, and the CDN/firewall allows legitimate crawlers. Confirm that HTTPS and the canonical hostname are enforced at the ingress. Submit the sitemap in Google Search Console and Bing Webmaster Tools and inspect the Home and Nexus URLs. Submission and crawl access do not guarantee indexing or AI citations.
+
+Guidance: [Google sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap), [Google AI search features](https://developers.google.com/search/docs/appearance/ai-features), [OpenAI search crawlers](https://developers.openai.com/api/docs/bots), [Bing sitemaps](https://www.bing.com/webmasters/help/sitemaps-3b5cf6ed).
 
 ## Layout
 

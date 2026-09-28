@@ -1,5 +1,5 @@
 ---
-title: AIRA Nexus — Enterprise AI, on the record
+title: AIRA Nexus - Platform & products
 description: AIRA Nexus is the governed control plane for enterprise AI. Policy before every model call, a trace during it and tamper-evident evidence after it, on your infrastructure, with any model.
 nav: nexus
 ---
@@ -9,7 +9,7 @@ nav: nexus
     <div>
       <span class="pill rev"><b>AIRA Nexus</b> The control plane for enterprise AI</span>
       <h1 class="rev d1">Enterprise AI,<br><span class="grad">on the record.</span></h1>
-      <p class="lead rev d2">AIRA Nexus puts one governed plane under every AI interaction in your organisation. Policy is enforced before each model call, every step is traced while it runs, and a tamper-evident record is written after it. It runs inside your perimeter, with the models you choose.</p>
+      <p class="lead rev d2">Six connected products to use, build, govern and run enterprise AI. One identity, shared policies and a tamper-evident audit trail, on your infrastructure with the models you choose.</p>
       <div class="ctas rev d3">
         <a class="btn btn-primary" href="{{root}}contact.html">Request a briefing <span class="arr">&rarr;</span></a>
         <a class="btn btn-ghost" href="#products">Explore the six products</a>
@@ -23,157 +23,96 @@ nav: nexus
   </div>
 </section>
 
-<section class="section tight">
-  <div class="wrap">
-    <div class="facts rev">
-      <div class="fact"><div class="t">Products</div><div class="n">6<sup>+1</sup></div><div class="l">Home, Studio, Gateway, Runtime, Signal and Data, all administered from AIRA Console.</div></div>
-      <div class="fact"><div class="t">Sign-on</div><div class="n">1</div><div class="l">One identity across every product: SSO over OIDC or SAML with native MFA.</div></div>
-      <div class="fact"><div class="t">Governed gateway</div><div class="n">1</div><div class="l">Controlled, audited access to models, agents and AI Solutions for Nexus and external applications.</div></div>
-      <div class="fact"><div class="t">Telemetry</div><div class="n">0</div><div class="l">No phone-home, no activation server, no vendor access unless you grant it.</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <div class="section-head rev">
-      <span class="eyebrow">The problem</span>
-      <h2>AI is already at work in your organisation. <span class="muted">Nobody can prove what it did.</span></h2>
-    </div>
-    <div class="grid g4">
-        <div class="card rev"><span class="kicker">01 &middot; Shadow AI</span><h3>Data leaves by the clipboard</h3><p>People paste customer data into public chatbots because there is no sanctioned alternative that is as good.</p></div>
-        <div class="card rev d1"><span class="kicker">02 &middot; No record</span><h3>Nobody can answer the auditor</h3><p>Who asked what, which model answered, what it cost and what it was allowed to see. The answer is scattered or missing.</p></div>
-        <div class="card rev d2"><span class="kicker">03 &middot; Sprawl</span><h3>Every team, its own vendor</h3><p>Separate contracts, separate keys, spend nobody can total and a new lock-in every quarter.</p></div>
-        <div class="card rev d3"><span class="kicker">04 &middot; Stalled pilots</span><h3>Promising, then parked</h3><p>Good use cases never reach production, because risk and audit cannot sign off on something they cannot inspect.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="section band-deep">
-  <div class="wrap">
-    <div class="section-head center rev">
-      <span class="eyebrow">How a request travels</span>
-      <h2>Policy before the call. A trace during it. <span class="grad">Evidence after.</span></h2>
-      <p class="lead">Every prompt, from any product, walks the same governed path. Nothing reaches a model that the organisation has not allowed, and nothing happens that is not written down.</p>
-    </div>
-    <div class="lifecycle rev">
-      <div class="lc-phases"><div class="lc-phase">Before the call <b>Policy</b></div><div class="lc-phase">During <b>Trace</b></div><div class="lc-phase">After <b>Evidence</b></div></div>
-      <div class="lc-track">
-        <span class="beam"></span>
-        <div class="lc-step" data-log="<span class='k'>identity</span> analyst@bank &middot; SSO + MFA &middot; <span class='ok'>verified</span>"><div class="lc-dot">{{icon:id}}</div><h4>Identity</h4><p>One sign-on; users and services are the same kind of identity</p></div>
-        <div class="lc-step" data-log="<span class='k'>authorize</span> org &rarr; product &rarr; role &rarr; resource &rarr; action &middot; <span class='ok'>allow</span>"><div class="lc-dot">{{icon:key}}</div><h4>Entitlement</h4><p>Organisation, product, role and action, decided server-side</p></div>
-        <div class="lc-step" data-log="<span class='k'>endpoint</span> kyc-review &middot; model allow-list &middot; budget 38% used &middot; <span class='ok'>within limits</span>"><div class="lc-dot">{{icon:policy}}</div><h4>AI Endpoint</h4><p>Allowed models, routing, limits and budget for this use</p></div>
-        <div class="lc-step" data-log="<span class='k'>guardrails</span> prompt-injection <span class='ok'>clean</span> &middot; PII <span class='v'>2 fields redacted</span> &middot; DLP <span class='ok'>pass</span>"><div class="lc-dot">{{icon:filter}}</div><h4>Guardrails &amp; DLP</h4><p>Injection, PII and topic checks before the model sees a word</p></div>
-        <div class="lc-step" data-log="<span class='k'>model</span> routed to local model on your GPUs &middot; 1.8s &middot; 1,204 tokens"><div class="lc-dot">{{icon:cpu}}</div><h4>Model</h4><p>Cloud or local, behind one door, with fallbacks</p></div>
-        <div class="lc-step" data-log="<span class='k'>trace</span> 6 nodes recorded &middot; inputs, model, latency, tokens, cost, output"><div class="lc-dot">{{icon:pulse}}</div><h4>Trace</h4><p>A record for every node: inputs, model, latency, cost, output</p></div>
-        <div class="lc-step" data-log="<span class='k'>audit</span> entry sealed &middot; hash-chained to its predecessor &middot; <span class='ok'>chain verified</span>"><div class="lc-dot">{{icon:chain}}</div><h4>Audit</h4><p>Hash-chained, and the database refuses edits and deletes</p></div>
-      </div>
-      <div class="lc-log" aria-live="off"></div>
-    </div>
-  </div>
-</section>
-
 <section class="section band-deep" id="products">
   <div class="wrap">
     <div class="section-head rev">
       <span class="eyebrow">Six products</span>
-      <h2>Consume. Create. Govern. Execute. Observe. <span class="grad">Connect.</span></h2>
-      <p class="lead">Every product is independently accessible, with its own roles and entitlements. Together they cover the whole life of enterprise AI, from the first question an employee asks to the evidence an examiner requests.</p>
+      <h2>One platform. <span class="grad">Six connected products.</span></h2>
+      <p class="lead">From an employee's first question to a production workflow, each product has a clear role and its own access controls.</p>
     </div>
 
-    <div class="split mt-l" id="home">
-      <div class="rev">
-        <div class="p-head" style="display:flex;gap:16px;align-items:center">{{hex:hub}}<span class="p-role badge">Consume</span></div>
-        <h2 class="mt-m" style="font-size:clamp(1.8rem,3vw,2.4rem)">AIRA Home</h2>
-        <p class="lead mt-s">Where every employee uses AI. Ask for answers; Work for objectives. One inbox for approvals, running and failed work, with AI Solutions a click away.</p>
-      </div>
-      <div class="card rev d1"><ul>
-        <li><b style="color:#fff">Ask</b>: governed chat across approved models, grounded in knowledge, with citations and abstention</li>
-        <li><b style="color:#fff">Work</b>: give AIRA an objective and follow it through approvals to a result</li>
-        <li><b style="color:#fff">Knowledge Hub</b>: access curated enterprise knowledge collections, from policies to compliance guidance, with collection-level permissions and answers grounded in source material</li>
-        <li><b style="color:#fff">Document Insights</b>: upload, OCR and chat with a document</li>
-        <li><b style="color:#fff">The AI Solution catalog</b>, with a run page for each type and replayable run history</li>
-      </ul></div>
+    <nav class="product-links" aria-label="Jump to a product">
+      <a href="#home">AIRA Home <span aria-hidden="true">&darr;</span></a>
+      <a href="#studio">AIRA Studio <span aria-hidden="true">&darr;</span></a>
+      <a href="#gateway">AIRA Gateway <span aria-hidden="true">&darr;</span></a>
+      <a href="#runtime">AIRA Runtime <span aria-hidden="true">&darr;</span></a>
+      <a href="#signal">AIRA Signal <span aria-hidden="true">&darr;</span></a>
+      <a href="#data">AIRA Data <span aria-hidden="true">&darr;</span></a>
+    </nav>
+
+    <div class="grid g2 product-cards">
+      <article class="card product" id="home" aria-labelledby="home-title">
+        <div class="p-head">{{hex:hub}}<span class="p-role">Consume</span></div>
+        <h3 id="home-title">AIRA Home</h3>
+        <p class="mt-s">Where every employee uses AI. Ask for answers; Work for objectives. One inbox for approvals, running and failed work, with AI Solutions a click away.</p>
+        <ul class="mt-m">
+          <li><b style="color:#fff">Ask</b>: governed chat across approved models, grounded in knowledge, with citations and abstention</li>
+          <li><b style="color:#fff">Work</b>: give AIRA an objective and follow it through approvals to a result</li>
+          <li><b style="color:#fff">Knowledge Hub</b>: access curated enterprise knowledge collections, from policies to compliance guidance, with collection-level permissions and answers grounded in source material</li>
+          <li><b style="color:#fff">Document Insights</b>: upload, OCR and chat with a document</li>
+          <li><b style="color:#fff">The AI Solution catalog</b>, with a run page for each type and replayable run history</li>
+        </ul>
+      </article>
+      <article class="card product" id="studio" aria-labelledby="studio-title">
+        <div class="p-head">{{hex:studio}}<span class="p-role">Create</span></div>
+        <h3 id="studio-title">AIRA Studio</h3>
+        <p class="mt-s">Where teams build. One path from idea to production: Build &rarr; Configure &rarr; Assign AI &rarr; Test &rarr; Evaluate &rarr; Publish. What a builder tests in Studio is exactly what Runtime runs.</p>
+        <ul class="mt-m">
+          <li>Four kinds of capability: AI Assistant, AI Agent, AI Flow and AI Solution</li>
+          <li>A Solution Advisor that drafts a capability from a plain-language description</li>
+          <li>Typed-node workflow canvas: prompt, knowledge, HTTP, code, database, agent, MCP tool, branching, error handling and subflows</li>
+          <li>Prompt Lab, a run debugger, and evaluation scenario libraries graded by programmatic checks plus an LLM judge</li>
+          <li>Templates, data sources, an encrypted connections vault and MCP servers</li>
+        </ul>
+      </article>
+      <article class="card product" id="gateway" aria-labelledby="gateway-title">
+        <div class="p-head">{{hex:gateway}}<span class="p-role">Unified access</span></div>
+        <h3 id="gateway-title">AIRA Gateway</h3>
+        <p class="mt-s">One controlled, audited entry point for on-premises and cloud LLMs, agents and AI Solutions. AIRA Nexus Runtime and external applications access the same governed catalog through application subscriptions.</p>
+        <ul class="mt-m">
+          <li><b style="color:#fff">One catalog</b>: approved LLMs, agents and AI Solutions for Nexus and external applications</li>
+          <li><b style="color:#fff">Application subscriptions</b>: subscribe to catalog offerings with controlled access grants and limits</li>
+          <li><b style="color:#fff">Policy controls</b>: models, fallbacks, routing, guardrails, data policy and security level</li>
+          <li><b style="color:#fff">Audited access</b>: identity-bound requests, usage tracking and a record of every call</li>
+        </ul>
+      </article>
+      <article class="card product" id="runtime" aria-labelledby="runtime-title">
+        <div class="p-head">{{hex:runtime}}<span class="p-role">Execute</span></div>
+        <h3 id="runtime-title">AIRA Runtime</h3>
+        <p class="mt-s">Where published capabilities run. Runtime deploys versions, governs execution and gives your team full control over environments on Kubernetes and OpenShift. Access to models, agents and AI Solutions is controlled through AIRA Gateway.</p>
+        <ul class="mt-m">
+          <li><b style="color:#fff">Environment control</b>: manage environments, versioned deployments and schedules on Kubernetes and OpenShift</li>
+          <li><b style="color:#fff">Governed access</b>: each deployed capability uses its own identity and access grants through Gateway</li>
+          <li><b style="color:#fff">Execution governance</b>: approvals, run history and a durable record of every execution</li>
+          <li>Triggers in and deliveries out with retry; usage and cost per deployment</li>
+          <li>Tenant isolation enforced in the database</li>
+        </ul>
+      </article>
+      <article class="card product" id="signal" aria-labelledby="signal-title">
+        <div class="p-head">{{hex:signal}}<span class="p-role">Observe</span></div>
+        <h3 id="signal-title">AIRA Signal</h3>
+        <p class="mt-s">One answer to "what is our AI doing?" Signal observes runs, cost and health across the estate, and gives investigators the thread to pull when something looks wrong.</p>
+        <ul class="mt-m">
+          <li>Overview of AI Solution runs, failure rate, node latency and spend, from one hour to ninety days</li>
+          <li>Activity, LLM activity, journeys, flagged events and incidents</li>
+          <li>Health of AI Solutions, knowledge, the workflow engine, the platform and the estate</li>
+          <li>Cost, spend and security views, with export</li>
+        </ul>
+      </article>
+      <article class="card product" id="data" aria-labelledby="data-title">
+        <div class="p-head">{{hex:data}}<span class="p-role">Connect</span></div>
+        <h3 id="data-title">AIRA Data</h3>
+        <p class="mt-s">The governed data plane. Connect enterprise systems, ingest documents exactly once, and keep every extraction reviewable against the content it came from.</p>
+        <ul class="mt-m">
+          <li>Governed connectivity to PostgreSQL, SQL Server, MySQL, Oracle and IBM Db2, read-only by default, every query audited</li>
+          <li>Idempotent ingestion jobs that report incomplete attempts and never create duplicates</li>
+          <li>Document review bound to the content hash and the extractor version</li>
+          <li>A bounded tabular extraction service for CSV, TSV and JSON</li>
+        </ul>
+      </article>
     </div>
 
-    <hr class="hr mt-l">
-    <div class="split mt-l" id="studio">
-      <div class="rev">
-        <div style="display:flex;gap:16px;align-items:center">{{hex:studio}}<span class="badge">Create</span></div>
-        <h2 class="mt-m" style="font-size:clamp(1.8rem,3vw,2.4rem)">AIRA Studio</h2>
-        <p class="lead mt-s">Where teams build. One path from idea to production: Build &rarr; Configure &rarr; Assign AI &rarr; Test &rarr; Evaluate &rarr; Publish. What a builder tests in Studio is exactly what Runtime runs.</p>
-      </div>
-      <div class="card rev d1"><ul>
-        <li>Four kinds of capability: AI Assistant, AI Agent, AI Flow and AI Solution</li>
-        <li>A Solution Advisor that drafts a capability from a plain-language description</li>
-        <li>Typed-node workflow canvas: prompt, knowledge, HTTP, code, database, agent, MCP tool, branching, error handling and subflows</li>
-        <li>Prompt Lab, a run debugger, and evaluation scenario libraries graded by programmatic checks plus an LLM judge</li>
-        <li>Templates, data sources, an encrypted connections vault and MCP servers</li>
-      </ul></div>
-    </div>
-
-    <hr class="hr mt-l">
-    <div class="split mt-l" id="gateway">
-      <div class="rev">
-        <div style="display:flex;gap:16px;align-items:center">{{hex:gateway}}<span class="badge demo">Unified access</span></div>
-        <h2 class="mt-m" style="font-size:clamp(1.8rem,3vw,2.4rem)">AIRA Gateway</h2>
-        <p class="lead mt-s">One controlled, audited entry point for on-premises and cloud LLMs, agents and AI Solutions. AIRA Nexus Runtime and external applications access the same governed catalog through application subscriptions.</p>
-      </div>
-      <div class="card rev d1"><ul>
-        <li><b style="color:#fff">One catalog</b>: approved LLMs, agents and AI Solutions for Nexus and external applications</li>
-        <li><b style="color:#fff">Application subscriptions</b>: subscribe to catalog offerings with controlled access grants and limits</li>
-        <li><b style="color:#fff">Policy controls</b>: models, fallbacks, routing, guardrails, data policy and security level</li>
-        <li><b style="color:#fff">Audited access</b>: identity-bound requests, usage tracking and a record of every call</li>
-      </ul></div>
-    </div>
-
-    <hr class="hr mt-l">
-    <div class="split mt-l" id="runtime">
-      <div class="rev">
-        <div style="display:flex;gap:16px;align-items:center">{{hex:runtime}}<span class="badge demo">Execute</span></div>
-        <h2 class="mt-m" style="font-size:clamp(1.8rem,3vw,2.4rem)">AIRA Runtime</h2>
-        <p class="lead mt-s">Where published capabilities run. Runtime deploys versions, governs execution and gives your team full control over environments on Kubernetes and OpenShift. Access to models, agents and AI Solutions is controlled through AIRA Gateway.</p>
-      </div>
-      <div class="card rev d1"><ul>
-        <li><b style="color:#fff">Environment control</b>: manage environments, versioned deployments and schedules on Kubernetes and OpenShift</li>
-        <li><b style="color:#fff">Governed access</b>: each deployed capability uses its own identity and access grants through Gateway</li>
-        <li><b style="color:#fff">Execution governance</b>: approvals, run history and a durable record of every execution</li>
-        <li>Triggers in and deliveries out with retry; usage and cost per deployment</li>
-        <li>Tenant isolation enforced in the database</li>
-      </ul></div>
-    </div>
-
-    <hr class="hr mt-l">
-    <div class="split mt-l" id="signal">
-      <div class="rev">
-        <div style="display:flex;gap:16px;align-items:center">{{hex:signal}}<span class="badge">Observe</span></div>
-        <h2 class="mt-m" style="font-size:clamp(1.8rem,3vw,2.4rem)">AIRA Signal</h2>
-        <p class="lead mt-s">One answer to "what is our AI doing?" Signal observes runs, cost and health across the estate, and gives investigators the thread to pull when something looks wrong.</p>
-      </div>
-      <div class="card rev d1"><ul>
-        <li>Overview of AI Solution runs, failure rate, node latency and spend, from one hour to ninety days</li>
-        <li>Activity, LLM activity, journeys, flagged events and incidents</li>
-        <li>Health of AI Solutions, knowledge, the workflow engine, the platform and the estate</li>
-        <li>Cost, spend and security views, with export</li>
-      </ul></div>
-    </div>
-
-    <hr class="hr mt-l">
-    <div class="split mt-l" id="data">
-      <div class="rev">
-        <div style="display:flex;gap:16px;align-items:center">{{hex:data}}<span class="badge">Connect</span></div>
-        <h2 class="mt-m" style="font-size:clamp(1.8rem,3vw,2.4rem)">AIRA Data</h2>
-        <p class="lead mt-s">The governed data plane. Connect enterprise systems, ingest documents exactly once, and keep every extraction reviewable against the content it came from.</p>
-      </div>
-      <div class="card rev d1"><ul>
-        <li>Governed connectivity to PostgreSQL, SQL Server, MySQL, Oracle and IBM Db2, read-only by default, every query audited</li>
-        <li>Idempotent ingestion jobs that report incomplete attempts and never create duplicates</li>
-        <li>Document review bound to the content hash and the extractor version</li>
-        <li>A bounded tabular extraction service for CSV, TSV and JSON</li>
-      </ul></div>
-    </div>
-
-    <div class="console-bar rev mt-l">{{hex:console}}<p><b>AIRA Console</b> administers Nexus itself: identity (users, groups and service accounts in one table), organisations, product entitlements and roles, security (SSO, MFA, sessions), governance configuration, licensing, platform health with evidence, and the audit trail with chain verification and streaming export.</p></div>
+    <div class="console-bar rev mt-l">{{hex:console}}<p><b>AIRA Console</b> brings administration together: identity, roles, product access, security settings, platform health and the audit trail.</p></div>
   </div>
 </section>
 
@@ -185,68 +124,25 @@ nav: nexus
       <p class="lead">AIRA Nexus brings the platform together around AIRA Gateway. AIRA Home users and external applications connect through this single entry point to approved LLMs and to agents and AI Solutions executed by AIRA Runtime. Every request follows the same access policies, limits and audit controls.</p>
     </div>
     <div class="doors rev">{{doors}}</div>
-    <div class="grid g3 mt-l">
-      <div class="rev"><h4>Swap vendors, not code</h4><p class="muted mt-s" style="font-size:15px">Applications call a governed AI Endpoint, so the model behind it can change without a release.</p></div>
-      <div class="rev d1"><h4>Keys stay in one place</h4><p class="muted mt-s" style="font-size:15px">Provider keys are held by the Gateway, never by applications, and every call is policy-checked first.</p></div>
-      <div class="rev d2"><h4>Declared, never guessed</h4><p class="muted mt-s" style="font-size:15px">A local model server is explicit configuration. Declaring it opens exactly that exception, and nothing else.</p></div>
+    <div class="console-bar rev mt-l" id="audit">
+      <span class="icon">{{icon:chain}}</span>
+      <p>Every request shares access policies, usage limits and a tamper-evident record. <a class="link-arrow" href="{{root}}security.html#audit">Explore security and audit controls <span>&rarr;</span></a></p>
     </div>
   </div>
 </section>
-
-<section class="section" id="audit">
-  <div class="wrap">
-    <div class="split">
-      <div class="rev">
-        <span class="eyebrow">Tamper-evident by construction</span>
-        <h2 class="mt-m">Evidence your auditors can verify, <span class="grad">not just read.</span></h2>
-        <p class="lead mt-m">Runs, approvals, policy decisions and administrative actions are written to a hash-chained log. A database-level trigger blocks updates and deletes, so the record cannot be quietly rewritten. The chain can be verified on demand and streamed to your SIEM or GRC tools.</p>
-        <p class="note mt-m">Try it: edit an entry and watch verification fail at exactly that point. The hashes on the right are real SHA-256, computed in your browser.</p>
-      </div>
-      <div class="chain-wrap rev d1">
-        <div class="chain-head"><span class="chain-status" data-chain-status>Chain verified &middot; 5 of 5 entries</span><button class="btn btn-ghost btn-sm" data-chain-tamper type="button">Try to edit an entry <span class="arr">&rarr;</span></button></div>
-        <div class="chain vertical" data-chain></div>
-        <p class="chain-note">Illustrative entries. In AIRA Nexus the chain lives in PostgreSQL and is protected by a WORM trigger.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <div class="section-head rev">
-      <span class="eyebrow">Deploy where your data must live</span>
-      <h2>Your perimeter. Your models. Your keys.</h2>
-      <p class="lead">The same platform in every posture. Data stores are self-hosted in the cluster, licences verify offline, and cloud models are optional and customer-keyed.</p>
-    </div>
-    <div class="grid g3">
-      <div class="card rev"><div class="icon">{{icon:server}}</div><h3>On-premises</h3><p>Run the whole estate in your own data centre on Kubernetes or OpenShift, behind your firewall and your identity provider.</p></div>
-      <div class="card rev d1"><div class="icon">{{icon:cloud}}</div><h3>Private cloud</h3><p>Deploy into your own cloud tenancy or sovereign region. Cloud models connect only through the Gateway, with your keys.</p></div>
-      <div class="card rev d2"><div class="icon">{{icon:airgap}}</div><h3>Fully air-gapped</h3><p>Local models on your GPUs, offline licence verification and no outbound connectivity at all.</p></div>
-    </div>
-  </div>
-</section>
-
-
-
 
 <section class="section" id="deploy">
   <div class="wrap">
     <div class="section-head rev">
-      <span class="eyebrow">Technical specifications</span>
+      <span class="eyebrow">Deployment &amp; specifications</span>
       <h2>Built to be operated by <span class="grad">your</span> team.</h2>
-      <p class="lead">Everything runs on your infrastructure. No telemetry and no phone-home. All images run as non-root.</p>
+      <p class="lead">Deploy on-premises, in your private cloud or fully air-gapped. Your team controls the infrastructure, identity and model access, with no telemetry or phone-home.</p>
     </div>
     <dl class="specs rev">
       <div class="spec"><dt>Deployment</dt><dd>On-premises, private cloud or fully air-gapped. Kubernetes with base and overlays, plus an OpenShift overlay. Hostname-routed ingress with TLS at your edge.</dd></div>
-      <div class="spec"><dt>Installer</dt><dd><span class="mono">aira-install</span> provisions, builds and deploys, with a dry run that shows where every setting came from. <span class="mono">aira</span> seeds, starts, stops, diagnoses, backs up and upgrades.</dd></div>
       <div class="spec"><dt>Identity</dt><dd>Keycloak SSO over OIDC and SAML across every product, native TOTP MFA, JWTs with revocation, refresh rotation and an RS256 option.</dd></div>
-      <div class="spec"><dt>Isolation</dt><dd>PostgreSQL row-level security enrolled and forced on tenant tables. Services connect as a role that cannot bypass it.</dd></div>
       <div class="spec"><dt>Cloud models</dt><dd>OpenAI, Anthropic, Google Gemini, Mistral and Cohere pre-registered; any OpenAI-compatible endpoint can be added. Optional and customer-keyed.</dd></div>
       <div class="spec"><dt>Local models</dt><dd>Ollama on CPU or GPU, vLLM and SGLang on GPU, on your hardware. Declared in configuration, never auto-detected.</dd></div>
-      <div class="spec"><dt>Routing</dt><dd>Aliases by cost, latency, quality or priority. Fallback chains, circuit state, benchmarks and a model playground.</dd></div>
-      <div class="spec"><dt>Knowledge</dt><dd>Haystack pipelines, Qdrant vectors, FlashRank re-ranking, OCR and Office conversion at ingest, cited answers behind a grounding gate.</dd></div>
-      <div class="spec"><dt>Workflows</dt><dd>Durable execution on Temporal, plus an inline engine for simple AI Solutions. A record for every node, with version pinning or late binding.</dd></div>
-      <div class="spec"><dt>Agents</dt><dd>Conversational, job and reactive agents with tools and sub-agent trees under a hard budget for cost, time, LLM calls and depth.</dd></div>
       <div class="spec"><dt>Data stores</dt><dd>PostgreSQL as the source of truth, with Redis, Qdrant, MinIO and Temporal. All self-hosted.</dd></div>
       <div class="spec"><dt>Operations</dt><dd>Optional Prometheus, Grafana, Loki, Tempo and Alertmanager overlay. A health doctor that shows its evidence. Backup, restore-verify and a documented restore drill.</dd></div>
     </dl>

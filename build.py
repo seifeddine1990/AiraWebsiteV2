@@ -23,6 +23,7 @@ one edit. Placeholders usable inside pages:
 from __future__ import annotations
 
 import http.server
+from html import escape
 import os
 import re
 import shutil
@@ -41,7 +42,6 @@ CONTACT_EMAIL = "info@airafusion.com"
 NAV = [
     ("home", "Home", "index.html"),
     ("nexus", "AIRA Nexus", "nexus.html"),
-    ("products", "Products", "nexus.html#products"),
     ("solutions", "Solutions", "solutions.html"),
     ("security", "Security", "security.html"),
     ("about", "About", "about.html"),
@@ -274,12 +274,21 @@ FOOTER = f"""
 """
 
 
+def canonical_url(meta: dict, rel: str) -> str:
+    return f"{SITE_URL}/{meta.get('canonical', rel)}".replace("/index.html", "/")
+
+
+def indexable(rel: str) -> bool:
+    return rel != "404.html" and not rel.startswith("_")
+
+
 def page(meta: dict, body: str, rel: str) -> str:
     title = meta.get("title", "AIRA Fusion")
     full_title = title if "AIRA" in title else f"{title} | AIRA Fusion"
-    desc = meta.get("description", "")
-    canon = f"{SITE_URL}/{rel}".replace("/index.html", "/")
-    robots = '<meta name="robots" content="noindex">' if rel.startswith("_") else ""
+    full_title = escape(full_title, quote=True)
+    desc = escape(meta.get("description", ""), quote=True)
+    canon = escape(canonical_url(meta, rel), quote=True)
+    robots = '<meta name="robots" content="noindex">' if not indexable(rel) else ""
     return f"""<!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
@@ -356,12 +365,12 @@ def build() -> None:
         dest = OUT / rel
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_text(html, encoding="utf-8")
-        if rel != "404.html" and not rel.startswith("_"):
-            urls.append(f"{SITE_URL}/{rel}".replace("/index.html", "/"))
+        if indexable(rel) and canonical_url(meta, rel) == canonical_url({}, rel):
+            urls.append(canonical_url(meta, rel))
         count += 1
     (OUT / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        + "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
+        + "".join(f"  <url><loc>{escape(u)}</loc></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")
     leftovers = [p for p in OUT.rglob("*.html") if "{{" in p.read_text(encoding="utf-8")]
     if leftovers:
