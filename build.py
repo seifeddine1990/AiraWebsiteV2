@@ -83,12 +83,12 @@ ICONS = {
 
 # Product hexagon badges: a small pointy-top hex with a product glyph.
 HEX_GLYPH = {
-    "hub": '<circle cx="32" cy="32" r="5.5"/><circle cx="32" cy="32" r="12" opacity=".55"/>',
-    "studio": '<path d="M24 38.5 32 22l8 16.5M26.8 33h10.4"/>',
-    "gateway": '<path d="M22 24h20M22 40h20M26 24v16M38 24v16"/><path d="M29 32h6"/>',
-    "runtime": '<path d="m27 23 12 9-12 9z"/>',
-    "signal": '<path d="M21 34h5l3-8 6 14 3-6h5"/>',
-    "data": '<ellipse cx="32" cy="25.5" rx="9" ry="3.5"/><path d="M23 25.5v13c0 1.9 4 3.5 9 3.5s9-1.6 9-3.5v-13M23 32c0 1.9 4 3.5 9 3.5s9-1.6 9-3.5"/>',
+    "hub": '<path d="M39 22H24a4 4 0 0 0-4 4v10a4 4 0 0 0 4 4h3v5l6-5h7a4 4 0 0 0 4-4v-7"/><path d="m40 18 1.8 4.2L46 24l-4.2 1.8L40 30l-1.8-4.2L34 24l4.2-1.8zM26 30h5M26 35h12"/>',
+    "studio": '<rect x="19" y="20" width="10" height="9" rx="2"/><rect x="35" y="35" width="10" height="9" rx="2"/><path d="M29 24.5h8a3 3 0 0 1 3 3V35M19 40h10M24 35v10"/>',
+    "gateway": '<path d="m32 19 11 4v8c0 6-4.5 10-11 14-6.5-4-11-8-11-14v-8z"/><path d="M26 32h12m-4-4 4 4-4 4"/>',
+    "runtime": '<rect x="22" y="22" width="20" height="20" rx="4"/><path d="m29 27 8 5-8 5zM27 18v4M37 18v4M27 42v4M37 42v4M18 27h4M18 37h4M42 27h4M42 37h4"/>',
+    "signal": '<rect x="19" y="21" width="26" height="19" rx="3"/><path d="M28 45h8M32 40v5M23 32h4l3-6 4 10 3-5h4"/>',
+    "data": '<ellipse cx="29" cy="23" rx="8" ry="3"/><path d="M21 23v14c0 1.7 3.6 3 8 3M37 23v8M21 30c0 1.7 3.6 3 8 3s8-1.3 8-3M29 40h8M37 36v8h4"/><circle cx="44" cy="44" r="3"/><circle cx="40" cy="34" r="3"/>',
     "console": '<rect x="22" y="23" width="20" height="18" rx="2.5"/><path d="M22 28.5h20M26 34h7"/>',
 }
 
@@ -104,6 +104,8 @@ def hexbadge(name: str) -> str:
 
 
 def icon(name: str) -> str:
+    if name.startswith("product"):
+        return f'<svg viewBox="16 16 32 32" aria-hidden="true">{HEX_GLYPH[name[7:]]}</svg>'
     return f'<svg viewBox="0 0 24 24" aria-hidden="true">{ICONS[name]}</svg>'
 
 
