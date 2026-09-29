@@ -23,6 +23,7 @@ one edit. Placeholders usable inside pages:
 from __future__ import annotations
 
 import http.server
+import hashlib
 from html import escape
 import os
 import re
@@ -233,10 +234,10 @@ def header(nav: str) -> str:
   <nav class="nav wrap" aria-label="Main">
     <a class="brand" href="{{{{root}}}}index.html" aria-label="AIRA Fusion home">
       <img class="mark" src="{{{{root}}}}img/brand/aira-icon-192.png" alt="" width="40" height="40">
-      <img class="word" src="{{{{root}}}}img/brand/aira-wordmark-white.png" alt="AIRA Fusion" width="106" height="35">
+      <img class="word" src="{{{{root}}}}img/brand/aira-wordmark-navy.png" alt="AIRA Fusion" width="106" height="35">
     </a>
-    <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><i></i></button>
-    <ul class="nav-links">
+    <button class="nav-toggle" aria-label="Menu" aria-controls="primary-navigation" aria-expanded="false"><i></i></button>
+    <ul class="nav-links" id="primary-navigation">
       {''.join(items)}
       <li class="nav-cta"><a class="btn btn-outline btn-sm" href="{{{{root}}}}contact.html">Contact us</a></li>
     </ul>
@@ -252,7 +253,7 @@ FOOTER = f"""
       <div class="foot-brand">
         <a class="brand" href="{{{{root}}}}index.html" aria-label="AIRA Fusion home">
           <img class="mark" src="{{{{root}}}}img/brand/aira-icon-192.png" alt="" width="40" height="40">
-          <img class="word" src="{{{{root}}}}img/brand/aira-wordmark-white.png" alt="AIRA Fusion" width="106" height="35">
+          <img class="word" src="{{{{root}}}}img/brand/aira-wordmark-navy.png" alt="AIRA Fusion" width="106" height="35">
         </a>
         <div class="domain">airafusion.com</div>
         <p>Artificial Intelligence Research &amp; Application. An enterprise AI company making AI secure, regulated and reliable for banks, governments and regulated enterprises.</p>
@@ -284,7 +285,7 @@ def indexable(rel: str) -> bool:
     return rel != "404.html" and not rel.startswith("_")
 
 
-def page(meta: dict, body: str, rel: str) -> str:
+def page(meta: dict, body: str, rel: str, default_theme: str = "light") -> str:
     title = meta.get("title", "AIRA Fusion")
     full_title = title if "AIRA" in title else f"{title} | AIRA Fusion"
     full_title = escape(full_title, quote=True)
@@ -292,13 +293,13 @@ def page(meta: dict, body: str, rel: str) -> str:
     canon = escape(canonical_url(meta, rel), quote=True)
     robots = '<meta name="robots" content="noindex">' if not indexable(rel) else ""
     return f"""<!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-default-theme="{default_theme}" data-theme="{default_theme}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{full_title}</title>
 <meta name="description" content="{desc}">
-<meta name="theme-color" content="#07192B">{robots}
+<meta name="theme-color" content="{'#f0f6fa' if default_theme == 'light' else '#040d1c'}">{robots}
 <link rel="canonical" href="{canon}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="AIRA Fusion">
@@ -314,6 +315,8 @@ def page(meta: dict, body: str, rel: str) -> str:
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@300;400;500;600;700;800&family=Michroma&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{{{root}}}}css/site.css">
 <link rel="stylesheet" href="{{{{root}}}}css/glow.css">
+<link id="light-theme" rel="stylesheet" href="{{{{root}}}}css/light.css" media="{'all' if default_theme == 'light' else 'not all'}">
+<script src="{{{{root}}}}js/theme.js"></script>
 </head>
 <body>
 {header(meta.get("nav", ""))}
@@ -321,6 +324,10 @@ def page(meta: dict, body: str, rel: str) -> str:
 {body}
 </main>
 {FOOTER}
+<button class="theme-toggle" type="button" aria-label="Switch color theme" hidden>
+  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></svg>
+  <span>Dark mode</span>
+</button>
 <script src="{{{{root}}}}js/site.js" defer></script>
 </body>
 </html>
@@ -339,6 +346,15 @@ def render(text: str, root: str) -> str:
     text = re.sub(r"\{\{icon:([a-z]+)\}\}", lambda m: icon(m.group(1)), text)
     text = re.sub(r"\{\{hex:([a-z]+)\}\}", lambda m: hexbadge(m.group(1)), text)
     text = text.replace("{{email}}", CONTACT_EMAIL)
+    # Use the supplied wordmark for each surface; never recolor the logo artwork.
+    text = re.sub(r'<img\b[^>]*src="[^"]*aira-wordmark-navy\.png"[^>]*>',
+                  lambda m: m.group(0) + m.group(0).replace("aira-wordmark-navy.png", "aira-wordmark-white.png"), text)
+    # Content versions keep a release's CSS and JavaScript in sync with its HTML.
+    def version_asset(match: re.Match) -> str:
+        asset = match.group(2)
+        version = hashlib.sha256((SRC / "static" / asset).read_bytes()).hexdigest()[:12]
+        return f'{match.group(1)}="{{{{root}}}}{asset}?v={version}"'
+    text = re.sub(r'(href|src)="\{\{root\}\}((?:css|js)/[^"?]+\.(?:css|js))"', version_asset, text)
     return text.replace("{{root}}", root)
 
 
@@ -350,6 +366,11 @@ def build() -> None:
     shutil.copytree(SRC / "static", OUT, dirs_exist_ok=True)
     count = 0
     urls = []
+    home = FM.match((SRC / "pages" / "index.html").read_text(encoding="utf-8"))
+    theme_flag = re.search(r"^default_theme:\s*(\S+)\s*$", home.group(1), re.M) if home else None
+    default_theme = theme_flag.group(1) if theme_flag else "light"
+    if default_theme not in ("light", "dark"):
+        sys.exit("index.html default_theme must be light or dark")
     for src in sorted((SRC / "pages").rglob("*.html")):
         rel = src.relative_to(SRC / "pages").as_posix()
         raw = src.read_text(encoding="utf-8")
@@ -363,7 +384,7 @@ def build() -> None:
             raw = raw[m.end():]
         depth = rel.count("/")
         root = "/" if rel == "404.html" else "../" * depth
-        html = render(page(meta, raw, rel), root)
+        html = render(page(meta, raw, rel, default_theme), root)
         dest = OUT / rel
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_text(html, encoding="utf-8")

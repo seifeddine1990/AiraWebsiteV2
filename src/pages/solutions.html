@@ -47,11 +47,11 @@ nav: solutions
       <p class="lead">Explore the work each use case supports on AIRA Nexus, with labels showing whether it ships ready to run or is built during a pilot.</p>
       <div class="strip mt-m" style="gap:18px;align-items:center"><span class="badge ready">In catalog &middot; runs on day one</span><span class="badge demo">Demo estate &middot; simplified logic to adapt</span><span class="badge pattern">Pattern &middot; built in a pilot</span></div>
     </div>
-    <div class="tabs rev" data-tabs="#uc-grid" role="tablist">
-      <button class="tab" role="tab" aria-selected="true" data-filter="all">All</button>
-      <button class="tab" role="tab" aria-selected="false" data-filter="banking">Banking</button>
-      <button class="tab" role="tab" aria-selected="false" data-filter="gov">Government</button>
-      <button class="tab" role="tab" aria-selected="false" data-filter="cross">Cross-industry</button>
+    <div class="tabs rev" data-tabs="#uc-grid" role="group" aria-label="Filter use cases by sector">
+      <button class="tab" aria-pressed="true" data-filter="all">All</button>
+      <button class="tab" aria-pressed="false" data-filter="banking">Banking</button>
+      <button class="tab" aria-pressed="false" data-filter="gov">Government</button>
+      <button class="tab" aria-pressed="false" data-filter="cross">Cross-industry</button>
     </div>
     <div class="grid g3" id="uc-grid">
       <article class="card uc" data-sector="banking all"><span class="badge ready">In catalog</span><span class="kicker">01 &middot; Banking &middot; Retail &amp; SME lending</span><h3>Credit Review Assistant</h3>

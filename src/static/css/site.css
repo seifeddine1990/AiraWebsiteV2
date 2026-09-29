@@ -394,7 +394,7 @@ p { margin: 0; }
 .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; }
 .tab { height: 42px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--line-2); background: transparent; font-size: 14px; font-weight: 500; color: var(--ink-2); transition: all .25s; }
 .tab:hover { color: #fff; border-color: rgba(0,207,255,.5); }
-.tab[aria-selected="true"] { background: var(--grad); border-color: transparent; color: #fff; }
+.tab[aria-pressed="true"] { background: var(--grad); border-color: transparent; color: #fff; }
 .uc { display: flex; flex-direction: column; }
 .uc .badge { align-self: flex-start; margin-bottom: 18px; }
 .uc dl { margin: 18px 0 0; display: grid; gap: 12px; }

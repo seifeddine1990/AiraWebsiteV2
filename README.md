@@ -9,7 +9,21 @@ python build.py            # writes ./public
 python build.py --serve    # builds, then serves http://localhost:8090
 ```
 
+CSS and JavaScript URLs include content hashes so new builds invalidate cached assets.
+
 Links are relative, so `public/index.html` also opens directly from disk.
+
+## Light and dark mode
+
+The bottom-right button switches between the current light design and the original dark palette. The logo icon is unchanged; each mode uses its supplied navy or white wordmark.
+
+Set the site-wide default in the front matter at the top of `src/pages/index.html`:
+
+```yaml
+default_theme: light
+```
+
+Use `light` or `dark`, then run `python build.py`. The default applies to every page, including direct links. A visitor's saved choice takes precedence; use the button to change it, or test a new default in a fresh browser profile. If storage is unavailable, the button still works for the current page. Without JavaScript, the configured default is displayed.
 
 The single AIRA Nexus navigation item combines the platform overview, six product cards, architecture and deployment specifications. These are maintained together in `src/pages/nexus.html`. Product links use `nexus.html#home`, `#studio`, `#gateway`, `#runtime`, `#signal` and `#data`. The former `platform.html` page redirects to Nexus and maps legacy `#hub` links to `#home`.
 
@@ -28,6 +42,8 @@ The image uses rootless nginx on port 8080 and serves security headers, includin
 ```bash
 python build.py
 python tools/check_search.py
+python tools/check_site.py
+node tools/check_contact.cjs
 ```
 
 The build generates lowercase `robots.txt` and `sitemap.xml` at the site root. The sitemap contains only indexable, canonical pages; the legacy Platform page points its canonical to Nexus and is excluded. The error page carries `noindex`. Crawlers can read the page content directly from HTML without JavaScript.
@@ -46,6 +62,7 @@ src/pages/*.html         page bodies, each with a small front-matter block (titl
 src/pages/insights/      articles
 src/static/css/site.css  the design system (tokens in :root)
 src/static/css/glow.css  the glow-glass layer loaded after site.css (glass panels, light ribbons, pedestal, product suite, deploy strip); tokens at the top
+src/static/css/light.css the light palette, neutral surfaces and restrained accents; loaded last
 src/static/js/site.js    light-ribbon waves, dotted globe, plane diagram, request lifecycle, audit chain, policy stream, tabs, form
 src/static/js/globe-data.js  1-degree land mask for the home globe (Natural Earth 1:110m land, public domain); loaded only by index.html
 src/static/img/brand/    approved brand artwork (supplied files, resized only)
@@ -60,6 +77,7 @@ Placeholders inside pages: `{{root}}`, `{{icon:NAME}}`, `{{hex:PRODUCT}}`, `{{pl
 
 - **Logo**: only the approved AIRA Fusion artwork is used, never redrawn. `aira-icon-master.png` is the master icon as supplied. `aira-icon-{512,192,64,32}.png`, `favicon.png` and `apple-touch-icon.png` are the same file, cropped and resized. `aira-wordmark-{white,navy}.png` is the approved AIRA FUSION wordmark from the brand pack. When vector files arrive, drop them in with the same names.
 - **Colours**: Midnight Navy `#07192B`, Deep Navy `#0A1F3D`, AIRA Blue `#006CFF`, Electric Cyan `#00CFFF`, Ice Blue `#D9F4FF`.
+- **Website palette**: pale blue-gray backgrounds and white card surfaces, charcoal text and restrained teal-blue accents. The original logo icon (including its dark interior) is unchanged; light surfaces use the supplied navy wordmark.
 - **Type**: Michroma (wide display) for names and section titles, Montserrat for headings and micro-labels, Inter for text, JetBrains Mono for code-style labels. All from Google Fonts.
 - **QR code**: `img/qr-airafusion.svg` encodes https://airafusion.com. Regenerate it with the `qrcode` Python package if the URL changes.
 

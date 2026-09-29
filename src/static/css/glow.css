@@ -28,6 +28,21 @@ body {
 .hero::after { background: linear-gradient(to bottom, transparent, var(--space)); }
 
 /* ---- Type: wide display for names and section titles ---- */
+html[data-theme="dark"] { color-scheme: dark; }
+html[data-theme="dark"] img[src$="aira-wordmark-navy.png"],
+html[data-theme="light"] img[src$="aira-wordmark-white.png"] { display: none; }
+.theme-toggle {
+  position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 40; display: inline-flex; align-items: center; gap: 8px;
+  min-height: 44px; padding: 10px 16px; border-radius: 999px;
+  border: 1px solid var(--glass-border-hi); background: var(--space); color: var(--ink);
+  box-shadow: var(--glass-shadow); font: 600 13px/1.3 var(--f-text);
+}
+.theme-toggle[hidden] { display: none; }
+.theme-toggle svg { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linejoin: round; }
+.theme-toggle:hover { border-color: var(--cyan); }
+.site-footer { padding-bottom: 88px; }
+
 .display, .display-sm, .display-xs { font-family: var(--f-wide); font-weight: 400; text-transform: uppercase; letter-spacing: .04em; line-height: 1.05; }
 .display { font-size: clamp(2.3rem, 4.3vw, 4rem); margin: 18px 0 16px; white-space: nowrap; }
 @media (max-width: 420px) { .display { font-size: 2.05rem; } }
@@ -117,7 +132,7 @@ a:hover > .circle-arrow { background: rgba(0, 170, 255, .2); transform: translat
 
 /* Tabs */
 .tab { border-color: var(--glass-border); background: rgba(8, 24, 50, .4); }
-.tab[aria-selected="true"] { box-shadow: var(--glow-sm); }
+.tab[aria-pressed="true"] { box-shadow: var(--glow-sm); }
 
 /* Forms */
 .field input, .field select, .field textarea { background-color: rgba(2, 10, 22, .6); border-color: var(--glass-border); }
@@ -282,3 +297,52 @@ canvas.globe { position: absolute; z-index: -1; pointer-events: none; }
 .assurance-details { border:1px solid var(--line-2); border-radius:14px; padding:20px; }
 .assurance-details summary { cursor:pointer; color:white; font-weight:600; padding:4px; }
 .assurance-details[open] summary { margin-bottom:24px; }
+
+/* Align the product details by content row, without stretching paragraphs. */
+.product-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.product-cards .product {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 4;
+  gap: 20px;
+  min-width: 0;
+  align-content: start;
+}
+.product-cards .p-head, .product-cards h3, .product-cards p, .product-cards ul { margin: 0; }
+.product-cards .p-head { gap: 16px; }
+.product-cards .p-role { line-height: 1.4; text-align: right; }
+.product-cards p { flex: none; }
+.product-cards ul { align-content: start; gap: 14px; padding-top: 20px; border-top: 1px solid var(--line); }
+.product-cards li { line-height: 1.65; }
+.product-cards li b { color: var(--ink); }
+.product-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.product-links a { justify-content: space-between; }
+@supports not (grid-template-rows: subgrid) {
+  .product-cards .product { grid-template-rows: auto auto auto 1fr; grid-row: auto; }
+}
+@media (max-width: 760px) {
+  .product-cards { grid-template-columns: minmax(0, 1fr); }
+  .product-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Allow narrow screens to wrap content within its own column. */
+.grid > *, .split > *, .hero-grid > *, .hero-fusion-grid > *, .platform-panel > * { min-width: 0; }
+.suite-card h3 { line-height: 1.3; }
+.spec dd { overflow-wrap: anywhere; }
+@media (max-width: 480px) {
+  .display { font-size: clamp(1.45rem, 7.6vw, 2.05rem); }
+  .hf-sub { overflow-wrap: anywhere; }
+  .product-links a { font-size: 13px; padding: 12px; gap: 8px; }
+  .pp-feat { padding-inline: 5px; }
+  .pp-feat .micro { font-size: 9px; letter-spacing: .14em; }
+  .qr-card { grid-template-columns: 64px minmax(0, 1fr) auto; gap: 10px; }
+  .qr-card img { width: 64px; height: 64px; }
+}
+
+/* Keep navigation available when progressive enhancement cannot run. */
+@media (max-width: 1020px) {
+  .no-js .site-header { position: relative; height: auto; }
+  .no-js .nav { flex-wrap: wrap; padding-top: 16px; }
+  .no-js .nav-toggle { display: none; }
+  .no-js .nav-links { position: static; width: 100%; visibility: visible; opacity: 1; transform: none; padding-inline: 0; }
+}

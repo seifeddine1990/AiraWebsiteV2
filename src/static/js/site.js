@@ -20,6 +20,13 @@
     document.querySelectorAll(".nav-links a").forEach(function (a) {
       a.addEventListener("click", function () { document.body.classList.remove("nav-open"); toggle.setAttribute("aria-expanded", "false"); });
     });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && document.body.classList.contains("nav-open")) {
+        document.body.classList.remove("nav-open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.focus();
+      }
+    });
   }
 
   /* ---------- Reveal on scroll ---------- */
@@ -169,7 +176,7 @@
 
   /* ---------- Plane diagram: highlight a product, show its line ---------- */
   var plane = document.querySelector(".plane");
-  if (plane) {
+  if (plane && plane.querySelectorAll(".node").length) {
     var pnodes = plane.querySelectorAll(".node"), caption = document.querySelector("[data-plane-caption]");
     var idx = 0, timer;
     function show(i) {
@@ -178,8 +185,20 @@
     }
     function cycle() { show(idx); idx = (idx + 1) % pnodes.length; }
     pnodes.forEach(function (n, j) {
-      n.addEventListener("mouseenter", function () { clearInterval(timer); show(j); });
-      n.addEventListener("mouseleave", function () { idx = j + 1; timer = setInterval(cycle, 3200); });
+      function select() { clearInterval(timer); show(j); }
+      function resume() {
+        clearInterval(timer);
+        idx = (j + 1) % pnodes.length;
+        if (!reduce && !plane.contains(document.activeElement) && !plane.matches(":hover")) timer = setInterval(cycle, 3200);
+      }
+      n.addEventListener("mouseenter", select);
+      n.addEventListener("mouseleave", resume);
+      n.addEventListener("focus", select);
+      n.addEventListener("blur", resume);
+    });
+    plane.addEventListener("mouseleave", function () {
+      clearInterval(timer);
+      if (!reduce && !plane.contains(document.activeElement)) timer = setInterval(cycle, 3200);
     });
     cycle();
     if (!reduce) timer = setInterval(cycle, 3200);
@@ -275,12 +294,12 @@
     if (btn) btn.addEventListener("click", function () { tampered = tampered < 0 ? 2 : -1; render(); });
   }
 
-  /* ---------- Tabs ---------- */
+  /* ---------- Catalogue filter buttons ---------- */
   document.querySelectorAll("[data-tabs]").forEach(function (group) {
     var tabs = group.querySelectorAll(".tab"), target = document.querySelector(group.getAttribute("data-tabs"));
     tabs.forEach(function (t) {
       t.addEventListener("click", function () {
-        tabs.forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
+        tabs.forEach(function (x) { x.setAttribute("aria-pressed", x === t ? "true" : "false"); });
         var f = t.getAttribute("data-filter");
         target.querySelectorAll("[data-sector]").forEach(function (card) {
           card.hidden = !(f === "all" || card.getAttribute("data-sector").indexOf(f) > -1);
