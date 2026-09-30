@@ -1,13 +1,15 @@
-/* Apply the saved palette before the body renders. Storage is optional. */
+/* Apply the default palette before the body renders. Storage is optional. */
 (function () {
   "use strict";
   var root = document.documentElement;
   var sheet = document.getElementById("light-theme");
   var theme = root.getAttribute("data-default-theme") === "dark" ? "dark" : "light";
   var button;
+  // Temporarily disable switching and saved preferences together.
+  var toggleEnabled = false;
   try {
     var saved = localStorage.getItem("aira-theme");
-    if (saved === "light" || saved === "dark") theme = saved;
+    if (toggleEnabled && (saved === "light" || saved === "dark")) theme = saved;
   } catch (_) { /* Private browsing and local-file previews may block storage. */ }
 
   function apply(value) {
@@ -23,6 +25,7 @@
   }
   apply(theme);
   document.addEventListener("DOMContentLoaded", function () {
+    if (!toggleEnabled) return;
     button = document.querySelector(".theme-toggle");
     apply(theme);
     button.hidden = false;

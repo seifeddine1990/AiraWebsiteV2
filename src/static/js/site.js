@@ -308,20 +308,6 @@
     });
   });
 
-  /* ---------- Contact form: compose an email, no data leaves the page otherwise ---------- */
-  var form = document.querySelector("form[data-mailto]");
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var d = new FormData(form), to = form.getAttribute("data-mailto");
-      var subject = "[" + (d.get("topic") || "Briefing") + "] " + (d.get("company") || "");
-      var body = "Name: " + d.get("name") + "\nRole: " + (d.get("role") || "") + "\nCompany: " + d.get("company") +
-        "\nEmail: " + d.get("email") + "\n\n" + (d.get("message") || "");
-      window.location.href = "mailto:" + to + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-      var ok = form.querySelector(".form-ok"); if (ok) ok.classList.add("show");
-    });
-  }
-
   /* ---------- Live policy stream (illustrative governed events) ---------- */
   var stream = document.querySelector("[data-stream] .s-rows");
   if (stream) {

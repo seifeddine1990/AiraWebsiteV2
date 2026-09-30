@@ -1,0 +1,4 @@
+Tool: built-in imagegen
+Output: src/static/img/aira-assistant.png
+
+Create a website chat assistant avatar asset, a photorealistic friendly adult professional woman with shoulder-length dark brown hair neatly swept back, navy blazer and white blouse, facing directly forward, welcoming restrained smile, head and shoulders portrait. Match the human AIRA website helper concept, professional enterprise website, natural skin texture, polished studio portrait. Centered symmetrical composition, whole head visible with ample margin, shoulders and upper chest visible, no hands. Plain solid deep navy #061326 background, gentle cyan rim lighting, no text no logos no icons no frames. Square image, suitable for a circular chat avatar crop at small size.

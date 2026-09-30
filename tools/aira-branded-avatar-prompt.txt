@@ -1,0 +1,6 @@
+Tool: built-in imagegen
+Output: src/static/img/aira-assistant-branded.png
+Reference: the human avatar in the earlier generated AIRA homepage mockup.
+Note: the generated image retained its backdrop; the website uses a CSS edge mask to blend it into the page.
+
+Use case: background-extraction / identity-preserve. The input is the earlier AIRA Fusion homepage mockup. Extract and faithfully recreate ONLY the small professional woman avatar at the BOTTOM RIGHT of that image as a standalone high-resolution transparent PNG cutout. Preserve that exact character's youthful adult face, dark brown neatly tied-back hair with soft strands framing her face, friendly subtle smile, navy tailored blazer and white blouse. Do not replace her with a different or older woman. Head, shoulders and upper torso portrait from top of hair to mid torso, facing camera, arms at sides out of frame. Preserve and make legible the small WHITE embroidered text 'AIRA' on HER LEFT chest (viewer right) of the navy blazer. This jacket branding is essential. No website, no chat button, no speech bubble, no background, no frame, no other text, no extra symbols. True transparent alpha background, clean edges, no cyan outer halo. Portrait 2:3 composition centered, generous room around hair, shoulders fully visible. This is the same avatar from the source mockup, not a new character.

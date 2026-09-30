@@ -1,0 +1,5 @@
+Tool: built-in imagegen
+Output: src/static/img/aira-luminous-orb.png
+Reference: earlier luminous orb homepage mockup.
+
+Create a standalone website avatar asset matching ONLY the luminous blue orb at bottom right of this reference homepage. Glossy round blue glass shell, friendly dark navy faceplate with two curved smiling cyan eyes, small clearly legible AIRA wordmark on lower front silver-blue shell. Small elliptical luminous base underneath, restrained blue cyan glow. No humanoid body, no limbs, no human, no chat bubble, no webpage, no button. Centered square composition, entire orb and base visible with 10 percent padding. Background uniform very dark navy #040d1c fading to near black at edges, suitable for a circular CSS mask on a dark website. Premium polished 3D render, same friendly character identity and proportions as the orb in reference.

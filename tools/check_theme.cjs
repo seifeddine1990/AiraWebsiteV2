@@ -7,7 +7,7 @@ const source = fs.readFileSync(path.join(__dirname, '../src/static/js/theme.js')
 
 for (const [fallback, saved, blocked, expected] of [
   ['light', null, false, 'light'], ['dark', null, false, 'dark'],
-  ['light', 'dark', false, 'dark'], ['dark', 'light', false, 'light'],
+  ['light', 'dark', false, 'light'], ['dark', 'light', false, 'dark'],
   ['light', 'invalid', false, 'light'], ['dark', null, true, 'dark'],
 ]) {
   let ready, click, stored = saved;
@@ -29,11 +29,8 @@ for (const [fallback, saved, blocked, expected] of [
   assert.equal(attrs['data-theme'], expected);
   assert.equal(sheet.media, expected === 'light' ? 'all' : 'not all');
   ready();
-  assert.equal(button.hidden, false);
-  click();
-  const next = expected === 'light' ? 'dark' : 'light';
-  assert.equal(attrs['data-theme'], next);
-  assert.equal(sheet.media, next === 'light' ? 'all' : 'not all');
-  if (!blocked) assert.equal(stored, next);
+  assert.equal(button.hidden, true);
+  assert.equal(click, undefined);
+  assert.equal(stored, saved);
 }
-console.log('PASS: light/dark defaults, saved preference, invalid preference, toggle and blocked storage');
+console.log('PASS: light/dark defaults, ignored saved preferences, hidden toggle and blocked storage');

@@ -15,17 +15,42 @@ Links are relative, so `public/index.html` also opens directly from disk.
 
 ## Light and dark mode
 
-The bottom-right button switches between the current light design and the original dark palette. The logo icon is unchanged; each mode uses its supplied navy or white wordmark.
+The site defaults to dark mode. The theme toggle is temporarily hidden and saved visitor preferences are ignored while switching is disabled. The logo icon is unchanged; each mode uses its supplied navy or white wordmark.
 
 Set the site-wide default in the front matter at the top of `src/pages/index.html`:
 
 ```yaml
-default_theme: light
+default_theme: dark
 ```
 
-Use `light` or `dark`, then run `python build.py`. The default applies to every page, including direct links. A visitor's saved choice takes precedence; use the button to change it, or test a new default in a fresh browser profile. If storage is unavailable, the button still works for the current page. Without JavaScript, the configured default is displayed.
+Use `light` or `dark`, then run `python build.py`. The default applies to every page, including direct links and without JavaScript. To restore the toggle and saved visitor preferences, set `toggleEnabled` to `true` in `src/static/js/theme.js` and rebuild.
 
 The single AIRA Nexus navigation item combines the platform overview, six product cards, architecture and deployment specifications. These are maintained together in `src/pages/nexus.html`. Product links use `nexus.html#home`, `#studio`, `#gateway`, `#runtime`, `#signal` and `#data`. The former `platform.html` page redirects to Nexus and maps legacy `#hub` links to `#home`.
+
+## Ask AIRA website guide
+
+The floating luminous-orb chat uses local, prepared FAQ answers and keyword matching. It does not call an AI service. Questions stay in memory for the current page; refreshing or navigating clears them. Up to 60 messages are retained. Visitors can optionally include this conversation when sending an enquiry.
+
+Edit `src/static/js/aira-config.js`:
+
+```js
+recipient: "info@airafusion.com",
+emailSubject: "AIRA website enquiry",
+```
+
+The recipient is **your team's receiving mailbox**, currently `info@airafusion.com`. FormSubmit must activate that mailbox before enquiries can be delivered. Leaving the recipient empty disables sending. Do not put mailbox passwords, SMTP credentials or private keys in this public file. This configuration is shared by the Contact Us form and avatar chat. You can edit the greeting and avatar path, or set `enabled: false` to hide only the chat (the contact form still works).
+
+Run `python build.py --serve` to preview. Once the recipient is configured, submit a test enquiry from the widget, open the FormSubmit activation email in that mailbox (check spam), and confirm it. Send another test after activation and verify receipt before publishing. Changing the receiving mailbox requires activation again. FormSubmit also supplies an opaque recipient token that can replace the email in `recipient`. Rebuild and redeploy after every config change. Sending needs an HTTP(S) page and an internet connection; use the preview server instead of opening an HTML file directly.
+
+Enquiries go through [FormSubmit](https://formsubmit.co/documentation), which currently advertises free unlimited submissions and retains submissions for 30 days. The email includes name, reply-to email, company, message, page URL, and the transcript only when the visitor checks the inclusion box. This implementation does not send automatic copies to visitors. The widget includes a honeypot and prevents duplicate clicks during a request; these do not replace server-side abuse protection. Browser-visible recipient settings are public, even with a token. Provider acceptance is not proof of inbox delivery.
+
+The nginx Content Security Policy permits requests to `https://formsubmit.co`; replicate that `connect-src` permission if you deploy behind another host's CSP. No email is sent merely by opening the widget or asking a question. The Contact Us form uses the same delivery code and recipient as the chat, and preserves entered details if delivery fails. Direct email links remain available as a fallback.
+
+## Updating the FAQ answers
+
+The editable FAQ content lives in `src/static/js/aira-faq.js`, separate from email settings and chat code. Each entry has a button `label`, matching `keywords`, a prepared `answer`, and a `page` link to the website source. The chat loads this file locally; there is no AI, crawling or automatic content rewrite at runtime.
+
+Whenever website content changes, ask: **"Update the Ask AIRA FAQs from the current website content."** Review the source pages in `src/pages/`, refresh this FAQ file, add or remove topics as needed, and verify the answer wording and source links. Keep pricing and certification claims limited to what the source pages actually say. Preserve the shared mailbox configuration. Run `python build.py`, `python tools/check_site.py` and `node tools/check_faq.cjs`, then redeploy. Every build versions the FAQ script so visitors get the updated content.
 
 ## Deploy
 

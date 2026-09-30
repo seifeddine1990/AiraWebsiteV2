@@ -2,7 +2,7 @@
 title: AIRA Fusion — Secure, regulated and reliable enterprise AI
 description: AIRA Fusion (Artificial Intelligence Research & Application) helps banks, governments and regulated enterprises adopt AI securely, responsibly and at scale, through research, practical application and its flagship platform, AIRA Nexus.
 nav: home
-default_theme: light
+default_theme: dark
 ---
 <section class="hero hero-fusion">
   <canvas class="waves" data-variant="hero" aria-hidden="true"></canvas>
@@ -72,13 +72,75 @@ default_theme: light
   </div>
 </section>
 
-<section class="section tight" id="suite">
+<section class="section" id="enterprise-ai-problem" aria-labelledby="ai-problem-title">
+  <div class="wrap">
+    <div class="section-head rev">
+      <p class="micro accent">The enterprise AI problem</p>
+      <h2 class="mt-m" id="ai-problem-title">AI adoption is growing.<br><span class="grad">Oversight needs to keep up.</span></h2>
+      <p class="lead">When teams choose separate assistants, models and workflows, each brings another set of permissions, costs and records. Turning those experiments into dependable services becomes an organisation-wide challenge.</p>
+    </div>
+    <div class="grid g3">
+      <article class="card rev"><span class="glow-icon">{{icon:layers}}</span><h3 class="mt-m">Disconnected tools</h3><p>Knowledge and workflows stay in silos. Teams repeat integration work instead of sharing capabilities.</p></article>
+      <article class="card rev d1"><span class="glow-icon">{{icon:shield}}</span><h3 class="mt-m">Uneven controls</h3><p>Access, data handling and model budgets vary between applications, making consistent oversight harder.</p></article>
+      <article class="card rev d2"><span class="glow-icon">{{icon:pulse}}</span><h3 class="mt-m">Incomplete evidence</h3><p>Scattered records make it difficult to connect an answer to its source, cost and approval history.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section band-deep" id="full-ai-stack" aria-labelledby="ai-stack-title">
+  <div class="wrap">
+    <div class="section-head rev">
+      <p class="micro accent">The answer</p>
+      <h2 class="mt-m" id="ai-stack-title">The full AI stack,<br><span class="grad">in one place.</span></h2>
+      <p class="lead">AIRA Nexus connects the experiences people use with the controls IT needs: knowledge, development, execution and oversight in one enterprise platform.</p>
+    </div>
+    <div class="nexus-stack rev" aria-label="AIRA Nexus platform layers">
+      <div class="nexus-stack-layer"><span class="micro">People &amp; applications</span><p>Employee assistants <span aria-hidden="true">·</span> Document insights <span aria-hidden="true">·</span> Agents &amp; workflows</p></div>
+      <div class="nexus-stack-layer nexus-stack-core"><span class="micro accent">AIRA Nexus</span><h3>A shared foundation for enterprise AI</h3><p>Identity &amp; access <span aria-hidden="true">·</span> Model policy <span aria-hidden="true">·</span> Knowledge <span aria-hidden="true">·</span> Execution <span aria-hidden="true">·</span> Monitoring &amp; evidence</p></div>
+      <div class="nexus-stack-layer"><span class="micro">Your infrastructure</span><p>Enterprise data <span aria-hidden="true">·</span> Private models <span aria-hidden="true">·</span> Approved cloud providers</p></div>
+    </div>
+    <div class="governance-flow" id="governance" aria-labelledby="governance-title">
+      <div class="section-head rev">
+        <p class="micro accent">Governance</p>
+        <h3 class="mt-m" id="governance-title">Controls throughout execution.</h3>
+        <p class="lead">Shared policies connect each request to its permissions, execution history and evidence.</p>
+      </div>
+      <div class="grid g3">
+        <article class="card rev"><span class="micro accent">01 / Before</span><h4 class="mt-m">Check access and policy</h4><p>Resolve identity, authorise model access and check budgets before a request runs.</p></article>
+        <article class="card rev d1"><span class="micro accent">02 / During</span><h4 class="mt-m">Apply controls as work runs</h4><p>Enforce guardrails and data policies, with human approval gates for consequential actions. Monitor runs and costs through AIRA Signal.</p></article>
+        <article class="card rev d2"><span class="micro accent">03 / After</span><h4 class="mt-m">Keep reviewable evidence</h4><p>Record runs, approvals and policy decisions in a hash-chained audit log for investigation and export.</p></article>
+      </div>
+    </div>
+    <div class="ctas mt-m rev"><a class="btn btn-primary" href="{{root}}nexus.html">Explore the platform <span class="arr">&rarr;</span></a><a class="link-arrow" href="{{root}}security.html">Review security &amp; governance <span>&rarr;</span></a></div>
+  </div>
+</section>
+
+<section class="section" id="model-control" aria-labelledby="model-control-title">
+  <div class="wrap split">
+    <div class="rev">
+      <p class="micro accent">Model control</p>
+      <h2 class="mt-m" id="model-control-title">Your choice of models.<br><span class="grad">One governed gateway.</span></h2>
+      <p class="lead mt-m">AIRA Gateway gives applications a shared route to approved models, with central access rules, routing, fallbacks and usage records.</p>
+      <p class="muted mt-m">Choose private inference, approved external providers or a combination that fits your data policies. Cloud models remain optional and use your organisation’s keys.</p>
+      <a class="link-arrow mt-m" href="{{root}}nexus.html#gateway">Explore AIRA Gateway <span>&rarr;</span></a>
+    </div>
+    <div class="model-control-map rev d1" aria-label="Model choices accessed through AIRA Gateway">
+      <div class="grid g2">
+        <article class="card"><span class="glow-icon">{{icon:server}}</span><h3 class="mt-m">Private models</h3><p>Inference on your hardware, inside your perimeter. Suitable for on-premises and air-gapped deployments.</p></article>
+        <article class="card"><span class="glow-icon">{{icon:cloud}}</span><h3 class="mt-m">Approved cloud models</h3><p>Optional provider access, governed by model permissions and data policies, using your keys.</p></article>
+      </div>
+      <div class="nexus-stack-layer nexus-stack-core mt-m"><span class="micro accent">AIRA Gateway</span><h3>Shared model controls</h3><p>Access <span aria-hidden="true">·</span> Routing <span aria-hidden="true">·</span> Guardrails <span aria-hidden="true">·</span> Usage &amp; audit</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="suite">
   <div class="wrap">
     <div class="suite-head rev">
       <div>
         <p class="micro">The AIRA Nexus</p>
         <h2 class="display-sm accent-text">Product suite</h2>
-        <p class="muted mt-s">Six products, one sign-on, one audit trail, administered from AIRA Console.</p>
+        <p class="muted mt-s">From employee knowledge to production operations: six connected products, one sign-on and one audit trail, administered from AIRA Console.</p>
       </div>
       <p class="micro accent rule-after">From research to real-world impact</p>
     </div>

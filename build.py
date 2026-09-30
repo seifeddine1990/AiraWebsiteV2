@@ -315,6 +315,7 @@ def page(meta: dict, body: str, rel: str, default_theme: str = "light") -> str:
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@300;400;500;600;700;800&family=Michroma&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{{{root}}}}css/site.css">
 <link rel="stylesheet" href="{{{{root}}}}css/glow.css">
+<link rel="stylesheet" href="{{{{root}}}}css/aira-chat.css">
 <link id="light-theme" rel="stylesheet" href="{{{{root}}}}css/light.css" media="{'all' if default_theme == 'light' else 'not all'}">
 <script src="{{{{root}}}}js/theme.js"></script>
 </head>
@@ -329,6 +330,12 @@ def page(meta: dict, body: str, rel: str, default_theme: str = "light") -> str:
   <span>Dark mode</span>
 </button>
 <script src="{{{{root}}}}js/site.js" defer></script>
+<div id="aira-chat" data-root="{{{{root}}}}" hidden></div>
+<script src="{{{{root}}}}js/aira-config.js" defer></script>
+<script src="{{{{root}}}}js/aira-faq.js" defer></script>
+<script src="{{{{root}}}}js/aira-email.js" defer></script>
+<script src="{{{{root}}}}js/aira-chat.js" defer></script>
+<script src="{{{{root}}}}js/aira-contact.js" defer></script>
 </body>
 </html>
 """

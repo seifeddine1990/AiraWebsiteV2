@@ -16,7 +16,7 @@ nav: contact
   <div class="wrap">
     <div class="split" style="align-items:start">
       <div class="card rev" style="padding:clamp(26px,3.4vw,44px)">
-        <form class="form" data-mailto="{{email}}">
+        <form class="form" data-aira-contact>
           <div class="row">
             <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" required autocomplete="name"></div>
             <div class="field"><label for="f-role">Role</label><input id="f-role" name="role" autocomplete="organization-title" placeholder="e.g. CISO, Head of AI"></div>
@@ -27,9 +27,11 @@ nav: contact
           </div>
           <div class="field"><label for="f-topic">Topic</label><select id="f-topic" name="topic"><option>Request Demo/PoC</option><option>Partnership</option><option>Other</option></select></div>
           <div class="field"><label for="f-msg">What are you trying to do?</label><textarea id="f-msg" name="message" placeholder="The use case, the constraints, the people who need to sign off."></textarea></div>
-          <button class="btn btn-primary" type="submit" style="justify-self:start">Send request <span class="arr">&rarr;</span></button>
-          <p class="form-note">Submitting opens a pre-filled email to {{email}} in your mail client. Nothing is stored by this website.</p>
-          <div class="form-ok" role="status">Your email draft is ready. Send it from your mail client and we will come back to you.</div>
+          <div hidden aria-hidden="true"><label for="f-website">Leave this field empty</label><input id="f-website" name="_honey" tabindex="-1" autocomplete="off"></div>
+          <button class="btn btn-primary" type="submit" style="justify-self:start" disabled>Send request <span class="arr">&rarr;</span></button>
+          <p class="form-note">Your details will be sent to AIRA Fusion through FormSubmit. Please avoid sensitive information.</p>
+          <noscript><p>Please enable JavaScript to send this form, or use the direct email link on this page.</p></noscript>
+          <div class="form-ok" role="status" aria-live="polite"></div>
         </form>
       </div>
       <div class="rev d1">
