@@ -2,8 +2,10 @@
 title: AIRA Nexus - Platform & products
 description: AIRA Nexus is the governed control plane for enterprise AI. Policy before every model call, a trace during it and tamper-evident evidence after it, on your infrastructure, with any model.
 nav: nexus
+scripts: tour, gateway-sim, deploy-config
 ---
 <section class="hero">
+  {{photo:dash}}
   <canvas class="waves" data-variant="hero" aria-hidden="true"></canvas>
   <div class="wrap hero-grid">
     <div>
@@ -23,95 +25,14 @@ nav: nexus
   </div>
 </section>
 
-<section class="section band-deep" id="products">
+<section class="section light" id="products" aria-labelledby="products-title">
   <div class="wrap">
     <div class="section-head rev">
       <span class="eyebrow">Six products</span>
-      <h2>One platform. <span class="grad">Six connected products.</span></h2>
-      <p class="lead">From an employee's first question to a production workflow, each product has a clear role and its own access controls.</p>
+      <h2 id="products-title">One platform. <span class="grad">Six connected products.</span></h2>
+      <p class="lead">From an employee's first question to a production workflow, each product has a clear role and its own access controls. Choose a product to walk through the live screens, point by point, or let the tour play.</p>
     </div>
-
-    <nav class="product-links" aria-label="Jump to a product">
-      <a href="#home">AIRA Home <span aria-hidden="true">&darr;</span></a>
-      <a href="#studio">AIRA Studio <span aria-hidden="true">&darr;</span></a>
-      <a href="#gateway">AIRA Gateway <span aria-hidden="true">&darr;</span></a>
-      <a href="#runtime">AIRA Runtime <span aria-hidden="true">&darr;</span></a>
-      <a href="#signal">AIRA Signal <span aria-hidden="true">&darr;</span></a>
-      <a href="#data">AIRA Data <span aria-hidden="true">&darr;</span></a>
-    </nav>
-
-    <div class="grid g2 product-cards">
-      <article class="card product" id="home" aria-labelledby="home-title">
-        <div class="p-head">{{hex:hub}}<span class="p-role">Consume</span></div>
-        <h3 id="home-title">AIRA Home</h3>
-        <p class="mt-s">Where every employee uses AI. Ask for answers; Work for objectives. One inbox for approvals, running and failed work, with AI Solutions a click away.</p>
-        <ul class="mt-m">
-          <li><b>Ask</b>: governed chat across approved models, grounded in knowledge, with citations and abstention</li>
-          <li><b>Work</b>: give AIRA an objective and follow it through approvals to a result</li>
-          <li><b>Knowledge Hub</b>: access curated enterprise knowledge collections, from policies to compliance guidance, with collection-level permissions and answers grounded in source material</li>
-          <li><b>Document Insights</b>: upload, OCR and chat with a document</li>
-          <li><b>The AI Solution catalog</b>, with a run page for each type and replayable run history</li>
-        </ul>
-      </article>
-      <article class="card product" id="studio" aria-labelledby="studio-title">
-        <div class="p-head">{{hex:studio}}<span class="p-role">Create</span></div>
-        <h3 id="studio-title">AIRA Studio</h3>
-        <p class="mt-s">Where teams build. One path from idea to production: Build &rarr; Configure &rarr; Assign AI &rarr; Test &rarr; Evaluate &rarr; Publish. What a builder tests in Studio is exactly what Runtime runs.</p>
-        <ul class="mt-m">
-          <li>Four kinds of capability: AI Assistant, AI Agent, AI Flow and AI Solution</li>
-          <li>A Solution Advisor that drafts a capability from a plain-language description</li>
-          <li>Typed-node workflow canvas: prompt, knowledge, HTTP, code, database, agent, MCP tool, branching, error handling and subflows</li>
-          <li>Prompt Lab, a run debugger, and evaluation scenario libraries graded by programmatic checks plus an LLM judge</li>
-          <li>Templates, data sources, an encrypted connections vault and MCP servers</li>
-        </ul>
-      </article>
-      <article class="card product" id="gateway" aria-labelledby="gateway-title">
-        <div class="p-head">{{hex:gateway}}<span class="p-role">Unified access</span></div>
-        <h3 id="gateway-title">AIRA Gateway</h3>
-        <p class="mt-s">One controlled, audited entry point for on-premises and cloud LLMs, agents and AI Solutions. AIRA Nexus Runtime and external applications access the same governed catalog through application subscriptions.</p>
-        <ul class="mt-m">
-          <li><b>One catalog</b>: approved LLMs, agents and AI Solutions for Nexus and external applications</li>
-          <li><b>Application subscriptions</b>: subscribe to catalog offerings with controlled access grants and limits</li>
-          <li><b>Policy controls</b>: models, fallbacks, routing, guardrails, data policy and security level</li>
-          <li><b>Audited access</b>: identity-bound requests, usage tracking and a record of every call</li>
-        </ul>
-      </article>
-      <article class="card product" id="runtime" aria-labelledby="runtime-title">
-        <div class="p-head">{{hex:runtime}}<span class="p-role">Execute</span></div>
-        <h3 id="runtime-title">AIRA Runtime</h3>
-        <p class="mt-s">Where published capabilities run. Runtime deploys versions, governs execution and gives your team full control over environments on Kubernetes and OpenShift. Access to models, agents and AI Solutions is controlled through AIRA Gateway.</p>
-        <ul class="mt-m">
-          <li><b>Environment control</b>: manage environments, versioned deployments and schedules on Kubernetes and OpenShift</li>
-          <li><b>Governed access</b>: each deployed capability uses its own identity and access grants through Gateway</li>
-          <li><b>Execution governance</b>: approvals, run history and a durable record of every execution</li>
-          <li>Triggers in and deliveries out with retry; usage and cost per deployment</li>
-          <li>Tenant isolation enforced in the database</li>
-        </ul>
-      </article>
-      <article class="card product" id="signal" aria-labelledby="signal-title">
-        <div class="p-head">{{hex:signal}}<span class="p-role">Observe</span></div>
-        <h3 id="signal-title">AIRA Signal</h3>
-        <p class="mt-s">One answer to "what is our AI doing?" Signal observes runs, cost and health across the estate, and gives investigators the thread to pull when something looks wrong.</p>
-        <ul class="mt-m">
-          <li>Overview of AI Solution runs, failure rate, node latency and spend, from one hour to ninety days</li>
-          <li>Activity, LLM activity, journeys, flagged events and incidents</li>
-          <li>Health of AI Solutions, knowledge, the workflow engine, the platform and the estate</li>
-          <li>Cost, spend and security views, with export</li>
-        </ul>
-      </article>
-      <article class="card product" id="data" aria-labelledby="data-title">
-        <div class="p-head">{{hex:data}}<span class="p-role">Connect</span></div>
-        <h3 id="data-title">AIRA Data</h3>
-        <p class="mt-s">The governed data plane. Connect enterprise systems, ingest documents exactly once, and keep every extraction reviewable against the content it came from.</p>
-        <ul class="mt-m">
-          <li>Governed connectivity to PostgreSQL, SQL Server, MySQL, Oracle and IBM Db2, read-only by default, every query audited</li>
-          <li>Idempotent ingestion jobs that report incomplete attempts and never create duplicates</li>
-          <li>Document review bound to the content hash and the extractor version</li>
-          <li>A bounded tabular extraction service for CSV, TSV and JSON</li>
-        </ul>
-      </article>
-    </div>
-
+    <div class="rev">{{tour}}</div>
     <div class="console-bar rev mt-l">{{hex:console}}<p><b>AIRA Console</b> brings administration together: identity, roles, product access, security settings, platform health and the audit trail.</p></div>
   </div>
 </section>
@@ -128,17 +49,73 @@ nav: nexus
       <span class="icon">{{icon:chain}}</span>
       <p>Every request shares access policies, usage limits and a tamper-evident record. <a class="link-arrow" href="{{root}}security.html#audit">Explore security and audit controls <span>&rarr;</span></a></p>
     </div>
+    <div class="tool gsim rev mt-l" id="simulator" data-gateway-sim data-contact="{{root}}contact.html" aria-labelledby="gs-title">
+      <div class="gs-head">
+        <div><span class="micro accent">Gateway Simulator</span><h3 id="gs-title">Send a request <span class="grad">through the Gateway.</span></h3></div>
+        <p class="tool-note">A simulation with illustrative rules. In AIRA Gateway, these rules are your own policies.</p>
+      </div>
+      <div class="gs-body">
+        <form class="gs-controls">
+          <fieldset class="seg seg-stack"><legend>Who is asking</legend>
+            <label><input type="radio" name="gs-who" value="analyst" checked><span><b>Credit analyst</b><small>AIRA Home · credit risk team</small></span></label>
+            <label><input type="radio" name="gs-who" value="branch"><span><b>Branch employee</b><small>AIRA Home · retail branches</small></span></label>
+            <label><input type="radio" name="gs-who" value="app"><span><b>Mobile banking app</b><small>External application · subscription</small></span></label>
+          </fieldset>
+          <fieldset class="seg seg-stack"><legend>The request</legend>
+            <label><input type="radio" name="gs-req" value="summary" checked><span><b>Summarise a credit file</b><small>Contains customer identifiers</small></span></label>
+            <label><input type="radio" name="gs-req" value="reply"><span><b>Draft a customer reply</b><small>Names a customer</small></span></label>
+            <label><input type="radio" name="gs-req" value="approve"><span><b>Increase a credit facility</b><small>A consequential action</small></span></label>
+          </fieldset>
+          <fieldset class="seg"><legend>Target model</legend>
+            <label><input type="radio" name="gs-model" value="private" checked><span>Private model</span></label>
+            <label><input type="radio" name="gs-model" value="cloud"><span>Approved cloud model</span></label>
+          </fieldset>
+          <button type="button" class="btn btn-primary btn-sm gs-run">Send through Gateway <span class="arr">&rarr;</span></button>
+        </form>
+        <div class="gs-out">
+          <div class="gs-prompt"><span class="micro">Request</span><p class="gs-text"></p></div>
+          <ol class="gs-steps" aria-live="polite"></ol>
+          <div class="gs-outcome" role="status"></div>
+          <p class="gs-audit"></p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="section" id="deploy">
+<section class="section light" id="deploy">
   <div class="wrap">
     <div class="section-head rev">
       <span class="eyebrow">Deployment &amp; specifications</span>
       <h2>Built to be operated by <span class="grad">your</span> team.</h2>
       <p class="lead">Deploy on-premises, in your private cloud or fully air-gapped. Your team controls the infrastructure, identity and model access, with no telemetry or phone-home.</p>
     </div>
-    <dl class="specs rev">
+    <div class="tool dcfg rev" id="configurator" data-deploy-config data-contact="{{root}}contact.html" aria-labelledby="dc-title">
+      <div class="dc-controls">
+        <span class="micro accent">Deployment Configurator</span>
+        <h3 id="dc-title">Shape your deployment.</h3>
+        <fieldset class="seg seg-stack"><legend>Where it runs</legend>
+          <label><input type="radio" name="dc-where" value="onprem" checked><span><b>On-premises</b><small>Your data centre</small></span></label>
+          <label><input type="radio" name="dc-where" value="cloud"><span><b>Private cloud</b><small>Your tenancy, your keys</small></span></label>
+          <label><input type="radio" name="dc-where" value="airgap"><span><b>Air-gapped</b><small>No outbound connection at all</small></span></label>
+        </fieldset>
+        <fieldset class="seg seg-stack"><legend>Models</legend>
+          <label><input type="radio" name="dc-models" value="local" checked><span><b>Local models only</b><small>Inference on your hardware</small></span></label>
+          <label><input type="radio" name="dc-models" value="hybrid"><span><b>Local + approved cloud models</b><small>Cloud is optional and uses your keys</small></span></label>
+        </fieldset>
+        <fieldset class="seg"><legend>Platform</legend>
+          <label><input type="radio" name="dc-platform" value="k8s" checked><span>Kubernetes</span></label>
+          <label><input type="radio" name="dc-platform" value="ocp"><span>OpenShift</span></label>
+        </fieldset>
+        <label class="dc-toggle"><input type="checkbox" name="dc-obs"><span>Add the monitoring overlay</span></label>
+      </div>
+      <div class="dc-out">
+        <div class="dc-map" aria-live="polite"></div>
+        <div class="dc-check"><b>Your checklist</b><ul></ul></div>
+        <div class="tool-actions"><a class="btn btn-primary btn-sm tool-send" href="{{root}}contact.html">Discuss this deployment <span class="arr">&rarr;</span></a></div>
+      </div>
+    </div>
+    <dl class="specs rev mt-l">
       <div class="spec"><dt>Deployment</dt><dd>On-premises, private cloud or fully air-gapped. Kubernetes with base and overlays, plus an OpenShift overlay. Hostname-routed ingress with TLS at your edge.</dd></div>
       <div class="spec"><dt>Identity</dt><dd>Keycloak SSO over OIDC and SAML across every product, native TOTP MFA, JWTs with revocation, refresh rotation and an RS256 option.</dd></div>
       <div class="spec"><dt>Cloud models</dt><dd>OpenAI, Anthropic, Google Gemini, Mistral and Cohere pre-registered; any OpenAI-compatible endpoint can be added. Optional and customer-keyed.</dd></div>

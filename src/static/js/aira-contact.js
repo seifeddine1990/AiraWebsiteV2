@@ -6,6 +6,12 @@
   var status = form.querySelector(".form-ok");
   var pending = false;
   button.disabled = false;
+  // The interactive tools link here with ?topic=…&brief=… to pre-fill the enquiry.
+  var params = new URLSearchParams(location.search);
+  var brief = params.get("brief");
+  var topic = params.get("topic");
+  if (brief && !form.elements.message.value) form.elements.message.value = brief.slice(0, 4000);
+  if (topic) Array.prototype.forEach.call(form.elements.topic.options, function (o) { if (o.text === topic) o.selected = true; });
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
     if (pending || !form.reportValidity() || form.elements._honey.value) return;

@@ -9,6 +9,7 @@ Pages live in src/pages/**.html. Each starts with a small front-matter block:
     title: Page title
     description: One sentence for search and link previews.
     nav: platform            # which header item is current (optional)
+    scripts: tour, gateway-sim   # page-specific scripts in static/js (optional)
     ---
 
 The header, footer, fonts and meta tags are added here, once, so a nav change is
@@ -19,6 +20,9 @@ one edit. Placeholders usable inside pages:
     {{hex:NAME}}      a product hexagon badge from HEX below
     {{hexfield}}      the decorative hex field used behind CTA bands
     {{cta}}           the standard closing call-to-action band
+    {{tour}}          the interactive AIRA Nexus product tour (TOURS below)
+    {{photo:NAME}}    a tinted photo fading in behind a hero or CTA (add ":lazy" below the fold)
+    {{band:NAME}}     a photo band across the top of a card
 """
 from __future__ import annotations
 
@@ -206,11 +210,170 @@ def doors() -> str:
 </svg>"""
 
 
+# Interactive product tour: the executive briefing deck's product tours, one tab per product.
+# Pins are percentages of the screenshot; each callout matches the pin with the same number.
+TOURS = [
+    dict(id="home", name="Home", role="01 · Consume", icon="producthub",
+         hex="hub", kind='Consume',
+         summary='Where every employee uses AI. Ask for answers; Work for objectives. One inbox for approvals, running and failed work, with AI Solutions a click away.',
+         features=['<b>Ask</b>: governed chat across approved models, grounded in knowledge, with citations and abstention', '<b>Work</b>: give AIRA an objective and follow it through approvals to a result', '<b>Knowledge Hub</b>: access curated enterprise knowledge collections, from policies to compliance guidance, with collection-level permissions and answers grounded in source material', '<b>Document Insights</b>: upload, OCR and chat with a document', '<b>The AI Solution catalog</b>, with a run page for each type and replayable run history'],
+         title=("One front door", "for every employee."),
+         lead="The live product: the same screen your staff open on day one. Ask for answers, give Work an objective, and find approvals, knowledge and AI Solutions in one place.",
+         shots=[dict(src="tour-aira-home.jpg", url="home.bank.local/chat", alt="AIRA Home: the Ask screen with pending actions and approved assistants",
+                     pins=[(32, 80), (49, 75), (34, 46), (12, 42)])],
+         points=[("Approved assistants only", "Staff pick from the assistants and agents the bank has published."),
+                 ("Governed, encrypted, audited", "Every prompt passes policy before a model sees it."),
+                 ("Work waits for you", "Approvals and runs that need a person, in one inbox."),
+                 ("Knowledge one click away", "Collections, documents and AI Solutions in the same place.")]),
+    dict(id="studio", name="Studio", role="02 · Create", icon="productstudio",
+         hex="studio", kind='Create',
+         summary='Where teams build. One path from idea to production: Build &rarr; Configure &rarr; Assign AI &rarr; Test &rarr; Evaluate &rarr; Publish. What a builder tests in Studio is exactly what Runtime runs.',
+         features=['Four kinds of capability: AI Assistant, AI Agent, AI Flow and AI Solution', 'A Solution Advisor that drafts a capability from a plain-language description', 'Typed-node workflow canvas: prompt, knowledge, HTTP, code, database, agent, MCP tool, branching, error handling and subflows', 'Prompt Lab, a run debugger, and evaluation scenario libraries graded by programmatic checks plus an LLM judge', 'Templates, data sources, an encrypted connections vault and MCP servers'],
+         title=("Start from", "banking templates."),
+         lead="Copy a template, wire in your knowledge and systems, and publish, with sign-off designed in. What a builder tests in Studio is exactly what Runtime runs.",
+         shots=[dict(src="tour-aira-studio-1.jpg", url="studio.bank.local/templates", alt="AIRA Studio: the template gallery",
+                     pins=[(19, 33.3), (72.6, 54.4)]),
+                dict(src="tour-aira-studio-2.jpg", url="Workflow · Corporate Credit Review", alt="AIRA Studio: a corporate credit review workflow with an approval step",
+                     pins=[(71, 16)], inset=True)],
+         points=[("Templates for the bank", "Policy and compliance, client onboarding, credit proposals and research agents."),
+                 ("Credit proposal, drafted", "Financials in; policy exceptions, covenants and a committee memo out."),
+                 ("Approval is a step", "The credit committee signs off inside the workflow, before anything is recorded.")]),
+    dict(id="gateway", name="Gateway", role="03 · Govern access", icon="productgateway",
+         hex="gateway", kind='Unified access',
+         summary='One controlled, audited entry point for on-premises and cloud LLMs, agents and AI Solutions. AIRA Nexus Runtime and external applications access the same governed catalog through application subscriptions.',
+         features=['<b>One catalog</b>: approved LLMs, agents and AI Solutions for Nexus and external applications', '<b>Application subscriptions</b>: subscribe to catalog offerings with controlled access grants and limits', '<b>Policy controls</b>: models, fallbacks, routing, guardrails, data policy and security level', '<b>Audited access</b>: identity-bound requests, usage tracking and a record of every call'],
+         title=("Every model call,", "on one screen."),
+         lead="The live state of the model plane: traffic, errors, spend and policy, per time window, through one governed door to every model.",
+         shots=[dict(src="tour-aira-gateway.jpg", url="gateway.bank.local/overview", alt="AIRA Gateway: overview of requests, errors, cost, budgets and policy blocks",
+                     pins=[(19.4, 37.5), (79.5, 37.5), (39.5, 51), (59.5, 66.7)])],
+         points=[("Traffic and errors", "Requests, failures and latency for every AI endpoint."),
+                 ("Policy blocks", "Requests stopped by policy: counted, never silent."),
+                 ("Budgets before overspend", "Limits per team, key and application, flagged early."),
+                 ("Operator queue", "Requests, subscriptions and models that need a decision.")]),
+    dict(id="runtime", name="Runtime", role="04 · Execute", icon="productruntime",
+         hex="runtime", kind='Execute',
+         summary='Where published capabilities run. Runtime deploys versions, governs execution and gives your team full control over environments on Kubernetes and OpenShift. Access to models, agents and AI Solutions is controlled through AIRA Gateway.',
+         features=['<b>Environment control</b>: manage environments, versioned deployments and schedules on Kubernetes and OpenShift', '<b>Governed access</b>: each deployed capability uses its own identity and access grants through Gateway', '<b>Execution governance</b>: approvals, run history and a durable record of every execution', 'Triggers in and deliveries out with retry; usage and cost per deployment', 'Tenant isolation enforced in the database'],
+         title=("Published once,", "live by environment."),
+         lead="What Studio publishes, Runtime runs: versioned, approved and isolated per environment.",
+         shots=[dict(src="tour-aira-runtime.jpg", url="runtime.bank.local/published", alt="AIRA Runtime: published AI Solutions with versions and environments",
+                     pins=[(64.7, 36), (31, 57), (47.5, 36), (88, 20.5)])],
+         points=[("Live where it is approved", "Each version is promoted per environment: test, then production."),
+                 ("Arabic and English", "An Arabic credit memo runs beside its English twin."),
+                 ("Workflows and apps", "Every kind of AI Solution, versioned the same way."),
+                 ("Move by bundle", "Import a release bundle from another estate.")]),
+    dict(id="signal", name="Signal", role="05 · Observe", icon="productsignal",
+         hex="signal", kind='Observe',
+         summary='One answer to "what is our AI doing?" Signal observes runs, cost and health across the estate, and gives investigators the thread to pull when something looks wrong.',
+         features=['Overview of AI Solution runs, failure rate, node latency and spend, from one hour to ninety days', 'Activity, LLM activity, journeys, flagged events and incidents', 'Health of AI Solutions, knowledge, the workflow engine, the platform and the estate', 'Cost, spend and security views, with export'],
+         title=("Evidence your auditors", "can verify."),
+         lead="Every action lands in a hash-chained ledger, checked in place and exported in one click.",
+         shots=[dict(src="tour-aira-signal.jpg", url="signal.bank.local/audit", alt="AIRA Signal: the audit log with chain verification and evidence export",
+                     pins=[(33.5, 30.5), (17.5, 44.4), (80.5, 55.5), (79.5, 30.5)])],
+         points=[("Chain verified", "Any alteration breaks the hash chain, and the screen says so."),
+                 ("Filter by who and what", "Person, action, product and resource."),
+                 ("Patterns at a glance", "The most frequent actions in the window."),
+                 ("Evidence export", "Download the audit evidence for an examiner.")]),
+    dict(id="data", name="Data", role="06 · Connect", icon="productdata",
+         hex="data", kind='Connect',
+         summary='The governed data plane. Connect enterprise systems, ingest documents exactly once, and keep every extraction reviewable against the content it came from.',
+         features=['Governed connectivity to PostgreSQL, SQL Server, MySQL, Oracle and IBM Db2, read-only by default, every query audited', 'Idempotent ingestion jobs that report incomplete attempts and never create duplicates', 'Document review bound to the content hash and the extractor version', 'A bounded tabular extraction service for CSV, TSV and JSON'],
+         title=("Feed AI from your systems,", "governed."),
+         lead="The governed data plane: connect enterprise systems, ingest documents exactly once, and keep every extraction reviewable against the content it came from.",
+         diagram=True, pins=[(27.3, 16.5), (37.5, 50), (50, 29.6), (27.3, 78)],
+         points=[("Governed connectivity", "PostgreSQL, SQL Server, MySQL, Oracle and IBM Db2: read-only by default, every query audited."),
+                 ("Ingested exactly once", "Idempotent jobs report incomplete attempts and never create duplicates."),
+                 ("Review bound to the source", "Each review is tied to the content hash and the extractor version."),
+                 ("Tabular extraction", "A bounded service for CSV, TSV and JSON.")]),
+]
+
+DATA_DIAGRAM = """<svg class="data-diagram" viewBox="0 0 960 540" role="img" aria-label="Diagram: enterprise systems and documents flow through AIRA Data into knowledge collections, reviewed extractions and the audit trail">
+<defs><linearGradient id="dd-core" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#10275A"/><stop offset="1" stop-color="#0A1A3A"/></linearGradient></defs>
+<rect width="960" height="540" fill="#F7F9FD"/>
+<g class="dd-wires" fill="none">
+<path id="dd-s1" d="M262 122 C330 122 320 270 380 270"/><path id="dd-s2" d="M262 222 C330 222 330 270 380 270"/>
+<path id="dd-s3" d="M262 322 C330 322 330 270 380 270"/><path id="dd-s4" d="M262 422 C330 422 320 270 380 270"/>
+<path id="dd-o1" d="M580 270 C640 270 630 162 698 162"/><path id="dd-o2" d="M580 270 L698 270"/><path id="dd-o3" d="M580 270 C640 270 630 378 698 378"/>
+</g>
+<g class="dd-flow" fill="#2F86FF">
+<circle r="4"><animateMotion dur="2.6s" repeatCount="indefinite"><mpath href="#dd-s1"/></animateMotion></circle>
+<circle r="4"><animateMotion dur="2.6s" begin=".6s" repeatCount="indefinite"><mpath href="#dd-s2"/></animateMotion></circle>
+<circle r="4"><animateMotion dur="2.6s" begin="1.2s" repeatCount="indefinite"><mpath href="#dd-s3"/></animateMotion></circle>
+<circle r="4"><animateMotion dur="2.6s" begin="1.8s" repeatCount="indefinite"><mpath href="#dd-s4"/></animateMotion></circle>
+<circle r="4"><animateMotion dur="2s" begin=".3s" repeatCount="indefinite"><mpath href="#dd-o1"/></animateMotion></circle>
+<circle r="4"><animateMotion dur="2s" begin="1s" repeatCount="indefinite"><mpath href="#dd-o2"/></animateMotion></circle>
+<circle r="4"><animateMotion dur="2s" begin="1.6s" repeatCount="indefinite"><mpath href="#dd-o3"/></animateMotion></circle>
+</g>
+<g class="dd-box"><rect x="42" y="90" width="220" height="64" rx="14"/><rect x="42" y="190" width="220" height="64" rx="14"/><rect x="42" y="290" width="220" height="64" rx="14"/><rect x="42" y="390" width="220" height="64" rx="14"/>
+<rect x="698" y="130" width="220" height="64" rx="14"/><rect x="698" y="238" width="220" height="64" rx="14"/><rect x="698" y="346" width="220" height="64" rx="14"/></g>
+<g class="dd-k"><text x="62" y="116">DATABASES</text><text x="62" y="216">DATABASES</text><text x="62" y="316">CONTENT</text><text x="62" y="416">FILES</text>
+<text x="718" y="156">KNOWLEDGE</text><text x="718" y="264">REVIEW</text><text x="718" y="372">EVIDENCE</text></g>
+<g class="dd-t"><text x="62" y="140">PostgreSQL · SQL Server</text><text x="62" y="240">Oracle · IBM Db2 · MySQL</text><text x="62" y="340">Documents &amp; scans</text><text x="62" y="440">CSV · TSV · JSON</text>
+<text x="718" y="180">Governed collections</text><text x="718" y="288">Reviewed extractions</text><text x="718" y="396">Audit trail</text></g>
+<rect x="380" y="160" width="200" height="220" rx="22" fill="url(#dd-core)"/>
+<text class="dd-ck" x="480" y="204" text-anchor="middle">06 · CONNECT</text>
+<text class="dd-ct" x="480" y="240" text-anchor="middle">AIRA Data</text>
+<g class="dd-cl" text-anchor="middle"><text x="480" y="284">Read-only by default</text><text x="480" y="312">Ingested exactly once</text><text x="480" y="340">Hash-bound review</text></g>
+</svg>"""
+
+
+def tour() -> str:
+    tabs, panels = [], []
+    for i, t in enumerate(TOURS):
+        pid = t["id"]
+        tabs.append(
+            f'<button class="tour-tab" type="button" role="tab" id="tt-{pid}" aria-controls="{pid}" '
+            f'aria-selected="{"true" if i == 0 else "false"}" tabindex="{0 if i == 0 else -1}">'
+            f'<span class="tt-ico">{{{{icon:{t["icon"]}}}}}</span><span class="tt-txt"><small>{t["role"]}</small><b>AIRA {t["name"]}</b></span></button>')
+        points = "".join(
+            f'<li><button type="button" class="tour-point" data-pin="{n}"><b>{n}</b><span><strong>{head}</strong>{body}</span>'
+            f'<i class="tp-bar" aria-hidden="true"></i></button></li>'
+            for n, (head, body) in enumerate(t["points"], 1))
+
+        def pin(k: int, x: float, y: float) -> str:
+            return (f'<button type="button" class="pin" data-pin="{k}" style="--x:{x}%;--y:{y}%" '
+                    f'aria-label="Point {k}: {t["points"][k - 1][0]}">{k}</button>')
+
+        stage = []
+        if t.get("diagram"):
+            pins = "".join(pin(k, x, y) for k, (x, y) in enumerate(t["pins"], 1))
+            stage.append(f'<figure class="shot shot-diagram"><div class="sb"><i></i><i></i><i></i><span>AIRA Data · how it works</span></div>'
+                         f'<div class="shot-view"><div class="shot-canvas">{DATA_DIAGRAM}<span class="spot" aria-hidden="true"></span>{pins}</div></div></figure>')
+        n = 0
+        for sh in t.get("shots", []):
+            pins = ""
+            for x, y in sh["pins"]:
+                n += 1
+                pins += pin(n, x, y)
+            inset = sh.get("inset")
+            stage.append(
+                f'<figure class="shot{" shot-inset" if inset else ""}"><div class="sb"><i></i><i></i><i></i><span>{sh["url"]}</span>'
+                f'<button type="button" class="shot-zoom" aria-label="Enlarge screenshot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></button></div>'
+                f'<div class="shot-view"><div class="shot-canvas"><img src="{{{{root}}}}img/product/{sh["src"]}" alt="{sh["alt"]}" '
+                f'loading="lazy" decoding="async" width="{1800 if inset else 1920}" height="{375 if inset else 1080}">'
+                f'<span class="spot" aria-hidden="true"></span>{pins}</div></div></figure>')
+        has_inset = any(sh.get("inset") for sh in t.get("shots", []))
+        head, tail = t["title"]
+        features = "".join(f"<li>{f}</li>" for f in t["features"])
+        # The panel id is the product id, so nexus.html#gateway opens the Gateway tab.
+        panels.append(
+            f'<div class="tour-panel" role="tabpanel" id="{pid}" aria-labelledby="tt-{pid}">'
+            f'<div class="tour-copy"><span class="micro accent">AIRA {t["name"]} · {t["kind"]}</span>'
+            f'<h3>{head} <span class="grad">{tail}</span></h3><p class="lead">{t["lead"]}</p>'
+            f'<ol class="tour-points">{points}</ol></div>'
+            f'<div class="tour-stage{" has-inset" if has_inset else ""}">{"".join(stage)}</div>'
+            f'<div class="tour-more"><div class="tm-head">{{{{hex:{t["hex"]}}}}}<div><h4>What AIRA {t["name"]} does</h4>'
+            f'<p>{t["summary"]}</p></div></div><ul class="tm-list">{features}</ul></div></div>')
+    return (f'<div class="tour" data-tour><div class="tour-bar"><div class="tour-tabs" role="tablist" aria-label="AIRA Nexus products">{"".join(tabs)}</div>'
+            f'<button type="button" class="tour-play" aria-pressed="true" hidden><span class="tp-on">Pause tour</span><span class="tp-off">Play tour</span></button></div>'
+            f'{"".join(panels)}</div>'
+            f'<dialog class="tour-lightbox" aria-label="Enlarged screenshot"><button type="button" class="tl-close" aria-label="Close">&times;</button><div class="tl-body"></div></dialog>')
+
 CTA = """
 <section class="section tight">
   <div class="wrap">
     <div class="cta-band rev">
-      {{hexfield}}
+      {{photo:hand:lazy}}
       <span class="eyebrow">Start with one workload</span>
       <h2 class="mt-s">Prove it on your infrastructure, against your own criteria.</h2>
       <p class="lead">A scoped pilot runs AIRA Nexus inside your perimeter, on your models and your data, with success criteria written down before we start. Your security team reviews the real system, not a slide.</p>
@@ -270,7 +433,7 @@ FOOTER = f"""
     </div>
     <div class="foot-bottom">
       <span>&copy; <span data-year>2026</span> AIRA Fusion. AIRA Nexus is the flagship platform of AIRA Fusion.</span>
-      <span class="mono">airafusion.com</span>
+      <span class="powered">Powered by <b>AL AHD AL RASEKH for Artificial Intelligence LLC</b> &middot; Jordan</span>
     </div>
   </div>
 </footer>
@@ -292,6 +455,9 @@ def page(meta: dict, body: str, rel: str, default_theme: str = "light") -> str:
     desc = escape(meta.get("description", ""), quote=True)
     canon = escape(canonical_url(meta, rel), quote=True)
     robots = '<meta name="robots" content="noindex">' if not indexable(rel) else ""
+    # Page-specific scripts from front matter, e.g. "scripts: tour, gateway-sim".
+    page_scripts = "".join(f'<script src="{{{{root}}}}js/{name.strip()}.js" defer></script>\n'
+                           for name in meta.get("scripts", "").split(",") if name.strip())
     return f"""<!DOCTYPE html>
 <html lang="en" class="no-js" data-default-theme="{default_theme}" data-theme="{default_theme}">
 <head>
@@ -312,10 +478,10 @@ def page(meta: dict, body: str, rel: str, default_theme: str = "light") -> str:
 <link rel="apple-touch-icon" href="{{{{root}}}}apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@300;400;500;600;700;800&family=Michroma&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{{{root}}}}css/site.css">
 <link rel="stylesheet" href="{{{{root}}}}css/glow.css">
-<link rel="stylesheet" href="{{{{root}}}}css/aira-chat.css">
+<link rel="stylesheet" href="{{{{root}}}}css/briefing.css">
 <link id="light-theme" rel="stylesheet" href="{{{{root}}}}css/light.css" media="{'all' if default_theme == 'light' else 'not all'}">
 <script src="{{{{root}}}}js/theme.js"></script>
 </head>
@@ -330,11 +496,8 @@ def page(meta: dict, body: str, rel: str, default_theme: str = "light") -> str:
   <span>Dark mode</span>
 </button>
 <script src="{{{{root}}}}js/site.js" defer></script>
-<div id="aira-chat" data-root="{{{{root}}}}" hidden></div>
-<script src="{{{{root}}}}js/aira-config.js" defer></script>
-<script src="{{{{root}}}}js/aira-faq.js" defer></script>
+{page_scripts}<script src="{{{{root}}}}js/aira-config.js" defer></script>
 <script src="{{{{root}}}}js/aira-email.js" defer></script>
-<script src="{{{{root}}}}js/aira-chat.js" defer></script>
 <script src="{{{{root}}}}js/aira-contact.js" defer></script>
 </body>
 </html>
@@ -349,6 +512,13 @@ def render(text: str, root: str) -> str:
     text = text.replace('<section class="page-hero bg-grid">\n  {{hexfield}}\n', '<section class="page-hero">\n  <canvas class="waves" aria-hidden="true"></canvas>\n')
     text = re.sub(r'<section class="page-hero bg-grid"(.*?)>', r'<section class="page-hero"\1>\n  <canvas class="waves" aria-hidden="true"></canvas>', text)
     text = text.replace("{{cta}}", CTA).replace("{{hexfield}}", hexfield())
+    text = text.replace("{{tour}}", tour())
+    # Briefing photography: a tinted photo fading in from the right, or a band across the top of a card.
+    text = re.sub(r"\{\{photo:([a-z]+)(:lazy)?\}\}", lambda m: (
+        f'<div class="photo-bleed" aria-hidden="true"><img src="{{{{root}}}}img/photos/{m.group(1)}.jpg" alt="" '
+        + ('loading="lazy" ' if m.group(2) else 'fetchpriority="high" ') + 'decoding="async"></div>'), text)
+    text = re.sub(r"\{\{band:([a-z]+)\}\}", lambda m: (
+        f'<div class="photo-band" aria-hidden="true"><img src="{{{{root}}}}img/photos/{m.group(1)}.jpg" alt="" loading="lazy" decoding="async"></div>'), text)
     text = text.replace("{{plane}}", plane()).replace("{{doors}}", doors())
     text = re.sub(r"\{\{icon:([a-z]+)\}\}", lambda m: icon(m.group(1)), text)
     text = re.sub(r"\{\{hex:([a-z]+)\}\}", lambda m: hexbadge(m.group(1)), text)

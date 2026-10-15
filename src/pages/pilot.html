@@ -2,9 +2,11 @@
 title: Pilot programme
 description: Start AIRA Nexus with one scoped pilot on your own infrastructure, with success criteria written down first, then expand on an annual platform licence. How we scope, run and measure a pilot.
 nav: pilot
+scripts: pilot-scorer
 ---
 <section class="page-hero bg-grid">
   {{hexfield}}
+  {{photo:phone}}
   <span class="glow g-blue" style="width:700px;height:700px;right:-220px;top:-260px"></span>
   <div class="wrap">
     <span class="eyebrow rev">Pilot programme</span>
@@ -14,7 +16,7 @@ nav: pilot
   </div>
 </section>
 
-<section class="section">
+<section class="section light">
   <div class="wrap">
     <div class="section-head rev">
       <span class="eyebrow">How it works</span>
@@ -28,32 +30,55 @@ nav: pilot
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="scorer" aria-labelledby="scorer-title">
   <div class="wrap">
-    <div class="split">
-      <div class="rev">
-        <span class="eyebrow">Choosing the use case</span>
-        <h2 class="mt-m">The best pilots are <span class="grad">narrow, measurable and owned.</span></h2>
-        <p class="lead mt-m">Score each candidate from one to five on each criterion, and start with the highest total. Bring two or three to the scoping workshop and we will score them together.</p>
+    <div class="section-head rev">
+      <span class="eyebrow">Pilot Fit Scorer</span>
+      <h2 id="scorer-title">The best pilots are <span class="grad">narrow, measurable and owned.</span></h2>
+      <p class="lead">Name up to three candidate use cases and score each from one to five against the six criteria. Start with the highest total, and bring the shortlist to the scoping workshop.</p>
+    </div>
+    <div class="tool scorer rev" data-scorer data-contact="{{root}}contact.html">
+      <div class="sc-main">
+        <div class="sc-cands" role="tablist" aria-label="Candidate use cases">
+          <button type="button" role="tab" class="sc-cand" data-cand="0" aria-selected="true"><span class="sc-letter">A</span><span class="sc-cname">Candidate A</span><b class="sc-ctotal">0</b></button>
+          <button type="button" role="tab" class="sc-cand" data-cand="1" aria-selected="false" tabindex="-1"><span class="sc-letter">B</span><span class="sc-cname">Candidate B</span><b class="sc-ctotal">0</b></button>
+          <button type="button" role="tab" class="sc-cand" data-cand="2" aria-selected="false" tabindex="-1"><span class="sc-letter">C</span><span class="sc-cname">Candidate C</span><b class="sc-ctotal">0</b></button>
+        </div>
+        <div class="sc-panel" role="tabpanel">
+          <div class="field sc-namefield"><label for="sc-name">Use case name</label><input id="sc-name" maxlength="70" placeholder="e.g. KYC document review for corporate onboarding" autocomplete="off"></div>
+          <ol class="sc-criteria">
+            <li data-crit="owner"><div class="sc-q"><b>Clear owner</b><span>A named business owner who will use the result and sign off the criteria.</span></div>
+              <fieldset class="seg seg-rate"><legend class="sr-only">Clear owner</legend></fieldset></li>
+            <li data-crit="measurable"><div class="sc-q"><b>Measurable today</b><span>You already know the handling time, backlog, error rate or cost.</span></div>
+              <fieldset class="seg seg-rate"><legend class="sr-only">Measurable today</legend></fieldset></li>
+            <li data-crit="data"><div class="sc-q"><b>Available data</b><span>The documents or records can be made available in the pilot environment.</span></div>
+              <fieldset class="seg seg-rate"><legend class="sr-only">Available data</legend></fieldset></li>
+            <li data-crit="risk"><div class="sc-q"><b>Contained risk</b><span>A person reviews the output: decision support, not an automated decision.</span></div>
+              <fieldset class="seg seg-rate"><legend class="sr-only">Contained risk</legend></fieldset></li>
+            <li data-crit="reuse"><div class="sc-q"><b>Reusable pattern</b><span>Success unlocks similar processes elsewhere in the organisation.</span></div>
+              <fieldset class="seg seg-rate"><legend class="sr-only">Reusable pattern</legend></fieldset></li>
+            <li data-crit="visible"><div class="sc-q"><b>Governance visibility</b><span>Risk and audit can watch the controls work, which builds the case to scale.</span></div>
+              <fieldset class="seg seg-rate"><legend class="sr-only">Governance visibility</legend></fieldset></li>
+          </ol>
+          <p class="sc-scale"><span>1 · weak</span><span>3 · partly there</span><span>5 · strong</span></p>
+        </div>
       </div>
-      <div class="table-wrap rev d1">
-        <table style="min-width:0">
-          <thead><tr><th>Criterion</th><th>What good looks like</th></tr></thead>
-          <tbody>
-            <tr><td>Clear owner</td><td>A named business owner who will use the result and sign off the criteria.</td></tr>
-            <tr><td>Measurable today</td><td>You already know the handling time, backlog, error rate or cost.</td></tr>
-            <tr><td>Available data</td><td>The documents or records can be made available in the pilot environment.</td></tr>
-            <tr><td>Contained risk</td><td>A person reviews the output: decision support, not an automated decision.</td></tr>
-            <tr><td>Reusable pattern</td><td>Success unlocks similar processes elsewhere in the organisation.</td></tr>
-            <tr><td>Governance visibility</td><td>Risk and audit can watch the controls work, which builds the case to scale.</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <aside class="sc-side" aria-labelledby="sc-rank-title">
+        <span class="micro accent" id="sc-rank-title">Your shortlist</span>
+        <ol class="sc-rank" aria-live="polite"></ol>
+        <div class="sc-advice" aria-live="polite"></div>
+        <div class="tool-actions">
+          <a class="btn btn-primary btn-sm tool-send" href="{{root}}contact.html">Bring this to a scoping workshop <span class="arr">&rarr;</span></a>
+          <button type="button" class="btn btn-ghost btn-sm sc-reset">Reset</button>
+        </div>
+        <p class="tool-note">Your scores stay in this browser until you choose to send them.</p>
+      </aside>
+      <noscript><p class="tool-note">Turn on JavaScript to score candidates here, or score them on paper against the six criteria above.</p></noscript>
     </div>
   </div>
 </section>
 
-<section class="section band-deep">
+<section class="section light">
   <div class="wrap">
     <div class="section-head rev">
       <span class="eyebrow">Commercial model</span>

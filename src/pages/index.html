@@ -3,12 +3,14 @@ title: AIRA Fusion — Secure, regulated and reliable enterprise AI
 description: AIRA Fusion (Artificial Intelligence Research & Application) helps banks, governments and regulated enterprises adopt AI securely, responsibly and at scale, through research, practical application and its flagship platform, AIRA Nexus.
 nav: home
 default_theme: dark
+scripts: hero-map
 ---
 <section class="hero hero-fusion">
+  {{photo:cover}}
   <canvas class="waves" data-variant="hero" aria-hidden="true"></canvas>
   <div class="wrap hero-fusion-grid">
     <div class="hf-copy">
-      <p class="micro rev">Building trusted AI<br>for regulated organisations</p>
+      <p class="micro rev">Building trusted AI for regulated organisations</p>
       <h1 class="display rev d1">AIRA <span class="grad">FUSION</span></h1>
       <p class="hf-sub rev d2">Artificial Intelligence Research &amp; Application</p>
       <p class="hf-pos rev d2">Secure <i></i> Regulated <i></i> Reliable</p>
@@ -19,33 +21,30 @@ default_theme: dark
       </div>
     </div>
     <div class="hf-visual rev d2">
-      <div class="platform-map" role="group" aria-label="AIRA Fusion enterprise AI platform capabilities">
+      <div class="platform-map" data-hero-map role="group" aria-label="AIRA Fusion enterprise AI platform capabilities">
+        <div class="pm-rings" aria-hidden="true"><i></i><i></i><i></i></div>
         <svg class="platform-wires" viewBox="0 0 600 400" preserveAspectRatio="none" aria-hidden="true">
-          <g fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M192 65 H204 Q216 65 216 77 V135 Q216 147 228 147 H240"/>
-            <path d="M192 200 H240"/>
-            <path d="M192 335 H204 Q216 335 216 323 V265 Q216 253 228 253 H240"/>
-            <path d="M408 65 H396 Q384 65 384 77 V135 Q384 147 372 147 H360"/>
-            <path d="M408 200 H360"/>
-            <path d="M408 335 H396 Q384 335 384 323 V265 Q384 253 372 253 H360"/>
-          </g>
-          <g fill="currentColor"><circle cx="192" cy="65" r="3"/><circle cx="192" cy="200" r="3"/><circle cx="192" cy="335" r="3"/><circle cx="408" cy="65" r="3"/><circle cx="408" cy="200" r="3"/><circle cx="408" cy="335" r="3"/></g>
+          <g class="pm-base" fill="none" stroke="currentColor" stroke-width="1.5"><path id="pm-w1" d="M192 65 H197 Q204 65 204 72 V140 Q204 147 211 147 H216"/><path id="pm-w2" d="M192 200 H216"/><path id="pm-w3" d="M192 335 H197 Q204 335 204 328 V260 Q204 253 211 253 H216"/><path id="pm-w4" d="M408 65 H403 Q396 65 396 72 V140 Q396 147 389 147 H384"/><path id="pm-w5" d="M408 200 H384"/><path id="pm-w6" d="M408 335 H403 Q396 335 396 328 V260 Q396 253 389 253 H384"/></g>
+          <g class="pm-live" fill="none" stroke-width="2.2"><use href="#pm-w1" data-wire="1"/><use href="#pm-w2" data-wire="2"/><use href="#pm-w3" data-wire="3"/><use href="#pm-w4" data-wire="4"/><use href="#pm-w5" data-wire="5"/><use href="#pm-w6" data-wire="6"/></g>
+          <g class="pm-pulses"><circle r="3.2"><animateMotion dur="2.2s" begin="0.37s" repeatCount="indefinite"><mpath href="#pm-w1"/></animateMotion></circle><circle r="3.2"><animateMotion dur="2.2s" begin="1.47s" repeatCount="indefinite"><mpath href="#pm-w1"/></animateMotion></circle><circle r="3.2"><animateMotion dur="2.2s" begin="0.74s" repeatCount="indefinite"><mpath href="#pm-w2"/></animateMotion></circle><circle r="3.2"><animateMotion dur="2.2s" begin="1.84s" repeatCount="indefinite"><mpath href="#pm-w2"/></animateMotion></circle><circle r="3.2"><animateMotion dur="2.2s" begin="1.11s" repeatCount="indefinite"><mpath href="#pm-w3"/></animateMotion></circle><circle r="3.2"><animateMotion dur="2.2s" begin="2.21s" repeatCount="indefinite"><mpath href="#pm-w3"/></animateMotion></circle><circle r="3.2"><animateMotion dur="2.2s" begin="1.48s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#pm-w4"/></animateMotion></circle><circle r="3.2"><animateMotion dur="2.2s" begin="2.58s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#pm-w4"/></animateMotion></circle><circle r="3.2"><animateMotion dur="2.2s" begin="1.85s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#pm-w5"/></animateMotion></circle><circle r="3.2"><animateMotion dur="2.2s" begin="2.95s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#pm-w5"/></animateMotion></circle><circle r="3.2"><animateMotion dur="2.2s" begin="2.22s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#pm-w6"/></animateMotion></circle><circle r="3.2"><animateMotion dur="2.2s" begin="3.32s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#pm-w6"/></animateMotion></circle></g>
+          <g class="pm-ports" fill="currentColor"><circle cx="192" cy="65" r="3"/><circle cx="192" cy="200" r="3"/><circle cx="192" cy="335" r="3"/><circle cx="408" cy="65" r="3"/><circle cx="408" cy="200" r="3"/><circle cx="408" cy="335" r="3"/><circle cx="216" cy="147" r="3"/><circle cx="216" cy="200" r="3"/><circle cx="216" cy="253" r="3"/><circle cx="384" cy="147" r="3"/><circle cx="384" cy="200" r="3"/><circle cx="384" cy="253" r="3"/></g>
         </svg>
-        <div class="platform-node pn-secure"><span class="glow-icon">{{icon:shield}}</span><div><b>Secure AI</b><p>Protect data,<br>people and IP</p></div></div>
-        <div class="platform-node pn-data"><span class="glow-icon">{{icon:db}}</span><div><b>Data &amp; Knowledge</b><p>Connect enterprise<br>data securely</p></div></div>
-        <div class="platform-node pn-observe"><span class="glow-icon">{{icon:pulse}}</span><div><b>Observability</b><p>Monitor, measure<br>and improve</p></div></div>
+        <div class="platform-node pn-secure" data-node="1" data-status="Identity verified · access granted" style="--i:1"><span class="glow-icon">{{icon:shield}}</span><div><b>Secure AI</b><p>Protect data,<br>people and IP</p></div><i class="pn-tick" aria-hidden="true"></i></div>
+        <div class="platform-node pn-data" data-node="2" data-status="Sources scoped · read-only" style="--i:2"><span class="glow-icon">{{icon:db}}</span><div><b>Data &amp; Knowledge</b><p>Connect enterprise<br>data securely</p></div><i class="pn-tick" aria-hidden="true"></i></div>
+        <div class="platform-node pn-observe" data-node="3" data-status="Run traced · cost recorded" style="--i:3"><span class="glow-icon">{{icon:pulse}}</span><div><b>Observability</b><p>Monitor, measure<br>and improve</p></div><i class="pn-tick" aria-hidden="true"></i></div>
         <div class="platform-core">
-          <span class="platform-plinth plinth-bottom" aria-hidden="true"></span>
-          <span class="platform-plinth plinth-top" aria-hidden="true"></span>
+          <span class="pm-orbit pm-o1" aria-hidden="true"></span>
+          <span class="pm-orbit pm-o2" aria-hidden="true"></span>
           <div class="platform-emblem">
             <img class="platform-mark" src="{{root}}img/brand/aira-icon-192.png" alt="" width="192" height="192">
             <img class="platform-wordmark" src="{{root}}img/brand/aira-wordmark-navy.png" alt="AIRA Fusion" width="106" height="35">
             <span>Enterprise AI Platform</span>
+            <p class="pm-status" aria-hidden="true"><i></i><span>Identity verified · access granted</span></p>
           </div>
         </div>
-        <div class="platform-node pn-govern"><span class="glow-icon">{{icon:shieldcheck}}</span><div><b>Governed AI</b><p>Policy, compliance<br>and responsible AI</p></div></div>
-        <div class="platform-node pn-use"><span class="glow-icon">{{icon:layers}}</span><div><b>Enterprise Use Cases</b><p>Solve real<br>business problems</p></div></div>
-        <div class="platform-node pn-agents"><span class="glow-icon">{{icon:flow}}</span><div><b>Agents &amp; Workflows</b><p>Automate and scale<br>with confidence</p></div></div>
+        <div class="platform-node pn-govern" data-node="4" data-status="Policy checked · guardrails on" style="--i:4"><span class="glow-icon">{{icon:shieldcheck}}</span><div><b>Governed AI</b><p>Policy, compliance<br>and responsible AI</p></div><i class="pn-tick" aria-hidden="true"></i></div>
+        <div class="platform-node pn-use" data-node="5" data-status="Solution approved · live" style="--i:5"><span class="glow-icon">{{icon:layers}}</span><div><b>Enterprise Use Cases</b><p>Solve real<br>business problems</p></div><i class="pn-tick" aria-hidden="true"></i></div>
+        <div class="platform-node pn-agents" data-node="6" data-status="Approval signed off by a person" style="--i:6"><span class="glow-icon">{{icon:flow}}</span><div><b>Agents &amp; Workflows</b><p>Automate and scale<br>with confidence</p></div><i class="pn-tick" aria-hidden="true"></i></div>
       </div>
     </div>
   </div>
@@ -72,18 +71,21 @@ default_theme: dark
   </div>
 </section>
 
-<section class="section" id="enterprise-ai-problem" aria-labelledby="ai-problem-title">
+<section class="section light" id="enterprise-ai-problem" aria-labelledby="ai-problem-title">
   <div class="wrap">
-    <div class="section-head rev">
-      <p class="micro accent">The enterprise AI problem</p>
-      <h2 class="mt-m" id="ai-problem-title">AI adoption is growing.<br><span class="grad">Oversight needs to keep up.</span></h2>
-      <p class="lead">When teams choose separate assistants, models and workflows, each brings another set of permissions, costs and records. Turning those experiments into dependable services becomes an organisation-wide challenge.</p>
+    <div class="split top">
+      <div class="section-head rev" style="margin-bottom:0">
+        <p class="micro accent">The enterprise AI problem</p>
+        <h2 class="mt-m" id="ai-problem-title">AI adoption is growing.<br><span class="grad">Oversight needs to keep up.</span></h2>
+        <p class="lead">When teams choose separate assistants, models and workflows, each brings another set of permissions, costs and records. Turning those experiments into dependable services becomes an organisation-wide challenge.</p>
+      </div>
+      <ol class="num-rows rev d1">
+        <li><span class="num">01</span><div><h3>Disconnected tools</h3><p>Knowledge and workflows stay in silos. Teams repeat integration work instead of sharing capabilities.</p></div></li>
+        <li><span class="num">02</span><div><h3>Uneven controls</h3><p>Access, data handling and model budgets vary between applications, making consistent oversight harder.</p></div></li>
+        <li><span class="num">03</span><div><h3>Incomplete evidence</h3><p>Scattered records make it difficult to connect an answer to its source, cost and approval history.</p></div></li>
+      </ol>
     </div>
-    <div class="grid g3">
-      <article class="card rev"><span class="glow-icon">{{icon:layers}}</span><h3 class="mt-m">Disconnected tools</h3><p>Knowledge and workflows stay in silos. Teams repeat integration work instead of sharing capabilities.</p></article>
-      <article class="card rev d1"><span class="glow-icon">{{icon:shield}}</span><h3 class="mt-m">Uneven controls</h3><p>Access, data handling and model budgets vary between applications, making consistent oversight harder.</p></article>
-      <article class="card rev d2"><span class="glow-icon">{{icon:pulse}}</span><h3 class="mt-m">Incomplete evidence</h3><p>Scattered records make it difficult to connect an answer to its source, cost and approval history.</p></article>
-    </div>
+    <p class="note-line rev">Our answer is not one more tool. It is <b>the governed layer underneath all of them.</b></p>
   </div>
 </section>
 
@@ -115,7 +117,7 @@ default_theme: dark
   </div>
 </section>
 
-<section class="section" id="model-control" aria-labelledby="model-control-title">
+<section class="section light" id="model-control" aria-labelledby="model-control-title">
   <div class="wrap split">
     <div class="rev">
       <p class="micro accent">Model control</p>
@@ -172,7 +174,7 @@ default_theme: dark
   </div>
 </section>
 
-<section class="section">
+<section class="section light">
   <div class="wrap">
     <div class="section-head rev">
       <p class="micro accent">Who we serve</p>
@@ -180,10 +182,26 @@ default_theme: dark
       <p class="lead">Where a wrong answer is a finding, data residency is law, and every decision may one day be examined.</p>
     </div>
     <div class="grid g4">
-      <a class="card card-link rev" href="{{root}}solutions.html#banking"><span class="glow-icon">{{icon:bank}}</span><h3 class="mt-m">Banks &amp; financial services</h3><p>KYC/AML reviews, credit assessment and financial-crime screening under examiner scrutiny.</p></a>
-      <a class="card card-link rev d1" href="{{root}}solutions.html#government"><span class="glow-icon">{{icon:gov}}</span><h3 class="mt-m">Government</h3><p>Sovereign and air-gapped AI for correspondence, policy and regulatory work.</p></a>
-      <a class="card card-link rev d2" href="{{root}}solutions.html#enterprise"><span class="glow-icon">{{icon:shield}}</span><h3 class="mt-m">Regulated enterprise</h3><p>Insurance and other regulated sectors with sensitive documents and explainable decisions.</p></a>
-      <a class="card card-link rev d3" href="{{root}}solutions.html#catalogue"><span class="glow-icon">{{icon:spark}}</span><h3 class="mt-m">Innovation teams</h3><p>A governed path from a promising pilot to production, without a rebuild.</p></a>
+      <a class="card card-link rev" href="{{root}}solutions.html#banking">{{band:desk}}<span class="glow-icon">{{icon:bank}}</span><h3 class="mt-m">Banks &amp; financial services</h3><p>KYC/AML reviews, credit assessment and financial-crime screening under examiner scrutiny.</p></a>
+      <a class="card card-link rev d1" href="{{root}}solutions.html#government">{{band:glass}}<span class="glow-icon">{{icon:gov}}</span><h3 class="mt-m">Government</h3><p>Sovereign and air-gapped AI for correspondence, policy and regulatory work.</p></a>
+      <a class="card card-link rev d2" href="{{root}}solutions.html#enterprise">{{band:phone}}<span class="glow-icon">{{icon:shield}}</span><h3 class="mt-m">Regulated enterprise</h3><p>Insurance and other regulated sectors with sensitive documents and explainable decisions.</p></a>
+      <a class="card card-link rev d3" href="{{root}}solutions.html#catalogue">{{band:dash}}<span class="glow-icon">{{icon:spark}}</span><h3 class="mt-m">Innovation teams</h3><p>A governed path from a promising pilot to production, without a rebuild.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="try" aria-labelledby="try-title">
+  <div class="wrap">
+    <div class="section-head rev">
+      <p class="micro accent">Try it yourself</p>
+      <h2 class="mt-m" id="try-title">Four tools, <span class="grad">two minutes each.</span></h2>
+      <p class="lead">Work through the questions a pilot, a risk committee and an architecture review would ask, then send us the result if it helps.</p>
+    </div>
+    <div class="grid g4">
+      <a class="card card-link rev" href="{{root}}pilot.html#scorer"><span class="glow-icon">{{icon:check}}</span><span class="kicker mt-m">Pilot Fit Scorer</span><h3>Pick your first pilot</h3><p>Score up to three use cases on the six criteria and get a ranked shortlist.</p><span class="link-arrow mt-s">Score use cases <span>&rarr;</span></span></a>
+      <a class="card card-link rev d1" href="{{root}}security.html#risk-check"><span class="glow-icon">{{icon:shieldcheck}}</span><span class="kicker mt-m">Risk Committee Check</span><h3>Test your evidence</h3><p>Four questions your risk committee will ask, and where your answers rest on assurances.</p><span class="link-arrow mt-s">Take the check <span>&rarr;</span></span></a>
+      <a class="card card-link rev d2" href="{{root}}nexus.html#simulator"><span class="glow-icon">{{icon:door}}</span><span class="kicker mt-m">Gateway Simulator</span><h3>Watch policy decide</h3><p>Send a request through the Gateway and see it allowed, masked, held or blocked.</p><span class="link-arrow mt-s">Run a request <span>&rarr;</span></span></a>
+      <a class="card card-link rev d3" href="{{root}}nexus.html#configurator"><span class="glow-icon">{{icon:server}}</span><span class="kicker mt-m">Deployment Configurator</span><h3>Shape your deployment</h3><p>On-premises, private cloud or air-gapped: see the architecture and your checklist.</p><span class="link-arrow mt-s">Configure <span>&rarr;</span></span></a>
     </div>
   </div>
 </section>

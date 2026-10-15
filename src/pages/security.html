@@ -2,9 +2,11 @@
 title: Security & governance
 description: How AIRA Nexus protects data, controls AI use and produces evidence: self-hosted, one governed door through AIRA Gateway, server-side authorization, row-level isolation, policy before every call and a tamper-evident audit log. Including our honest assurance status.
 nav: security
+scripts: risk-check
 ---
 <section class="page-hero bg-grid">
   {{hexfield}}
+  {{photo:dc}}
   <span class="glow g-blue" style="width:700px;height:700px;right:-240px;top:-240px"></span>
   <div class="wrap">
     <span class="eyebrow rev">Security &amp; governance</span>
@@ -14,7 +16,7 @@ nav: security
   </div>
 </section>
 
-<section class="section tight rule-top">
+<section class="section tight light">
   <div class="wrap grid g2">
     <div class="card rev"><div class="icon">{{icon:server}}</div><h3>Your infrastructure</h3><p>Run on-premises, in a private cloud or air-gapped. Data stores are self-hosted; cloud models are optional and use your keys.</p></div>
     <div class="card rev"><div class="icon">{{icon:id}}</div><h3>Identity &amp; isolation</h3><p>Single sign-on, MFA and server-side access decisions, with tenant isolation enforced in the database.</p></div>
@@ -51,6 +53,49 @@ nav: security
     </div>
     </details>
     <p class="note mt-m rev">AIRA helps you produce evidence for SOC 2, ISO/IEC 27001, the EU AI Act, DORA and GDPR. It does not certify your compliance, and AIRA Fusion does not currently hold these certifications.</p>
+  </div>
+</section>
+
+<section class="section light" id="risk-check" aria-labelledby="risk-title">
+  <div class="wrap">
+    <div class="section-head rev">
+      <span class="eyebrow">Risk Committee Check</span>
+      <h2 id="risk-title">Four questions your <span class="grad">risk committee will ask.</span></h2>
+      <p class="lead">Before any AI goes live, these come up. Answer them for the AI you run today and see where the evidence is thin, and how AIRA Nexus produces it.</p>
+    </div>
+    <div class="tool risk rev" data-risk data-contact="{{root}}contact.html">
+      <ol class="rk-list">
+        <li class="rk-q" data-answer="Identity-bound access policies at one gateway, per product role.">
+          <span class="num">01</span>
+          <fieldset><legend>Who can use which model or AI solution?</legend>
+            <div class="seg seg-answer"><label><input type="radio" name="rk1" value="2"><span>Yes, with evidence</span></label><label><input type="radio" name="rk1" value="1"><span>Partly</span></label><label><input type="radio" name="rk1" value="0"><span>Not yet</span></label></div>
+          </fieldset></li>
+        <li class="rk-q" data-answer="Data policies and guardrails applied, and traced, on every call.">
+          <span class="num">02</span>
+          <fieldset><legend>What data was sent, transformed or blocked?</legend>
+            <div class="seg seg-answer"><label><input type="radio" name="rk2" value="2"><span>Yes, with evidence</span></label><label><input type="radio" name="rk2" value="1"><span>Partly</span></label><label><input type="radio" name="rk2" value="0"><span>Not yet</span></label></div>
+          </fieldset></li>
+        <li class="rk-q" data-answer="Human approval gates inside the run, recorded with the approver.">
+          <span class="num">03</span>
+          <fieldset><legend>Who approved a consequential action?</legend>
+            <div class="seg seg-answer"><label><input type="radio" name="rk3" value="2"><span>Yes, with evidence</span></label><label><input type="radio" name="rk3" value="1"><span>Partly</span></label><label><input type="radio" name="rk3" value="0"><span>Not yet</span></label></div>
+          </fieldset></li>
+        <li class="rk-q" data-answer="A tamper-evident, hash-chained audit log, ready for examiners.">
+          <span class="num">04</span>
+          <fieldset><legend>Can we prove what happened, months later?</legend>
+            <div class="seg seg-answer"><label><input type="radio" name="rk4" value="2"><span>Yes, with evidence</span></label><label><input type="radio" name="rk4" value="1"><span>Partly</span></label><label><input type="radio" name="rk4" value="0"><span>Not yet</span></label></div>
+          </fieldset></li>
+      </ol>
+      <aside class="rk-result" aria-live="polite">
+        <div class="rk-meter"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="rk-track" cx="60" cy="60" r="50"/><circle class="rk-fill" cx="60" cy="60" r="50"/></svg><div><b class="rk-score">0</b><small>of 8</small></div></div>
+        <p class="rk-band">Answer the four questions.</p>
+        <ul class="rk-gaps"></ul>
+        <div class="tool-actions">
+          <a class="btn btn-primary btn-sm tool-send" href="{{root}}contact.html">Request a security review <span class="arr">&rarr;</span></a>
+        </div>
+        <p class="tool-note">A self-assessment for discussion, not an audit. Nothing is sent unless you choose to.</p>
+      </aside>
+    </div>
   </div>
 </section>
 
