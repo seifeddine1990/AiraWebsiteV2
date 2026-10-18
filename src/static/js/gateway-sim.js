@@ -130,5 +130,9 @@
   // Show the first request statically; animate only when the visitor interacts.
   var first = plan();
   text.innerHTML = first.shown;
-  stepsEl.innerHTML = '<li class="gs-idle">Choose who is asking, the request and the model, then send it through the Gateway.</li>';
+  stepsEl.innerHTML = first.steps.map(function (st, i) {
+    return '<li class="gs-wait"><span class="gs-dot">' + (i + 1) + "</span><div><b>" + st.k + "</b><span>Waiting for a request.</span></div></li>";
+  }).join("");
+  outcome.className = "gs-outcome show idle";
+  outcome.innerHTML = "<b>Ready</b><span>Choose who is asking, the request and the model, then send it through the Gateway.</span>";
 })();

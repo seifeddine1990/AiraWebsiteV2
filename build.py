@@ -143,7 +143,7 @@ def _hexpts(cx: float, cy: float, r: float) -> str:
 PLANE_NODES = [
     ("Home", "Consume", "<b>AIRA Home</b> &mdash; Ask and Work for every employee: grounded answers with citations, documents and the AI Solution catalog."),
     ("Studio", "Create", "<b>AIRA Studio</b> &mdash; build, test, evaluate and publish assistants, agents, flows and AI Solutions."),
-    ("Gateway", "Unified access", "<b>AIRA Gateway</b> &mdash; one governed catalog for LLMs, agents and AI Solutions, with application subscriptions, policy controls and audit."),
+    ("Gateway", "Govern", "<b>AIRA Gateway</b> &mdash; one governed catalog for LLMs, agents and AI Solutions, with application subscriptions, policy controls and audit."),
     ("Runtime", "Execute", "<b>AIRA Runtime</b> &mdash; deploys and executes capabilities with environment control on Kubernetes and OpenShift, using governed access through Gateway."),
     ("Signal", "Observe", "<b>AIRA Signal</b> &mdash; runs, latency, spend, flagged events and health, across the whole estate."),
     ("Data", "Connect", "<b>AIRA Data</b> &mdash; governed sources, ingestion, extraction and document review. Read-only by default."),

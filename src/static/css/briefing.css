@@ -414,7 +414,7 @@ a:hover > .circle-arrow { background: rgba(77, 150, 255, .12); }
 .pm-status.swap span { animation: pm-swap .45s var(--ease); }
 @keyframes pm-swap { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
 @media (max-width: 820px) { .pm-o2, .pm-rings { display: none; } .pm-status { font-size: 7.5px; } }
-@media (prefers-reduced-motion: reduce) { .pm-base path { stroke-dashoffset: 0; } .pm-rings, .pm-orbit { display: none; } }
+@media (prefers-reduced-motion: reduce) { .pm-base path { stroke-dashoffset: 0; } .pm-rings, .pm-orbit, .pm-pulses { display: none; } }
 
 /* ==========================================================================
    Product tour - tabs, callouts linked to pins, spotlight, lightbox.
@@ -784,4 +784,47 @@ a:hover > .circle-arrow { background: rgba(77, 150, 255, .12); }
 @media (max-width: 700px) {
   .company-layout { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   .company-heading h2 { font-size: 28px; }
+}
+
+/* ==========================================================================
+   Review fixes
+   ========================================================================== */
+/* Header stays legible over bright hero photos before the page scrolls */
+.site-header::before { content: ""; position: absolute; inset: 0 0 -36px; z-index: -1; pointer-events: none; background: linear-gradient(180deg, rgba(4, 12, 34, .72), rgba(4, 12, 34, 0)); transition: opacity .35s; }
+.site-header.scrolled::before, .nav-open .site-header::before { opacity: 0; }
+
+/* Overlapping platform panel: no dark smudge on the ivory section below */
+.platform-panel { box-shadow: none; }
+
+/* Native controls follow the surface they sit on */
+.section.light, .risk, .dcfg { color-scheme: light; }
+
+/* "Try it yourself" cards: links line up at the bottom */
+.tool-card { display: flex; flex-direction: column; }
+.tool-card .kicker { margin-bottom: 10px; }
+.tool-card .link-arrow { margin-top: auto; padding-top: 18px; }
+
+/* Use-case label legend: compact badges in one row */
+.strip span.badge { padding: 7px 12px; font-size: 10.5px; letter-spacing: .12em; }
+.section.light .strip span.badge { background: #fff; }
+.section.light .strip span.badge.ready { color: #127A55; border-color: rgba(18, 122, 85, .3); }
+.section.light .strip span.badge.demo { color: #165DE6; border-color: rgba(22, 93, 230, .3); }
+.section.light .strip span.badge.pattern { color: #4B57B8; border-color: rgba(75, 87, 184, .3); }
+
+/* Gateway Simulator: idle pipeline preview */
+.gs-steps li.gs-wait { opacity: .55; transform: none; border-style: dashed; }
+.gs-outcome.idle { background: rgba(255, 255, 255, .03); border: 1px dashed var(--line-2); }
+.gs-outcome.idle b { color: var(--ink); }
+
+/* Phones */
+@media (max-width: 860px) {
+  .steps { border-top: 0; border-left: 1px solid var(--line-2); padding-left: 22px; }
+  .step { padding: 0 0 28px; }
+  .step::after { left: -26px; top: 2px; }
+}
+@media (max-width: 560px) {
+  .eyebrow, .micro { letter-spacing: .14em; }
+  .platform-node p, .pm-status { display: none; }
+  .platform-node b { font-size: 12px; }
+  .platform-node { align-items: center; }
 }
