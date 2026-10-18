@@ -86,42 +86,36 @@ scripts: tour, gateway-sim, deploy-config
 <section class="section light" id="deploy">
   <div class="wrap">
     <div class="section-head rev">
-      <span class="eyebrow">Deployment &amp; specifications</span>
+      <span class="eyebrow">Deployment &amp; flexibility</span>
       <h2>Built to be operated by <span class="grad">your</span> team.</h2>
-      <p class="lead">Deploy on-premises, in your private cloud or fully air-gapped. Your team controls the infrastructure, identity and model access, with no telemetry or phone-home.</p>
+      <p class="lead">On your premises, in your private cloud or in an isolated environment. Keep your data and AI under your control.</p>
     </div>
     <div class="tool dcfg rev" id="configurator" data-deploy-config data-contact="{{root}}contact.html" aria-labelledby="dc-title">
       <div class="dc-controls">
-        <span class="micro accent">Deployment Configurator</span>
+        <span class="micro accent">Your environment</span>
         <h3 id="dc-title">Shape your deployment.</h3>
         <fieldset class="seg seg-stack"><legend>Where it runs</legend>
           <label><input type="radio" name="dc-where" value="onprem" checked><span><b>On-premises</b><small>Your data centre</small></span></label>
-          <label><input type="radio" name="dc-where" value="cloud"><span><b>Private cloud</b><small>Your tenancy, your keys</small></span></label>
-          <label><input type="radio" name="dc-where" value="airgap"><span><b>Air-gapped</b><small>No outbound connection at all</small></span></label>
+          <label><input type="radio" name="dc-where" value="cloud"><span><b>Private cloud</b><small>Your cloud environment</small></span></label>
+          <label><input type="radio" name="dc-where" value="airgap"><span><b>Air-gapped</b><small>A fully isolated network</small></span></label>
         </fieldset>
         <fieldset class="seg seg-stack"><legend>Models</legend>
-          <label><input type="radio" name="dc-models" value="local" checked><span><b>Local models only</b><small>Inference on your hardware</small></span></label>
-          <label><input type="radio" name="dc-models" value="hybrid"><span><b>Local + approved cloud models</b><small>Cloud is optional and uses your keys</small></span></label>
+          <label><input type="radio" name="dc-models" value="local" checked><span><b>Private models</b><small>AI within your environment</small></span></label>
+          <label><input type="radio" name="dc-models" value="hybrid"><span><b>Private + cloud models</b><small>Connect only the providers you approve</small></span></label>
         </fieldset>
-        <fieldset class="seg"><legend>Platform</legend>
-          <label><input type="radio" name="dc-platform" value="k8s" checked><span>Kubernetes</span></label>
-          <label><input type="radio" name="dc-platform" value="ocp"><span>OpenShift</span></label>
-        </fieldset>
-        <label class="dc-toggle"><input type="checkbox" name="dc-obs"><span>Add the monitoring overlay</span></label>
+        <label class="dc-toggle"><input type="checkbox" name="dc-obs"><span>Include operational monitoring</span></label>
       </div>
       <div class="dc-out">
         <div class="dc-map" aria-live="polite"></div>
-        <div class="dc-check"><b>Your checklist</b><ul></ul></div>
+        <div class="dc-check"><b>Your deployment at a glance</b><ul></ul></div>
         <div class="tool-actions"><a class="btn btn-primary btn-sm tool-send" href="{{root}}contact.html">Discuss this deployment <span class="arr">&rarr;</span></a></div>
       </div>
     </div>
     <dl class="specs rev mt-l">
-      <div class="spec"><dt>Deployment</dt><dd>On-premises, private cloud or fully air-gapped. Kubernetes with base and overlays, plus an OpenShift overlay. Hostname-routed ingress with TLS at your edge.</dd></div>
-      <div class="spec"><dt>Identity</dt><dd>Keycloak SSO over OIDC and SAML across every product, native TOTP MFA, JWTs with revocation, refresh rotation and an RS256 option.</dd></div>
-      <div class="spec"><dt>Cloud models</dt><dd>OpenAI, Anthropic, Google Gemini, Mistral and Cohere pre-registered; any OpenAI-compatible endpoint can be added. Optional and customer-keyed.</dd></div>
-      <div class="spec"><dt>Local models</dt><dd>Ollama on CPU or GPU, vLLM and SGLang on GPU, on your hardware. Declared in configuration, never auto-detected.</dd></div>
-      <div class="spec"><dt>Data stores</dt><dd>PostgreSQL as the source of truth, with Redis, Qdrant, MinIO and Temporal. All self-hosted.</dd></div>
-      <div class="spec"><dt>Operations</dt><dd>Optional Prometheus, Grafana, Loki, Tempo and Alertmanager overlay. A health doctor that shows its evidence. Backup, restore-verify and a documented restore drill.</dd></div>
+      <div class="spec"><dt>Flexible hosting</dt><dd>Run in the environment that suits your organisation.</dd></div>
+      <div class="spec"><dt>Connected identity</dt><dd>Single sign-on and shared access controls across the platform.</dd></div>
+      <div class="spec"><dt>Model choice</dt><dd>Use private models, with approved cloud providers when needed.</dd></div>
+      <div class="spec"><dt>Operational visibility</dt><dd>Monitor health, usage and activity from one place.</dd></div>
     </dl>
   </div>
 </section>

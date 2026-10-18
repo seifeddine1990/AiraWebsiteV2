@@ -49,6 +49,7 @@ NAV = [
     ("nexus", "AIRA Nexus", "nexus.html"),
     ("solutions", "Solutions", "solutions.html"),
     ("security", "Security", "security.html"),
+    ("insights", "Insights", "insights/index.html"),
     ("about", "About", "about.html"),
 ]
 
@@ -423,7 +424,7 @@ FOOTER = f"""
         <div class="tag">Secure &bull; Regulated &bull; Reliable</div>
       </div>
       <div class="foot-col"><h5>AIRA Fusion</h5>
-        <a href="{{{{root}}}}about.html">About us</a><a href="{{{{root}}}}about.html#principles">Principles</a><a href="{{{{root}}}}insights/index.html">Insights</a><a href="{{{{root}}}}contact.html">Contact</a></div>
+        <a href="{{{{root}}}}insights/index.html">Insights</a><a href="{{{{root}}}}about.html">About us</a><a href="{{{{root}}}}about.html#principles">Principles</a><a href="{{{{root}}}}contact.html">Contact</a></div>
       <div class="foot-col"><h5>AIRA Nexus</h5>
         <a href="{{{{root}}}}nexus.html">Overview</a><a href="{{{{root}}}}nexus.html#products">Six products</a><a href="{{{{root}}}}nexus.html#doors">Architecture</a><a href="{{{{root}}}}nexus.html#deploy">Specifications</a></div>
       <div class="foot-col"><h5>Trust</h5>
@@ -433,7 +434,7 @@ FOOTER = f"""
     </div>
     <div class="foot-bottom">
       <span>&copy; <span data-year>2026</span> AIRA Fusion. AIRA Nexus is the flagship platform of AIRA Fusion.</span>
-      <span class="powered">Powered by <b>AL AHD AL RASEKH for Artificial Intelligence LLC</b> &middot; Jordan</span>
+      <span class="powered">Powered by <b>Al Ahd Al Rasekh for Artificial Intelligence LLC</b> &middot; Jordan</span>
     </div>
   </div>
 </footer>

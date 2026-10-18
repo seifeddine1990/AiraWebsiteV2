@@ -36,7 +36,7 @@ Four tools help visitors work through real questions. Each loads only on its pag
 | Pilot Fit Scorer | `pilot.html#scorer` | `pilot-scorer.js` (scores stay in the visitor's browser) |
 | Risk Committee Check | `security.html#risk-check` | `risk-check.js` |
 | Gateway Simulator | `nexus.html#simulator` | `gateway-sim.js` (illustrative rules, labelled as a simulation) |
-| Deployment Configurator | `nexus.html#configurator` | `deploy-config.js` (only facts from the deployment specifications) |
+| Deployment Configurator | `nexus.html#configurator` | `deploy-config.js` (hosting, model access and monitoring overview) |
 
 Each tool can send its result to the Contact Us form, which reads `?topic=` and `?brief=` and pre-fills the enquiry. Nothing is sent until the visitor submits the form. Keep the tools' wording in step with the page content they draw on.
 
